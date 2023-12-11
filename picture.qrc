@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/new/photo">
+        <file>red_light.png</file>
+        <file>cat.png</file>
+        <file>butterfly.jpg</file>
+        <file>flower.jpg</file>
+        <file>oddmen.jpg</file>
+        <file>peopel.png</file>
+        <file>OIG (1).jpg</file>
+        <file>homeicon.jpg</file>
+        <file>moons.jpg</file>
+        <file>mastericon.jpg</file>
+        <file>exit.jpg</file>
+        <file>freeicon.jpg</file>
+        <file>off.jpg</file>
+        <file>workicon.jpg</file>
+        <file>eye.jpg</file>
+    </qresource>
+    <qresource prefix="/new/prefix1"/>
+</RCC>

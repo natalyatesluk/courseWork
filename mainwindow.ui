@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>533</width>
+    <height>388</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Tatto Studio</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="picture.qrc">
+    <normaloff>:/new/photo/flower.jpg</normaloff>:/new/photo/flower.jpg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="picture.qrc">:/new/photo/butterfly.jpg</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="loginPb">
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+border-radius: 20px;
+box-shadow: 0 0 20px 10px rgb(240, 158, 255);
+width: 50px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 2px solid rgb(200, 200, 200);
+            }
+QPushButton:pressed {
+             background-color: rgb(255, 255, 255);
+	        color: rgb(0, 0, 0);
+            }</string>
+         </property>
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="regitstPb">
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+border-radius: 20px;
+box-shadow: 0 0 20px 10px rgb(240, 158, 255);
+width: 50px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 2px solid rgb(200, 200, 200);
+            }
+QPushButton:pressed {
+             background-color: rgb(255, 255, 255);
+	        color: rgb(0, 0, 0);
+            }</string>
+         </property>
+         <property name="text">
+          <string>Register</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>533</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="picture.qrc"/>
+ </resources>
+ <connections/>
+</ui>
