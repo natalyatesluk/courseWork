@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HomeCustomer</class>
+ <widget class="QWidget" name="HomeCustomer">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>682</width>
+    <height>405</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QTableView {
+	font: 9pt &quot;Century Gothic&quot;;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: #f0f0f0;  /* Фон заокругленого віджета */
+    selection-background-color: #a6a6a6;  /* Колір виділення */
+}
+/* Імена стовбців */
+QHeaderView::section {
+    background-color: #404040;  /* Колір фону */
+    color: white;  /* Колір тексту */
+    padding: 4px;
+    border: 1px solid #303030;  /* Границі */
+}
+
+/* Номерація рядків */
+QTableView QTableCornerButton::section {
+    background-color: #404040;  /* Колір фону */
+    color: white;  /* Колір тексту */
+    border: 1px solid #303030;  /* Границі */
+}
+
+
+QTableView::item:hover {
+    border: 2px solid #505050;  /* Колір границі при наведенні */
+}
+
+QTableView::item:selected {
+    border: 2px solid #303030;  /* Колір границі при виділенні */
+}QWidget
+{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}
+QPushButton
+{
+	font: 16pt &quot;Candara&quot;;
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+  border: 2px solid  rgb(0, 0, 0);
+border-radius: 20px;
+width: 50px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 4px solid  rgb(0, 0, 0);
+border-radius: 20px;
+            }
+QPushButton:pressed {
+ border: 2px solid  rgb(0, 0, 0);
+border-radius: 20px;
+            }</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QStackedWidget" name="homeCusStckW">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="welcomePage">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="5" column="1">
+        <widget class="QPushButton" name="freePb">
+         <property name="text">
+          <string>Free time</string>
+         </property>
+         <property name="icon">
+          <iconset resource="picture.qrc">
+           <normaloff>:/photo/free.png</normaloff>:/photo/free.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="1" rowspan="2">
+        <widget class="QLabel" name="pictureLb">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="picture.qrc">:/photo/moons.jpg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="welcoeLb">
+         <property name="font">
+          <font>
+           <family>Candara Light</family>
+           <pointsize>48</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Welcome!</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="mastersPb">
+         <property name="font">
+          <font>
+           <family>Candara</family>
+           <pointsize>16</pointsize>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+  border: 2px solid  rgb(0, 0, 0);
+border-radius: 20px;
+width: 50px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 4px solid  rgb(0, 0, 0);
+border-radius: 20px;
+            }
+QPushButton:pressed {
+ border: 2px solid  rgb(0, 0, 0);
+border-radius: 20px;
+            }</string>
+         </property>
+         <property name="text">
+          <string>Masters</string>
+         </property>
+         <property name="icon">
+          <iconset resource="picture.qrc">
+           <normaloff>:/photo/masters.jpg</normaloff>:/photo/masters.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QStackedWidget" name="avatarStckW">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="avatar">
+          <layout class="QGridLayout" name="gridLayout_7">
+           <item row="0" column="0">
+            <widget class="QLabel" name="usernameLb">
+             <property name="styleSheet">
+              <string notr="true">QLabel{font: 11pt &quot;Candara&quot;;}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="statusLb">
+             <property name="styleSheet">
+              <string notr="true">QLabel{color:rgb(76, 76, 76);
+font: 8pt &quot;Candara&quot;;}
+</string>
+             </property>
+             <property name="text">
+              <string>customer</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QPushButton" name="changePb">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{font: 10pt &quot;Candara&quot;;
+
+	background-color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
+border: 2px solid  rgb(255, 255, 255);
+width: 40px;
+  height: 20px;
+}
+QPushButton:hover {
+background-color: rgb(255, 255, 255);
+               color: rgb(0, 0, 0);
+            }
+QPushButton:pressed {
+background-color: rgb(255, 255, 255);
+	color: rgb(111, 111, 111);
+            }</string>
+             </property>
+             <property name="text">
+              <string>change</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1" rowspan="2">
+            <widget class="QLabel" name="activeAvatarLb">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="picture.qrc">:/photo/avatarW.png</pixmap>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="changeAvatarP">
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="0" column="0">
+            <widget class="QLabel" name="wAvatarLb">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="picture.qrc">:/photo/avatarW.png</pixmap>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="mAvatarlb">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="picture.qrc">:/photo/avatarM.png</pixmap>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="changeWomenPb">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{font: 10pt &quot;Candara&quot;;
+
+	background-color: rgb(255, 255, 255);
+	color: rgb(190, 190, 195);
+border: 2px solid  rgb(255, 255, 255);
+width: 40px;
+  height: 20px;
+}
+QPushButton:hover {
+background-color: rgb(255, 255, 255);
+               color: rgb(0, 0, 0);
+            }
+QPushButton:pressed {
+background-color: rgb(255, 255, 255);
+	color: rgb(111, 111, 111);
+            }</string>
+             </property>
+             <property name="text">
+              <string>change</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="changeMenPb">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{font: 10pt &quot;Candara&quot;;
+
+	background-color: rgb(255, 255, 255);
+	color: rgb(190, 190, 195);
+border: 2px solid  rgb(255, 255, 255);
+width: 40px;
+  height: 20px;
+}
+QPushButton:hover {
+background-color: rgb(255, 255, 255);
+               color: rgb(0, 0, 0);
+            }
+QPushButton:pressed {
+background-color: rgb(255, 255, 255);
+	color: rgb(111, 111, 111);
+            }</string>
+             </property>
+             <property name="text">
+              <string>change</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="masterPage">
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QTableView" name="masterTv"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="homePb">
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+ padding-left: 5px; 
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+  border: 2px solid  rgb(0, 0, 0);
+border-radius: 20px;
+width: 40px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 4px solid  rgb(0, 0, 0);
+border-radius: 20px;
+            }
+QPushButton:pressed {
+ border: 2px solid  rgb(255, 255, 255);
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border-radius: 20px;
+            }</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="picture.qrc">
+           <normaloff>:/photo/homeicon.jpg</normaloff>:/photo/homeicon.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="timePage">
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QTableView" name="timeTv"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="homeTPb">
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+ padding-left: 5px; 
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+  border: 2px solid  rgb(0, 0, 0);
+border-radius: 20px;
+width: 40px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 4px solid  rgb(0, 0, 0);
+border-radius: 20px;
+            }
+QPushButton:pressed {
+ border: 2px solid  rgb(255, 255, 255);
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border-radius: 20px;
+            }</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="picture.qrc">
+           <normaloff>:/photo/homeicon.jpg</normaloff>:/photo/homeicon.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="picture.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Question</class>
+ <widget class="QWidget" name="Question">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>358</width>
+    <height>286</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+}
+QTableView {
+	font: 9pt &quot;Century Gothic&quot;;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: #f0f0f0;  /* Фон заокругленого віджета */
+    selection-background-color: #a6a6a6;  /* Колір виділення */
+}
+/* Імена стовбців */
+QHeaderView::section {
+    background-color: #404040;  /* Колір фону */
+    color: white;  /* Колір тексту */
+    padding: 4px;
+    border: 1px solid #303030;  /* Границі */
+}
+
+/* Номерація рядків */
+QTableView QTableCornerButton::section {
+    background-color: #404040;  /* Колір фону */
+    color: white;  /* Колір тексту */
+    border: 1px solid #303030;  /* Границі */
+}
+
+
+QTableView::item:hover {
+    border: 2px solid #505050;  /* Колір границі при наведенні */
+}
+
+QTableView::item:selected {
+    border: 2px solid #303030;  /* Колір границі при виділенні */
+}
+QLineEdit {
+font: 12pt &quot;Candara&quot;;
+                 background-color: white;
+                 color: black;
+                 border: 1px solid rgb(110, 110, 110);
+              border-radius: 10px;
+                 padding: 3px 7px;
+             }
+
+             QLineEdit:focus {
+                 border: 2px solid rgb(90, 90, 90);
+            }
+QPushButton
+{
+	font: 12pt &quot;Candara&quot;;
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+border-radius: 20px;
+box-shadow: 0 0 20px 10px rgb(240, 158, 255);
+width: 50px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 2px solid rgb(200, 200, 200);
+            }
+QPushButton:pressed {
+             background-color: rgb(255, 255, 255);
+	        color: rgb(0, 0, 0);
+            }
+QLabel{font: 12pt &quot;Candara&quot;;}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <widget class="QStackedWidget" name="questionSt">
+     <property name="currentIndex">
+      <number>3</number>
+     </property>
+     <widget class="QWidget" name="questionPg">
+      <widget class="QWidget" name="questionWdg" native="true">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>50</y>
+         <width>271</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="0">
+         <widget class="QPushButton" name="updatePb">
+          <property name="text">
+           <string>UPDATE</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="2">
+         <widget class="QLabel" name="questionLb">
+          <property name="text">
+           <string>Do you want update or delete?</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="deletePb">
+          <property name="text">
+           <string>DELETE</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="updateBody">
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="areaLE"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="areaLb">
+         <property name="text">
+          <string>Area:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="updateBodyPb">
+         <property name="text">
+          <string>UPDATE</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="updateMaster">
+      <widget class="QWidget" name="updateWdg" native="true">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>50</y>
+         <width>341</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="2">
+         <widget class="QLabel" name="priceLb">
+          <property name="text">
+           <string>Price:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="surenameLE"/>
+        </item>
+        <item row="1" column="3">
+         <widget class="QLineEdit" name="doneWorkLE"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="surenameLb">
+          <property name="text">
+           <string>Surename:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="doneWorkLb">
+          <property name="text">
+           <string>Done work:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="nameLb">
+          <property name="text">
+           <string>Name:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLineEdit" name="priceLE"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="nameLE"/>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="numberLE"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="numberLb">
+          <property name="text">
+           <string>Number:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0" colspan="4">
+         <widget class="QPushButton" name="updatePb_2">
+          <property name="text">
+           <string>UPDATE</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="updateCustomer">
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="nameCusLE"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="masterLE"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="surenameCusLb">
+         <property name="text">
+          <string>Surename:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="areaBodyLE"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="areaBodyLb">
+         <property name="text">
+          <string>Area of body:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="priceCusLE"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="numberCusLE"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="nameCuLb">
+         <property name="text">
+          <string>Name:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="numberCusLb">
+         <property name="text">
+          <string>Number:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="surenameCusLE"/>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="masterLb">
+         <property name="text">
+          <string>Master:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="priceCusLb">
+         <property name="text">
+          <string>Price:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QPushButton" name="updateCusPb">
+         <property name="text">
+          <string>UPDATE</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="updateTime">
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QLabel" name="dateLb">
+         <property name="text">
+          <string>Date:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QLineEdit" name="dateLE"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="timeLb">
+         <property name="text">
+          <string>Time:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QLineEdit" name="timeLE"/>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="masterTimLb">
+         <property name="text">
+          <string>Master:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLineEdit" name="masterTimLE"/>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="customerLb">
+         <property name="text">
+          <string>Customer:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLineEdit" name="customerLE"/>
+       </item>
+       <item row="4" column="0" colspan="3">
+        <widget class="QPushButton" name="updateTimePb">
+         <property name="text">
+          <string>UPDATE</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

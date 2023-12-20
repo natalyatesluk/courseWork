@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QuesForTime</class>
+ <widget class="QWidget" name="QuesForTime">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>340</width>
+    <height>218</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+}
+QTableView {
+	font: 9pt &quot;Century Gothic&quot;;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: #f0f0f0;  /* Фон заокругленого віджета */
+    selection-background-color: #a6a6a6;  /* Колір виділення */
+}
+/* Імена стовбців */
+QHeaderView::section {
+    background-color: #404040;  /* Колір фону */
+    color: white;  /* Колір тексту */
+    padding: 4px;
+    border: 1px solid #303030;  /* Границі */
+}
+
+/* Номерація рядків */
+QTableView QTableCornerButton::section {
+    background-color: #404040;  /* Колір фону */
+    color: white;  /* Колір тексту */
+    border: 1px solid #303030;  /* Границі */
+}
+
+
+QTableView::item:hover {
+    border: 2px solid #505050;  /* Колір границі при наведенні */
+}
+
+QTableView::item:selected {
+    border: 2px solid #303030;  /* Колір границі при виділенні */
+}
+QLineEdit {
+font: 12pt &quot;Candara&quot;;
+                 background-color: white;
+                 color: black;
+                 border: 1px solid rgb(110, 110, 110);
+              border-radius: 10px;
+                 padding: 3px 7px;
+             }
+
+             QLineEdit:focus {
+                 border: 2px solid rgb(90, 90, 90);
+            }
+QPushButton
+{
+	font: 12pt &quot;Candara&quot;;
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+border-radius: 20px;
+box-shadow: 0 0 20px 10px rgb(240, 158, 255);
+width: 50px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 2px solid rgb(200, 200, 200);
+            }
+QPushButton:pressed {
+             background-color: rgb(255, 255, 255);
+	        color: rgb(0, 0, 0);
+            }
+QLabel{font: 12pt &quot;Candara&quot;;}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QStackedWidget" name="questionStckW">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="questionPage">
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="questionLb">
+         <property name="text">
+          <string>Do you want transfer to work time or delete?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="choisTransPb">
+         <property name="text">
+          <string>TRANSFER</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="deletePb">
+         <property name="text">
+          <string>DELETE</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="transferPage">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="3" column="0">
+        <widget class="QLabel" name="masterLb">
+         <property name="text">
+          <string>Master:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="masterLE">
+         <property name="placeholderText">
+          <string>Enter master ID...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="timeLb">
+         <property name="text">
+          <string>Time:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="timeLE"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="dateLE"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="dateLb">
+         <property name="text">
+          <string>Date:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="customerLb">
+         <property name="text">
+          <string>Customer:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="customerLE">
+         <property name="placeholderText">
+          <string>Enter customer ID...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QPushButton" name="transferPb">
+         <property name="text">
+          <string>TRANSFER</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

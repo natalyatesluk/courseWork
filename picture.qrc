@@ -1,20 +1,22 @@
 <RCC>
-    <qresource prefix="/new/photo">
-        <file>red_light.png</file>
-        <file>cat.png</file>
-        <file>butterfly.jpg</file>
-        <file>flower.jpg</file>
-        <file>oddmen.jpg</file>
-        <file>peopel.png</file>
-        <file>OIG (1).jpg</file>
-        <file>homeicon.jpg</file>
-        <file>moons.jpg</file>
-        <file>mastericon.jpg</file>
-        <file>exit.jpg</file>
-        <file>freeicon.jpg</file>
-        <file>off.jpg</file>
-        <file>workicon.jpg</file>
-        <file>eye.jpg</file>
-    </qresource>
+    <qresource prefix="/new/photo"/>
     <qresource prefix="/new/prefix1"/>
+    <qresource prefix="/photo"/>
+    <qresource prefix="/">
+        <file>photo/butterfly.jpg</file>
+        <file>photo/cat.png</file>
+        <file>photo/eye.jpg</file>
+        <file>photo/flower.jpg</file>
+        <file>photo/homeicon.jpg</file>
+        <file>photo/moons.jpg</file>
+        <file>photo/oddmen.jpg</file>
+        <file>photo/off.jpg</file>
+        <file>photo/masters.jpg</file>
+        <file>photo/wait.jpg</file>
+        <file>photo/customer.jpg</file>
+        <file>photo/free.png</file>
+        <file>photo/work.png</file>
+        <file>photo/avatarW.png</file>
+        <file>photo/avatarM.png</file>
+    </qresource>
 </RCC>

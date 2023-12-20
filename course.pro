@@ -9,8 +9,12 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bodywnd.cpp \
     customer.cpp \
     customerwnd.cpp \
+    freetadd.cpp \
+    freetime.cpp \
+    homecustomer.cpp \
     homewnd.cpp \
     login.cpp \
     main.cpp \
@@ -18,29 +22,47 @@ SOURCES += \
     master.cpp \
     masterswnd.cpp \
     person.cpp \
+    quesfortime.cpp \
+    question.cpp \
     regitration.cpp \
-    sqldbmaneger.cpp
+    sqldbmaneger.cpp \
+    worktime.cpp \
+    workwnd.cpp
 
 HEADERS += \
+    bodywnd.h \
     customer.h \
     customerwnd.h \
     dbmaneger.h \
+    freetadd.h \
+    freetime.h \
+    homecustomer.h \
     homewnd.h \
     login.h \
     mainwindow.h \
     master.h \
     masterswnd.h \
     person.h \
+    quesfortime.h \
+    question.h \
     regitration.h \
-    sqldbmaneger.h
+    sqldbmaneger.h \
+    worktime.h \
+    workwnd.h
 
 FORMS += \
+    bodywnd.ui \
     customerwnd.ui \
+    freetadd.ui \
+    homecustomer.ui \
     homewnd.ui \
     login.ui \
     mainwindow.ui \
     masterswnd.ui \
-    regitration.ui
+    quesfortime.ui \
+    question.ui \
+    regitration.ui \
+    workwnd.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -21,11 +21,18 @@ public:
 private slots:
     void on_loginPB_clicked();
 
+    void on_adminPb_clicked();
+
+    void on_customerPb_clicked();
+
+    void on_loginCustPB_clicked();
+
 private:
     Ui::Login *ui;
     SqlDBManeger *sqlDBM;
 signals:
-    void home();
+    void home(QString username);
+    void customer(QString username);
 };
 
 #endif // LOGIN_H

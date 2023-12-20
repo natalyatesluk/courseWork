@@ -9,8 +9,9 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-    sqlDBM = new SqlDBManeger;
+    sqlDBM = new SqlDBManeger();
     sqlDBM->connectToDataBase();
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 Login::~Login()
@@ -36,11 +37,47 @@ void Login::on_loginPB_clicked()
             if(check)
             {
                QMessageBox::about(this, "Login", "Login successful");
-                emit home();
+               sqlDBM->closeDataBase();
+                emit home(name);
             }
             else  { QMessageBox::critical(this,"Problem","Data does not match");}
         }
     }
+    else{QMessageBox::critical(this,"Problem","Empty string");}
+}
+
+
+void Login::on_adminPb_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void Login::on_customerPb_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+
+void Login::on_loginCustPB_clicked()
+{
+    QString name= ui->nameCustLE->text();
+    QString password = ui->passworCustLE->text();
+    if(!name.isEmpty()&&!password.isEmpty())
+    {
+            QCryptographicHash hash(QCryptographicHash::Md5);
+            hash.addData(password.toUtf8());
+            QByteArray hashedData = hash.result();
+            QString hashedDataString = hashedData.toHex();
+            bool check= sqlDBM->loginCustomer(name,hashedDataString);
+            if(check)
+            {
+               QMessageBox::about(this, "Login", "Login successful");
+               sqlDBM->closeDataBase();
+               emit customer(name);
+            }
+            else  { QMessageBox::critical(this,"Problem","Data does not match");}
+        }
     else{QMessageBox::critical(this,"Problem","Empty string");}
 }
 

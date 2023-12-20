@@ -14,7 +14,7 @@
    <string>Tatto Studio</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="picture.qrc">
+   <iconset>
     <normaloff>:/new/photo/flower.jpg</normaloff>:/new/photo/flower.jpg</iconset>
   </property>
   <property name="styleSheet">
@@ -29,7 +29,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="picture.qrc">:/new/photo/butterfly.jpg</pixmap>
+       <pixmap resource="picture.qrc">:/photo/butterfly.jpg</pixmap>
       </property>
      </widget>
     </item>

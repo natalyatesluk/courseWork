@@ -7,14 +7,14 @@ class Person
 private:
     QString name;
     QString surename;
-    int phoneNumber;
+    QString phoneNumber;
     float price;
 
 public:
-    Person():name("/0"),surename("/0"), phoneNumber(0),price(0.0){}
-    Person(QString name, QString surename,int phoneNumber, float price ):
+    Person():name("/0"),surename("/0"), phoneNumber("/0"),price(0.0){}
+    Person(QString name, QString surename,QString phoneNumber, float price ):
         name(name),surename(surename),phoneNumber(phoneNumber),price(price){}
-    ~Person();
+    ~Person(){}
     Person(Person& person);
 
     QString getName(){return name;}
@@ -23,8 +23,8 @@ public:
     QString getSurename(){return surename;}
     void setSurename(QString surename){this->surename=surename;}
 
-    int getPhoneNumber(){return phoneNumber;}
-    void setPhoneNumber(int phoneNumber){this->phoneNumber=phoneNumber;}
+    QString getPhoneNumber(){return phoneNumber;}
+    void setPhoneNumber(QString phoneNumber){this->phoneNumber=phoneNumber;}
 
     float getPrice(){return price;}
     void setPrice(float price){this->price=price;}

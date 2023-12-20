@@ -21,11 +21,17 @@ public:
 
 private slots:
     void on_checksysLE_clicked();
-    void on_registration_clicked();
+//    void on_registration_clicked();
+
+    void on_adminPb_clicked();
+
+    void on_customerPb_clicked();
 
 private:
     Ui::Regitration *ui;
     SqlDBManeger *sqlDBM;
+signals:
+    void mainWnd();
 };
 
 #endif // REGITRATION_H

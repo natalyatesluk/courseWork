@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FreeTAdd</class>
+ <widget class="QWidget" name="FreeTAdd">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>704</width>
+    <height>430</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+}
+QTableView {
+	font: 9pt &quot;Century Gothic&quot;;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: #f0f0f0;  /* Фон заокругленого віджета */
+    selection-background-color: #a6a6a6;  /* Колір виділення */
+}
+/* Імена стовбців */
+QHeaderView::section {
+    background-color: #404040;  /* Колір фону */
+    color: white;  /* Колір тексту */
+    padding: 4px;
+    border: 1px solid #303030;  /* Границі */
+}
+
+/* Номерація рядків */
+QTableView QTableCornerButton::section {
+    background-color: #404040;  /* Колір фону */
+    color: white;  /* Колір тексту */
+    border: 1px solid #303030;  /* Границі */
+}
+
+
+QTableView::item:hover {
+    border: 2px solid #505050;  /* Колір границі при наведенні */
+}
+
+QTableView::item:selected {
+    border: 2px solid #303030;  /* Колір границі при виділенні */
+}
+QLineEdit {
+font: 12pt &quot;Candara&quot;;
+                 background-color: white;
+                 color: black;
+                 border: 1px solid rgb(110, 110, 110);
+              border-radius: 10px;
+                 padding: 3px 7px;
+             }
+
+             QLineEdit:focus {
+                 border: 2px solid rgb(90, 90, 90);
+            }
+QPushButton
+{
+	font: 12pt &quot;Candara&quot;;
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+border-radius: 20px;
+box-shadow: 0 0 20px 10px rgb(240, 158, 255);
+width: 50px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 2px solid rgb(200, 200, 200);
+            }
+QPushButton:pressed {
+             background-color: rgb(255, 255, 255);
+	        color: rgb(0, 0, 0);
+            }
+QLabel{font: 12pt &quot;Candara&quot;;}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QStackedWidget" name="freeTStckW">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="showPage">
+      <widget class="QTableView" name="frTimeTv">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>10</y>
+         <width>581</width>
+         <height>291</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="goAddPb">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>310</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+	font: 12pt &quot;Candara&quot;;
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+border: 2px;
+border-radius: 20px;
+box-shadow: 0 0 20px 10px rgb(240, 158, 255);
+width: 50px;
+  height: 40px;
+}
+QPushButton:hover {
+               border: 2px solid rgb(200, 200, 200);
+            }
+QPushButton:pressed {
+             background-color: rgb(255, 255, 255);
+	        color: rgb(0, 0, 0);
+            }</string>
+       </property>
+       <property name="text">
+        <string>GO TO ADD</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="addePage">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="4" column="1">
+        <widget class="QLabel" name="masterLb">
+         <property name="text">
+          <string>Master:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="timeLb">
+         <property name="text">
+          <string>Time:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QPushButton" name="addPb">
+         <property name="text">
+          <string>ADD</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLineEdit" name="masteLE">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Enter master ID...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QTimeEdit" name="timeEdit"/>
+       </item>
+       <item row="0" column="0" colspan="3">
+        <widget class="QCalendarWidget" name="dateClnd">
+         <property name="styleSheet">
+          <string notr="true">QCalendarWidget {
+alternate-background-color:  rgb(197, 197, 197);
+
+    background-color: rgb(255,255,255);/* чорний фон */
+    color:rgb(0,0,0); /* білий текст */
+}
+QCalendarWidget QWidget
+{
+alternate-background-color:  rgb(197, 197, 197);
+}
+QCalendarWidget QToolButton {
+    color: rgb(255,255,255);
+ background-color: rgb(0,0,0);
+}
+
+QCalendarWidget QToolButton:hover {
+    background-color: #333333; /* зміна кольору при наведенні */
+}
+
+QCalendarWidget QMenu {
+    background-color:  rgb(255,255,255);/* чорний фон для вибірника місяців та року */
+    color: rgb(0,0,0); /* білий текст для вибірника місяців та року */
+}
+
+QCalendarWidget QSpinBox {
+    color: #FFFFFF; /* білий текст для спінбоксів */
+}
+
+QCalendarWidget QPushButton {
+    color: #FFFFFF; /* білий текст для кнопок в календарі */
+}
+
+QCalendarWidget QAbstractItemView:enabled {
+	background-color: rgb(255, 255, 255);
+	color:  rgb(0, 0, 0);
+
+    selection-background-color: rgb(0, 0, 0);/* колір виділення */
+    selection-color: #FFFFFF; /* колір тексту для виділення */
+}
+
+QCalendarWidget QAbstractItemView:disabled {
+  
+	color: rgb(0, 0, 0);
+	background-color: rgb(197, 197, 197);
+}
+
+/* Додаткові стилізації для виділеного дня та тексту */
+QCalendarWidget QWidget#qt_calendar_navigationbar {
+   background-color: rgb(0,0,0);
+}
+
+QCalendarWidget QMenu QAbstractItemView {
+    selection-background-color: #333333; /* колір виділення в меню місяців та року */
+}
+</string>
+         </property>
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
+         </property>
+         <property name="selectedDate">
+          <date>
+           <year>2023</year>
+           <month>12</month>
+           <day>5</day>
+          </date>
+         </property>
+         <property name="minimumDate">
+          <date>
+           <year>2021</year>
+           <month>9</month>
+           <day>1</day>
+          </date>
+         </property>
+         <property name="firstDayOfWeek">
+          <enum>Qt::Monday</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QPushButton" name="showPb">
+         <property name="text">
+          <string>SHOW</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
