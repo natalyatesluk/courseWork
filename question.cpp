@@ -10,7 +10,7 @@ Question::Question(QWidget *parent) :
     ui(new Ui::Question)
 {
     ui->setupUi(this);
-    db= new SqlDBManeger();
+    db= SqlDBManeger::getInstance();
     ui->questionSt->setCurrentIndex(0);
 
 }
@@ -65,6 +65,12 @@ void Question::updateTime(WorkTime *time, QString id, int page)
     ui->masterTimLE->setText(QString::number(time->getMaster()));
     ui->customerLE->setText(QString::number(time->getCustomr()));
 
+}
+
+void Question::addScetch( QByteArray &image,int page)
+{
+    this->image= image;
+      ui->questionSt->setCurrentIndex(5);
 }
 
 void Question::on_updatePb_clicked()
@@ -151,5 +157,21 @@ void Question::on_updateTimePb_clicked()
      }
      else
         QMessageBox::critical(this,"Problem","There are empty lines here");
+}
+
+
+void Question::on_addPb_clicked()
+{
+     QString name = ui->nameSktLE->text();
+     QString price = ui->priceSktLE->text();
+     if(!name.isEmpty()&&!price.isEmpty())
+     {
+        Sketch *sketch= new Sketch(image,name,price.toFloat());
+        db->inserIntoTableSketch(*sketch);
+        QMessageBox::about(this, "Add","Added picture");
+          emit closeWndSketch(sketch);
+        delete sketch;
+        sketch = nullptr;
+     }
 }
 

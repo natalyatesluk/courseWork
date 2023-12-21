@@ -5,6 +5,9 @@
 #include <QDialog>
 #include "master.h"
 #include "sqldbmaneger.h"
+#include "sketch.h"
+
+class DBManager;
 namespace Ui {
 class Question;
 }
@@ -19,18 +22,20 @@ public:
 
 private:
     Ui::Question *ui;
-    SqlDBManeger * db;
+    DBManager * db;
     QString idQstn;
     QString table_name;
     int page;
     Master *master;
     Customer *customer;
+    QByteArray image;
 public slots:
     void updateMasters(Master *master,QString id, int page);
     void deleteItem(QString id, QString table_name);
     void updateBody(QString area,QString id,int page);
-     void updateCustomer(Customer *customer,QString id,int page);
+    void updateCustomer(Customer *customer,QString id,int page);
     void updateTime(WorkTime *time,QString id,int page);
+    void addScetch( QByteArray &image,int page);
 private slots:
     void on_updatePb_clicked();
     void on_updatePb_2_clicked();
@@ -42,8 +47,11 @@ private slots:
 
     void on_updateTimePb_clicked();
 
+    void on_addPb_clicked();
+
 signals:
     void closeWnd();
+    void closeWndSketch(Sketch *sketch);
 };
 
 #endif // QUESTION_H

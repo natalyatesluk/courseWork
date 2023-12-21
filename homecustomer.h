@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <sqldbmaneger.h>
+#include <sketch.h>
 class DBManager;
 namespace Ui {
 class HomeCustomer;
@@ -29,10 +30,25 @@ private slots:
     void on_changeMenPb_clicked();
 
     void on_changeWomenPb_clicked();
+    void on_sketchPb_clicked();
+
+
+    void on_nextPb_clicked();
+
+    void on_backPb_clicked();
+
+
+
+    void on_homeSPb_clicked();
 
 private:
     Ui::HomeCustomer *ui;
-    SqlDBManeger *db;
+    DBManager *db;
+    Sketch *sketch;
+    int currentIndexStckW;
+    void loadImageFromByteArray(Sketch *sketch,QString statusSkt);
+    void updateImage();
+
 };
 
 #endif // HOMECUSTOMER_H

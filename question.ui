@@ -84,7 +84,7 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
    <item row="0" column="0">
     <widget class="QStackedWidget" name="questionSt">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="questionPg">
       <widget class="QWidget" name="questionWdg" native="true">
@@ -333,6 +333,37 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
         <widget class="QPushButton" name="updateTimePb">
          <property name="text">
           <string>UPDATE</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="addSketchPg">
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="nameSktLE"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="priceSktLE"/>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QPushButton" name="addPb">
+         <property name="text">
+          <string>Add</string>
          </property>
         </widget>
        </item>

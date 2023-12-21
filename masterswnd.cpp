@@ -11,19 +11,16 @@ MastersWnd::MastersWnd(QWidget *parent) :
     ui(new Ui::MastersWnd)
 {
     ui->setupUi(this);
-    sqlDBM = new SqlDBManeger();
+    sqlDBM =  SqlDBManeger::getInstance();
     sqlDBM->connectToDataBase();
-    QSqlTableModel *qSqlModel = new QSqlTableModel(nullptr, sqlDBM->getDB());
-    qSqlModel->setTable(TABLE_MASTER);
-    qSqlModel->select();
-    proxyModel = new QSortFilterProxyModel(this);
-    proxyModel->setSourceModel(qSqlModel);
-    ui->mastersTv->setModel(proxyModel);
+    sqlDBM->updateList(ui->mastersTv,TABLE_MASTER);
+//   proxyModel = new QSortFilterProxyModel(this);
+  // proxyModel->setSourceModel(qSqlModel);
+//   ui->mastersTv->setModel(proxyModel);
     qus= new Question();
     connect(this, &MastersWnd::update, qus, &Question::updateMasters);
     connect(this, &MastersWnd::deleteMaster, qus, &Question::deleteItem);
-    connect(ui->searchLE, &QLineEdit::textChanged, this, &MastersWnd::on_searchLE_textChanged);
-    connect(proxyModel, &QSortFilterProxyModel::rowsAboutToBeInserted, this, &MastersWnd::onRowsAboutToBeInserted);
+//   connect(ui->searchLE, &QLineEdit::textChanged, this, &MastersWnd::on_searchLE_textChanged);
 
 }
 
@@ -45,7 +42,7 @@ void MastersWnd::on_addPb_clicked()
      {
          master= new Master(name,surename,number,price.toFloat(), workDone.toInt());
          sqlDBM->inserIntoTableMasters(*master);
-         //sqlDBM->updateList(ui->mastersTv, TABLE_MASTER);
+         sqlDBM->updateList(ui->mastersTv, TABLE_MASTER);
          delete master;
          master=nullptr;
      }
@@ -57,7 +54,7 @@ void MastersWnd::on_addPb_clicked()
 void MastersWnd::closeQuestion()
 {
      qus->close();
-     //sqlDBM->updateList(ui->mastersTv, TABLE_MASTER);
+     sqlDBM->updateList(ui->mastersTv, TABLE_MASTER);
 }
 
 void MastersWnd::on_mastersTv_doubleClicked(const QModelIndex &index)
@@ -80,41 +77,28 @@ void MastersWnd::on_mastersTv_doubleClicked(const QModelIndex &index)
      connect(qus, &Question::closeWnd, this, &MastersWnd::closeQuestion);
 }
 
-void MastersWnd::onRowsAboutToBeInserted(const QModelIndex &parent, int start, int end)
-{
-     Q_UNUSED(parent);
-     Q_UNUSED(start);
-     Q_UNUSED(end);
-
-     // Оновіть фільтр, коли дані додаються або змінюються
-     proxyModel->invalidate();
-}
 
 
 
 
-void MastersWnd::on_searchLE_textChanged(const QString &text)
-{
-     proxyModel->setFilterRegularExpression(QRegularExpression(text.toLower()));
-     proxyModel->invalidate();
-}
 
-bool MastersWnd::filterAcceptsRow(int source_row, const QModelIndex &source_parent)
-{
-         QString searchText = ui->searchLE->text().toLower();
+//void MastersWnd::on_searchLE_textChanged(const QString &text)
+//{
+//     proxyModel->setFilterRegularExpression(QRegularExpression(text.toLower()));
+//     proxyModel->invalidate();
+//}
 
-     for (int col = 0; col < proxyModel->sourceModel()->columnCount(source_parent); ++col)
-     {
-         QModelIndex sourceIndex = proxyModel->sourceModel()->index(source_row, col, source_parent);
-         QString data = proxyModel->sourceModel()->data(sourceIndex).toString().toLower();
+//bool MastersWnd::filterAcceptsRow(int source_row, const QModelIndex &source_parent)
+//{
 
-         if (data.contains(searchText))
-         {
-             return true;
-         }
-     }
+//    QModelIndex index0 = proxyModel->sourceModel()->index(source_row, 1, source_parent);
+//     QModelIndex index1 = proxyModel->sourceModel()->index(source_row, 2, source_parent);
 
-     return false;
+//     QString surname = proxyModel->sourceModel()->data(index0).toString().toLower();
+//     QString name = proxyModel->sourceModel()->data(index1).toString().toLower();
+//     QRegularExpression regexp(ui->searchLE->text().toLower());
 
-}
+//     return (surname.contains(regexp) || name.contains(regexp));
+
+//}
 

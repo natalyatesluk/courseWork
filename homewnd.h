@@ -6,6 +6,7 @@ class CustomerWnd;
 class MastersWnd;
 class FreeTAdd;
 class WorkWnd;
+class ScketchWnd;
 namespace Ui {
 class HomeWnd;
 }
@@ -34,6 +35,10 @@ private slots:
 
     void on_changeWomenPb_clicked();
 
+
+
+    void on_sketchPb_clicked();
+
 public slots:
     void username(QString name);
 
@@ -43,6 +48,7 @@ private:
     CustomerWnd *customerWnd;
     FreeTAdd *freeWnd;
     WorkWnd *workWnd;
+    ScketchWnd *sketchWnd;
 };
 
 #endif // HOMEWND_H

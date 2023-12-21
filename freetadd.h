@@ -31,7 +31,7 @@ public slots:
     void closeQstn();
 private:
     Ui::FreeTAdd *ui;
-    SqlDBManeger *db;
+    DBManager *db;
     FreeTime *timeObg;
     QuesForTime *question;
 signals:

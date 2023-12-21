@@ -7,7 +7,7 @@ Regitration::Regitration(QWidget *parent) :
     ui(new Ui::Regitration)
 {
     ui->setupUi(this);
-    sqlDBM = new SqlDBManeger;
+    sqlDBM = SqlDBManeger::getInstance();
     sqlDBM->connectToDataBase();
     ui->registrationStWdg->setCurrentIndex(0);
 }
@@ -25,7 +25,6 @@ void Regitration::on_checksysLE_clicked()
         if(system==SYSTEM_PASSWORD)
         {
             QMessageBox::about(this, "Entrance to system","System password entered correctly");
-            sqlDBM->createTablesAccount();
             ui->registrationStWdg->setCurrentIndex(2);
             connect(ui->registrationPb, &QPushButton::clicked, this, [this]() {
              QString name= ui->nameLE->text();
@@ -44,7 +43,6 @@ void Regitration::on_checksysLE_clicked()
                             QString hashedDataString = hashedData.toHex();
                             sqlDBM->inserIntoTableReg(name, hashedDataString, number);
                             QMessageBox::about(this, "Entrance to system", "Registration was successful");
-                            sqlDBM->closeDataBase();
                             emit mainWnd();
                             }
                   }});
@@ -88,7 +86,6 @@ void Regitration::on_adminPb_clicked()
 
 void Regitration::on_customerPb_clicked()
 {
-     sqlDBM->createTablesAccountCustomer();
      ui->registrationStWdg->setCurrentIndex(2);
 
      connect(ui->registrationPb, &QPushButton::clicked, this, [this]()
@@ -109,7 +106,6 @@ void Regitration::on_customerPb_clicked()
 
                          sqlDBM->inserIntoTableRegCust(name, hashedDataString, number);
                          QMessageBox::about(this, "Entrance to system", "Registration was successful");
-                         sqlDBM->closeDataBase();
                           emit mainWnd();
                      }
                  }

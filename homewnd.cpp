@@ -4,6 +4,7 @@
 #include "customerwnd.h"
 #include "freetadd.h"
 #include "workwnd.h"
+#include "scketchwnd.h"
 #include <QPixmap>
 HomeWnd::HomeWnd(QWidget *parent) :
     QWidget(parent),
@@ -14,11 +15,14 @@ HomeWnd::HomeWnd(QWidget *parent) :
     customerWnd = new CustomerWnd();
     freeWnd = new FreeTAdd();
     workWnd = new WorkWnd();
+    sketchWnd =new ScketchWnd();
 
     ui->stackedWidget->insertWidget(1, masterWnd);
     ui->stackedWidget->insertWidget(2, customerWnd);
     ui->stackedWidget->insertWidget(3, freeWnd);
     ui->stackedWidget->insertWidget(4, workWnd);
+    ui->stackedWidget->insertWidget(5,sketchWnd);
+
     ui->avatarStckW->setCurrentIndex(0);
     ui->stackedWidget->setCurrentIndex(0);
     ui->homePb->hide();
@@ -98,5 +102,12 @@ void HomeWnd::on_changeWomenPb_clicked()
         ui->activeAvatarLb->setPixmap(*women);
     ui->avatarStckW->setCurrentIndex(0);
     delete women;
+}
+
+
+
+void HomeWnd::on_sketchPb_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
 }
 

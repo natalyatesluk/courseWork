@@ -18,5 +18,7 @@
         <file>photo/work.png</file>
         <file>photo/avatarW.png</file>
         <file>photo/avatarM.png</file>
+        <file>photo/back.jpg</file>
+        <file>photo/next.jpg</file>
     </qresource>
 </RCC>

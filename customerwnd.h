@@ -22,7 +22,7 @@ public:
 
 private:
     Ui::CustomerWnd *ui;
-    SqlDBManeger *db;
+    DBManager *db;
     Question *qstn;
     BodyWnd *body;
     Customer *customer;

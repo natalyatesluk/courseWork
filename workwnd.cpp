@@ -6,7 +6,7 @@ WorkWnd::WorkWnd(QWidget *parent) :
     ui(new Ui::WorkWnd)
 {
     ui->setupUi(this);
-    db = new SqlDBManeger();
+    db = SqlDBManeger::getInstance();
     db->connectToDataBase();
     db->updateList(ui->workTv, TABLE_WORKTIME);
     qstn= new Question;

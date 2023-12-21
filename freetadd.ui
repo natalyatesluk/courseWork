@@ -84,7 +84,7 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
    <item row="0" column="0">
     <widget class="QStackedWidget" name="freeTStckW">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="showPage">
       <widget class="QTableView" name="frTimeTv">

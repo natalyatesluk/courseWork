@@ -7,7 +7,7 @@ CustomerWnd::CustomerWnd(QWidget *parent) :
     ui(new Ui::CustomerWnd)
 {
     ui->setupUi(this);
-    db= new SqlDBManeger();
+    db=  SqlDBManeger::getInstance();
     db->updateList(ui->customerTv, TABLE_CUSTOMER);
     qstn= new Question();
     body= new BodyWnd();

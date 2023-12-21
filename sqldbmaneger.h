@@ -31,7 +31,10 @@
 #define TABLE_TIME "time"
 #define TABLE_CUSTOMERid "customer_id"
 #define TABLE_WORKTIME "work_time"
-
+#define TABLE_SKETCH "sketches"
+#define TABLE_SKETCH_PRICE "price"
+#define TABLE_STATUS "status"
+#define STATUS "active"
 class SqlDBManeger : public DBManager {
 
 public:
@@ -44,7 +47,8 @@ public:
 
     QSqlDatabase getDB() override;
 
-    QStandardItemModel* updateList(QTableView *tableView,QString name_table);
+    void updateList(QTableView *tableView,QString name_table) override;
+
 
     bool inserIntoTableReg(const QString name, QString password, QString number) override;
     bool inserIntoTableRegCust(const QString name, QString password, QString number) override;
@@ -53,7 +57,7 @@ public:
     bool inserIntoTableBody(const QString area) override;
     bool inserIntoTableFree( FreeTime &time ) override;
     bool inserIntoTableWork( WorkTime &time ) override;
-
+    bool inserIntoTableSketch( Sketch &data ) override;
     bool openDataBase();
     bool restoreDataBase();
     void closeDataBase();
@@ -65,24 +69,25 @@ public:
     bool createTableCustomer();
     bool createTableFreeTime();
     bool createTableWorkTime();
+    bool createTableSketch();
 
-    SqlDBManeger();
 
-    bool nameCheck(QString name);
-    bool nameCheckCustomer(QString name);
+    bool nameCheck(QString name) override;
+    bool nameCheckCustomer(QString name)override;
 
-    bool login(QString name, QString password);
-    bool loginCustomer(QString name, QString password);
+    bool login(QString name, QString password)override;
+    bool loginCustomer(QString name, QString password)override;
 
-    bool updateMasters(Master &master, QString id);
-    bool updateBody(QString area, QString id);
-    bool updateCustomer(Customer &customer, QString id);
-    bool updateWork(WorkTime &work,QString id);
-    bool deleteItem(QString id,QString table_name);
+    bool updateMasters(Master &master, QString id)override;
+    bool updateBody(QString area, QString id)override;
+    bool updateCustomer(Customer &customer, QString id)override;
+    bool updateWork(WorkTime &work,QString id)override;
+    bool deleteItem(QString id,QString table_name)override;
 
 private:
     QSqlDatabase db;
 
+    SqlDBManeger();
     static SqlDBManeger* instance;
 
 };

@@ -9,7 +9,7 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-    sqlDBM = new SqlDBManeger();
+    sqlDBM = SqlDBManeger::getInstance();
     sqlDBM->connectToDataBase();
     ui->stackedWidget->setCurrentIndex(0);
 }
@@ -37,7 +37,6 @@ void Login::on_loginPB_clicked()
             if(check)
             {
                QMessageBox::about(this, "Login", "Login successful");
-               sqlDBM->closeDataBase();
                 emit home(name);
             }
             else  { QMessageBox::critical(this,"Problem","Data does not match");}
@@ -73,7 +72,6 @@ void Login::on_loginCustPB_clicked()
             if(check)
             {
                QMessageBox::about(this, "Login", "Login successful");
-               sqlDBM->closeDataBase();
                emit customer(name);
             }
             else  { QMessageBox::critical(this,"Problem","Data does not match");}

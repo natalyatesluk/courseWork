@@ -7,8 +7,7 @@ QuesForTime::QuesForTime(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->questionStckW->setCurrentIndex(0);
-    db= new SqlDBManeger();
-    db->createTableWorkTime();
+    db= SqlDBManeger::getInstance();
 }
 
 QuesForTime::~QuesForTime()

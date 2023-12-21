@@ -24,7 +24,7 @@ private:
     Ui::QuesForTime *ui;
     QString idQstn;
     WorkTime *work;
-    SqlDBManeger *db;
+    DBManager *db;
 signals:
     void closeWnd();
 

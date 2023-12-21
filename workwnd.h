@@ -26,7 +26,7 @@ public slots:
 
 private:
     Ui::WorkWnd *ui;
-    SqlDBManeger *db;
+    DBManager *db;
     Question *qstn;
 signals:
     void updateTime(WorkTime *time,QString id,int page);

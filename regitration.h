@@ -29,7 +29,8 @@ private slots:
 
 private:
     Ui::Regitration *ui;
-    SqlDBManeger *sqlDBM;
+    DBManager *sqlDBM;
+
 signals:
     void mainWnd();
 };

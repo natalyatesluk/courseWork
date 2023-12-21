@@ -29,7 +29,7 @@ private slots:
 
 private:
     Ui::Login *ui;
-    SqlDBManeger *sqlDBM;
+    DBManager *sqlDBM;
 signals:
     void home(QString username);
     void customer(QString username);

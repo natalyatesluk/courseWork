@@ -39,7 +39,7 @@ QSqlDatabase SqlDBManeger::getDB() {
     return db;
 }
 
-QStandardItemModel* SqlDBManeger::updateList(QTableView *tableView, QString name_table)
+void SqlDBManeger::updateList(QTableView *tableView, QString name_table)
 {
     QSqlTableModel *qSqlModel = new QSqlTableModel(nullptr, this->getDB());
     qSqlModel->setTable(name_table);
@@ -68,7 +68,6 @@ QStandardItemModel* SqlDBManeger::updateList(QTableView *tableView, QString name
         }
     }
     tableView->setModel(standardModel);
-    return standardModel;
 }
 
 
@@ -237,6 +236,26 @@ bool SqlDBManeger::createTableWorkTime()
     }
 }
 
+bool SqlDBManeger::createTableSketch()
+{
+    QSqlQuery queryScetch;
+    if (!queryScetch.exec("CREATE TABLE " TABLE_SKETCH "("
+                        ID                         " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                        TABLE_SKETCH               " BLOB NOT NULL,"
+                        TABLE_NAME                 " TIME NOT NULL,"
+                        TABLE_SKETCH_PRICE       " DECIMAL(5,3) NOT NULL,"
+                        TABLE_STATUS             " VARCHAR(250) NOT NULL)"))
+    {
+         qDebug() << "Error creating Sketch table: " << queryScetch.lastError().text();
+         return false;
+    }
+    else
+    {
+         qDebug() << "Sketch table created successfully.";
+         return true;
+    }
+}
+
 
 bool SqlDBManeger::inserIntoTableReg(const QString name, QString password, QString number)
 {
@@ -387,6 +406,32 @@ bool SqlDBManeger::inserIntoTableWork(WorkTime &time)
         return false;
     } else
         return true;
+}
+
+bool SqlDBManeger::inserIntoTableSketch(Sketch &data)
+{
+    QSqlQuery querySketch;
+    querySketch.prepare("INSERT INTO " TABLE_SKETCH "("
+                        TABLE_SKETCH               ","
+                        TABLE_NAME                 ","
+                        TABLE_SKETCH_PRICE         ","
+                        TABLE_STATUS " ) "
+                        "VALUES (:SketchData, :SketchName, :SketchPrice, :Status )");
+
+    querySketch.bindValue(":SketchData", data.getImage());
+    querySketch.bindValue(":SketchName", data.getName());
+    querySketch.bindValue(":SketchPrice", data.getPrice());
+     querySketch.bindValue(":Status", STATUS);
+
+    if (!querySketch.exec()) {
+        qDebug() << "Error inserting into " << TABLE_SKETCH;
+        qDebug() << querySketch.lastError().text();
+        qDebug() << querySketch.lastQuery();
+        return false;
+    } else {
+        qDebug() << "Insert into Sketch table successful.";
+        return true;
+    }
 }
 
 

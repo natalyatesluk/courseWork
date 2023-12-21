@@ -8,9 +8,8 @@ FreeTAdd::FreeTAdd(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->freeTStckW->setCurrentIndex(0);
-    db= new SqlDBManeger();
+    db= SqlDBManeger::getInstance();
     db->connectToDataBase();
-    db->createTableFreeTime();
     db->updateList(ui->frTimeTv, TABLE_FREETIME);
 
     question = new QuesForTime();

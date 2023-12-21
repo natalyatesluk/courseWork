@@ -6,7 +6,7 @@ BodyWnd::BodyWnd(QWidget *parent) :
     ui(new Ui::BodyWnd)
 {
     ui->setupUi(this);
-    db= new SqlDBManeger();
+    db= SqlDBManeger::getInstance();
     db->updateList(ui->bodyTv,TABLE_BODY);
     ques= new Question();
 }

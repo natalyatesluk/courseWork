@@ -25,6 +25,8 @@ SOURCES += \
     quesfortime.cpp \
     question.cpp \
     regitration.cpp \
+    scketchwnd.cpp \
+    sketch.cpp \
     sqldbmaneger.cpp \
     worktime.cpp \
     workwnd.cpp
@@ -46,6 +48,8 @@ HEADERS += \
     quesfortime.h \
     question.h \
     regitration.h \
+    scketchwnd.h \
+    sketch.h \
     sqldbmaneger.h \
     worktime.h \
     workwnd.h
@@ -62,6 +66,7 @@ FORMS += \
     quesfortime.ui \
     question.ui \
     regitration.ui \
+    scketchwnd.ui \
     workwnd.ui
 
 # Default rules for deployment.

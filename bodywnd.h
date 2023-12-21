@@ -26,7 +26,7 @@ private slots:
 
 private:
     Ui::BodyWnd *ui;
-    SqlDBManeger *db;
+    DBManager *db;
     Question *ques;
 public slots:
     void closeQuestion();
