@@ -14,8 +14,8 @@
    <string>Tatto Studio</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/new/photo/flower.jpg</normaloff>:/new/photo/flower.jpg</iconset>
+   <iconset resource="picture.qrc">
+    <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);

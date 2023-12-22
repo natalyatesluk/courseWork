@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>704</width>
+    <width>745</width>
     <height>430</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Customers</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="picture.qrc">
+    <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget
@@ -81,85 +85,143 @@ QPushButton:pressed {
 QLabel{font: 12pt &quot;Candara&quot;;}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
+   <item row="0" column="0" colspan="5">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="searchLbl">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    border: 1px solid #000000; /* Задайте границю */
+    border-top-left-radius: 15px; /* Заокруглення тільки з одного боку */
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 0; /* Встановіть інші кути без заокруглення */
+    border-bottom-right-radius: 0;
+    background-color: rgb(255, 255, 255); /* Колір фону */
+    color: #000000; /* Колір тексту */
+    padding: 5px; /* Відступи */
+    width: 35px;
+    height: 30px;
+}
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="picture.qrc">:/photo/search.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="searchLE">
+       <property name="styleSheet">
+        <string notr="true"> border: 1px solid #000000; /* Задайте границю */
+    border-top-left-radius: 0px; /* Заокруглення тільки з одного боку */
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 15px; /* Встановіть інші кути без заокруглення */
+    border-bottom-right-radius:15px;
+    background-color: rgb(255, 255, 255); /* Колір фону */
+    color: #000000; /* Колір тексту */
+    padding: 5px; /* Відступи */
+    width: 665px;
+    height: 30px;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
     <widget class="QLabel" name="nameLb">
      <property name="text">
       <string>Name:</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="2" column="1">
     <widget class="QLineEdit" name="nameLE"/>
    </item>
-   <item row="1" column="2">
+   <item row="2" column="2">
     <widget class="QLabel" name="priceLb">
      <property name="text">
       <string>Price:</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="3">
+   <item row="2" column="3">
     <widget class="QLineEdit" name="priceLE"/>
    </item>
-   <item row="1" column="4">
+   <item row="2" column="4">
     <widget class="QPushButton" name="bodyPb">
      <property name="text">
       <string>Body</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="3" column="0">
     <widget class="QLabel" name="surenameLb">
      <property name="text">
       <string>Surename:</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="3" column="1">
     <widget class="QLineEdit" name="surenameLE"/>
    </item>
-   <item row="2" column="2">
+   <item row="3" column="2">
     <widget class="QLabel" name="bodyLb">
      <property name="text">
       <string>Body:</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="3">
+   <item row="3" column="3">
     <widget class="QLineEdit" name="bodyLE"/>
    </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QLabel" name="numberLb">
      <property name="text">
       <string>Number:</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
+   <item row="4" column="1">
     <widget class="QLineEdit" name="numberLE"/>
    </item>
-   <item row="3" column="2">
+   <item row="4" column="2">
     <widget class="QLabel" name="masterLb">
      <property name="text">
       <string>Master:</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="3">
+   <item row="4" column="3">
     <widget class="QLineEdit" name="masterLE"/>
    </item>
-   <item row="3" column="4">
+   <item row="4" column="4">
     <widget class="QPushButton" name="addPb">
      <property name="text">
       <string>ADD</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="5">
+   <item row="1" column="0" colspan="5">
     <widget class="QTableView" name="customerTv"/>
    </item>
   </layout>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>nameLE</tabstop>
+  <tabstop>surenameLE</tabstop>
+  <tabstop>numberLE</tabstop>
+  <tabstop>priceLE</tabstop>
+  <tabstop>bodyLE</tabstop>
+  <tabstop>masterLE</tabstop>
+  <tabstop>addPb</tabstop>
+  <tabstop>bodyPb</tabstop>
+  <tabstop>customerTv</tabstop>
+ </tabstops>
+ <resources>
+  <include location="picture.qrc"/>
+ </resources>
  <connections/>
 </ui>

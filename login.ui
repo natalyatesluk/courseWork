@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Login</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/new/photo/eye.jpg</normaloff>:/new/photo/eye.jpg</iconset>
+   <iconset resource="picture.qrc">
+    <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
@@ -28,7 +28,7 @@ color: rgb(0, 0, 0);</string>
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="choise">
       <property name="styleSheet">

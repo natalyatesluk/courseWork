@@ -20,7 +20,6 @@ public:
     virtual  bool inserIntoTableFree( FreeTime &time )=0;
     virtual  bool inserIntoTableWork( WorkTime &time )=0;
     virtual  bool inserIntoTableSketch( Sketch &data )=0;
-    virtual void updateList(QTableView *tableView,QString name_table)=0;
     virtual bool nameCheck(QString name)=0;
      virtual bool nameCheckCustomer(QString name)=0;
 

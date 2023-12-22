@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Registration</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/new/photo/eye.jpg</normaloff>:/new/photo/eye.jpg</iconset>
+   <iconset resource="picture.qrc">
+    <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);
@@ -329,6 +329,16 @@ QLineEdit {
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>customerPb</tabstop>
+  <tabstop>adminPb</tabstop>
+  <tabstop>systempassLE</tabstop>
+  <tabstop>checksysLE</tabstop>
+  <tabstop>nameLE</tabstop>
+  <tabstop>passworLE</tabstop>
+  <tabstop>numberLE</tabstop>
+  <tabstop>registrationPb</tabstop>
+ </tabstops>
  <resources>
   <include location="picture.qrc"/>
  </resources>

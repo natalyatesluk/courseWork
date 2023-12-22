@@ -13,14 +13,12 @@ MastersWnd::MastersWnd(QWidget *parent) :
     ui->setupUi(this);
     sqlDBM =  SqlDBManeger::getInstance();
     sqlDBM->connectToDataBase();
-    sqlDBM->updateList(ui->mastersTv,TABLE_MASTER);
-//   proxyModel = new QSortFilterProxyModel(this);
-  // proxyModel->setSourceModel(qSqlModel);
-//   ui->mastersTv->setModel(proxyModel);
+    qSqlModel = new QSqlTableModel(this, sqlDBM->getDB());
+    proxyModel = new QSortFilterProxyModel(this);
+    updateTable();
     qus= new Question();
     connect(this, &MastersWnd::update, qus, &Question::updateMasters);
     connect(this, &MastersWnd::deleteMaster, qus, &Question::deleteItem);
-//   connect(ui->searchLE, &QLineEdit::textChanged, this, &MastersWnd::on_searchLE_textChanged);
 
 }
 
@@ -42,7 +40,7 @@ void MastersWnd::on_addPb_clicked()
      {
          master= new Master(name,surename,number,price.toFloat(), workDone.toInt());
          sqlDBM->inserIntoTableMasters(*master);
-         sqlDBM->updateList(ui->mastersTv, TABLE_MASTER);
+         updateTable();
          delete master;
          master=nullptr;
      }
@@ -54,7 +52,20 @@ void MastersWnd::on_addPb_clicked()
 void MastersWnd::closeQuestion()
 {
      qus->close();
-     sqlDBM->updateList(ui->mastersTv, TABLE_MASTER);
+     updateTable();
+}
+
+void MastersWnd::updateTable()
+{
+     qSqlModel->setTable(TABLE_MASTER);
+     qSqlModel->select();
+     proxyModel->setSourceModel(qSqlModel);
+     proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+     proxyModel->setFilterKeyColumn(-1);
+     ui->mastersTv->setModel(proxyModel);
+     ui->mastersTv->horizontalHeader()->setStretchLastSection(true);
+     ui->mastersTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
 }
 
 void MastersWnd::on_mastersTv_doubleClicked(const QModelIndex &index)
@@ -77,28 +88,8 @@ void MastersWnd::on_mastersTv_doubleClicked(const QModelIndex &index)
      connect(qus, &Question::closeWnd, this, &MastersWnd::closeQuestion);
 }
 
-
-
-
-
-
-//void MastersWnd::on_searchLE_textChanged(const QString &text)
-//{
-//     proxyModel->setFilterRegularExpression(QRegularExpression(text.toLower()));
-//     proxyModel->invalidate();
-//}
-
-//bool MastersWnd::filterAcceptsRow(int source_row, const QModelIndex &source_parent)
-//{
-
-//    QModelIndex index0 = proxyModel->sourceModel()->index(source_row, 1, source_parent);
-//     QModelIndex index1 = proxyModel->sourceModel()->index(source_row, 2, source_parent);
-
-//     QString surname = proxyModel->sourceModel()->data(index0).toString().toLower();
-//     QString name = proxyModel->sourceModel()->data(index1).toString().toLower();
-//     QRegularExpression regexp(ui->searchLE->text().toLower());
-
-//     return (surname.contains(regexp) || name.contains(regexp));
-
-//}
+void MastersWnd::on_searchLE_textChanged(const QString &arg1)
+{
+     proxyModel->setFilterFixedString(arg1);
+}
 

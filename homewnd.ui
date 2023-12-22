@@ -7,11 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>704</width>
-    <height>536</height>
+    <height>586</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Home</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="picture.qrc">
+    <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget

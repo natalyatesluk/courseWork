@@ -70,7 +70,7 @@ void Question::updateTime(WorkTime *time, QString id, int page)
 void Question::addScetch( QByteArray &image,int page)
 {
     this->image= image;
-      ui->questionSt->setCurrentIndex(5);
+      ui->questionSt->setCurrentIndex(page);
 }
 
 void Question::on_updatePb_clicked()

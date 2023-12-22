@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <sqldbmaneger.h>
 #include <sketch.h>
+#include <QSqlRelationalTableModel>
+#include <QSortFilterProxyModel>
+
 class DBManager;
 namespace Ui {
 class HomeCustomer;
@@ -18,7 +21,8 @@ public:
     ~HomeCustomer();
 public slots:
     void username(QString name);
-
+    void updateTableMasters();
+    void updateTableTime();
 private slots:
     void on_mastersPb_clicked();
     void on_freePb_clicked();
@@ -41,10 +45,18 @@ private slots:
 
     void on_homeSPb_clicked();
 
+    void on_searchLETime_textChanged(const QString &arg1);
+
+    void on_searchLEMaster_textChanged(const QString &arg1);
+
 private:
     Ui::HomeCustomer *ui;
     DBManager *db;
     Sketch *sketch;
+    QSortFilterProxyModel *proxyMasterModel;
+    QSqlTableModel *modelMaster;
+    QSqlRelationalTableModel *modelFree;
+    QSortFilterProxyModel *proxyFreeModel;
     int currentIndexStckW;
     void loadImageFromByteArray(Sketch *sketch,QString statusSkt);
     void updateImage();

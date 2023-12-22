@@ -28,20 +28,19 @@ public:
 private slots:
     void on_addPb_clicked();
     void on_mastersTv_doubleClicked(const QModelIndex &index);
+    void on_searchLE_textChanged(const QString &arg1);
 
-//    void onRowsAboutToBeInserted(const QModelIndex &parent, int start, int end);
-//    void on_searchLE_textChanged(const QString &arg1);
-//protected:
-//            bool filterAcceptsRow(int source_row, const QModelIndex &source_parent);
 private:
     Ui::MastersWnd *ui;
     DBManager *sqlDBM;
     Master *master;
     Question *qus;
     QSortFilterProxyModel *proxyModel;
+    QSqlTableModel *qSqlModel;
 
 public slots:
     void closeQuestion();
+    void updateTable();
 signals:
     void update(Master *master, QString id, int page);
     void deleteMaster(QString id,QString table_name);

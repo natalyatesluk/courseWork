@@ -7,8 +7,9 @@ WorkWnd::WorkWnd(QWidget *parent) :
 {
     ui->setupUi(this);
     db = SqlDBManeger::getInstance();
-    db->connectToDataBase();
-    db->updateList(ui->workTv, TABLE_WORKTIME);
+    modelWork = new QSqlRelationalTableModel(this, db->getDB());
+    proxyWorkModel = new QSortFilterProxyModel(modelWork);
+    updateTable();
     qstn= new Question;
     connect(this, &WorkWnd::updateTime, qstn, &Question::updateTime);
     connect(this, &WorkWnd::deleteTime, qstn, &Question::deleteItem);
@@ -39,6 +40,26 @@ void WorkWnd::on_workTv_doubleClicked(const QModelIndex &index)
 void WorkWnd::closeQstn()
 {
     qstn->close();
-    db->updateList(ui->workTv, TABLE_WORKTIME);
+    updateTable();
+}
+
+void WorkWnd::updateTable()
+{
+    modelWork->setTable(TABLE_WORKTIME);
+    modelWork->setRelation(modelWork->fieldIndex(TABLE_MASTERid),QSqlRelation(TABLE_MASTER, ID, TABLE_NAME));
+    modelWork->setRelation(modelWork->fieldIndex(TABLE_CUSTOMERid),QSqlRelation(TABLE_CUSTOMER, ID, TABLE_NAME));
+    modelWork->select();
+    proxyWorkModel->setSourceModel(modelWork);
+    proxyWorkModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    proxyWorkModel->setFilterKeyColumn(-1);
+    ui->workTv->setModel(proxyWorkModel);
+    ui->workTv->horizontalHeader()->setStretchLastSection(true);
+    ui->workTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
+}
+
+
+void WorkWnd::on_searchLE_textChanged(const QString &arg1)
+{
+    proxyWorkModel->setFilterFixedString(arg1);
 }
 

@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <sqldbmaneger.h>
 #include "question.h"
+#include <QSortFilterProxyModel>
+#include <QSqlTableModel>
 class QSqlTableModel;
 class DBManager;
 
@@ -28,8 +30,11 @@ private:
     Ui::BodyWnd *ui;
     DBManager *db;
     Question *ques;
+    QSortFilterProxyModel *proxyBodyModel;
+    QSqlTableModel *bodyModel;
 public slots:
     void closeQuestion();
+    void updateTable();
 signals:
     void update(QString area, QString id,int page);
     void deleteBody(QString id,QString table_name);

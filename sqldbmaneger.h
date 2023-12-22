@@ -47,8 +47,6 @@ public:
 
     QSqlDatabase getDB() override;
 
-    void updateList(QTableView *tableView,QString name_table) override;
-
 
     bool inserIntoTableReg(const QString name, QString password, QString number) override;
     bool inserIntoTableRegCust(const QString name, QString password, QString number) override;

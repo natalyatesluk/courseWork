@@ -11,7 +11,12 @@ HomeCustomer::HomeCustomer(QWidget *parent) :
     ui->homeCusStckW->setCurrentIndex(0);
     ui->avatarStckW->setCurrentIndex(0);
     db=  SqlDBManeger::getInstance();
-
+    modelMaster = new QSqlTableModel(this, db->getDB());
+    proxyMasterModel = new QSortFilterProxyModel(modelMaster);
+    updateTableMasters();
+    modelFree = new QSqlRelationalTableModel(this, db->getDB());
+    proxyFreeModel = new QSortFilterProxyModel(modelFree);
+    updateTableTime();
 }
 
 HomeCustomer::~HomeCustomer()
@@ -51,7 +56,7 @@ void HomeCustomer::on_changeWomenPb_clicked()
 
 void HomeCustomer::on_mastersPb_clicked()
 {
-    db->updateList(ui->masterTv,TABLE_MASTER);
+    updateTableMasters();
     ui->homeCusStckW->setCurrentIndex(1);
 }
 
@@ -59,7 +64,7 @@ void HomeCustomer::on_mastersPb_clicked()
 void HomeCustomer::on_freePb_clicked()
 {
     ui->homeCusStckW->setCurrentIndex(2);
-    db->updateList(ui->timeTv, TABLE_FREETIME);
+     updateTableTime();
 }
 
 
@@ -164,5 +169,42 @@ void HomeCustomer::on_backPb_clicked()
 void HomeCustomer::on_homeSPb_clicked()
 {
       ui->homeCusStckW->setCurrentIndex(0);
+}
+
+void HomeCustomer::updateTableMasters()
+{
+      modelMaster->setTable(TABLE_MASTER);
+      modelMaster->select();
+      proxyMasterModel->setSourceModel(modelMaster);
+      proxyMasterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+      proxyMasterModel->setFilterKeyColumn(-1);
+      ui->masterTv->setModel(proxyMasterModel);
+      ui->masterTv->horizontalHeader()->setStretchLastSection(true);
+      ui->masterTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+}
+void HomeCustomer::updateTableTime()
+{
+      modelFree->setTable(TABLE_FREETIME);
+      modelFree->setRelation(modelFree->fieldIndex(TABLE_MASTERid),QSqlRelation(TABLE_MASTER, ID, TABLE_NAME));
+      modelFree->select();
+      proxyFreeModel->setSourceModel(modelFree);
+      proxyFreeModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+      proxyFreeModel->setFilterKeyColumn(-1);
+      ui->timeTv->setModel(proxyFreeModel);
+      ui->timeTv->horizontalHeader()->setStretchLastSection(true);
+      ui->timeTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
+}
+
+
+void HomeCustomer::on_searchLETime_textChanged(const QString &arg1)
+{
+     proxyFreeModel->setFilterFixedString(arg1);
+}
+
+
+void HomeCustomer::on_searchLEMaster_textChanged(const QString &arg1)
+{
+     proxyMasterModel->setFilterFixedString(arg1);
 }
 

@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Body</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="picture.qrc">
+    <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget
@@ -114,6 +118,13 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>bodyLe</tabstop>
+  <tabstop>addPb</tabstop>
+  <tabstop>bodyTv</tabstop>
+ </tabstops>
+ <resources>
+  <include location="picture.qrc"/>
+ </resources>
  <connections/>
 </ui>

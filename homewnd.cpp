@@ -99,7 +99,7 @@ void HomeWnd::on_changeWomenPb_clicked()
 {
     QPixmap* women = new QPixmap(ui->wAvatarLb->pixmap().copy());
     if(women)
-        ui->activeAvatarLb->setPixmap(*women);
+    ui->activeAvatarLb->setPixmap(*women);
     ui->avatarStckW->setCurrentIndex(0);
     delete women;
 }
@@ -109,5 +109,6 @@ void HomeWnd::on_changeWomenPb_clicked()
 void HomeWnd::on_sketchPb_clicked()
 {
     ui->stackedWidget->setCurrentIndex(5);
+    ui->homePb->show();
 }
 

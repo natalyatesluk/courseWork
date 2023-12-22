@@ -39,36 +39,7 @@ QSqlDatabase SqlDBManeger::getDB() {
     return db;
 }
 
-void SqlDBManeger::updateList(QTableView *tableView, QString name_table)
-{
-    QSqlTableModel *qSqlModel = new QSqlTableModel(nullptr, this->getDB());
-    qSqlModel->setTable(name_table);
-    qSqlModel->select();
 
-    QStandardItemModel *standardModel = new QStandardItemModel();
-    standardModel->setRowCount(qSqlModel->rowCount());
-    standardModel->setColumnCount(qSqlModel->columnCount());
-
-    QStringList headerLabels;
-    for (int col = 0; col < qSqlModel->columnCount(); ++col) {
-        headerLabels << qSqlModel->headerData(col, Qt::Horizontal).toString();
-    }
-    standardModel->setHorizontalHeaderLabels(headerLabels);
-
-    for (int row = 0; row < qSqlModel->rowCount(); ++row)
-    {
-        for (int col = 0; col < qSqlModel->columnCount(); ++col)
-        {
-            QModelIndex index = qSqlModel->index(row, col);
-            QStandardItem *item = new QStandardItem(qSqlModel->data(index).toString());
-
-            item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-
-            standardModel->setItem(row, col, item);
-        }
-    }
-    tableView->setModel(standardModel);
-}
 
 
 

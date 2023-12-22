@@ -7,8 +7,10 @@ BodyWnd::BodyWnd(QWidget *parent) :
 {
     ui->setupUi(this);
     db= SqlDBManeger::getInstance();
-    db->updateList(ui->bodyTv,TABLE_BODY);
     ques= new Question();
+    bodyModel = new QSqlTableModel(this, db->getDB());
+    proxyBodyModel = new QSortFilterProxyModel(this);
+    updateTable();
 }
 
 BodyWnd::~BodyWnd()
@@ -23,7 +25,7 @@ void BodyWnd::on_addPb_clicked()
     if(!area.isEmpty())
     {
         db->inserIntoTableBody(area);
-        db->updateList(ui->bodyTv,TABLE_BODY);
+        updateTable();
     }
     else
         QMessageBox::critical(this,"Problem","There are empty lines here");
@@ -32,7 +34,19 @@ void BodyWnd::on_addPb_clicked()
 void BodyWnd::closeQuestion()
 {
     ques->close();
-    db->updateList(ui->bodyTv, TABLE_BODY);
+    updateTable();
+}
+
+void BodyWnd::updateTable()
+{
+    bodyModel->setTable(TABLE_BODY);
+    bodyModel->select();
+    proxyBodyModel->setSourceModel(bodyModel);
+    proxyBodyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    proxyBodyModel->setFilterKeyColumn(-1);
+    ui->bodyTv->setModel(proxyBodyModel);
+    ui->bodyTv->horizontalHeader()->setStretchLastSection(true);
+    ui->bodyTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 

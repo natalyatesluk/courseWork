@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Sketches</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="picture.qrc">
+    <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
@@ -60,7 +64,7 @@ border-radius: 20px;
    <item row="1" column="1" colspan="2">
     <widget class="QPushButton" name="addPb">
      <property name="text">
-      <string>PushButton</string>
+      <string>ADD SKETCH</string>
      </property>
     </widget>
    </item>

@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>704</width>
+    <width>842</width>
     <height>430</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Masters</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="picture.qrc">
+    <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget
@@ -81,31 +85,7 @@ QPushButton:pressed {
 QLabel{font: 12pt &quot;Candara&quot;;}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="1">
-    <widget class="QPushButton" name="searchPb">
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="4">
-    <widget class="QLineEdit" name="doneWorkLE">
-     <property name="styleSheet">
-      <string notr="true">QLineEdit {
-                 background-color: white;
-                 color: black;
-                 border: 1px solid rgb(110, 110, 110);
-              border-radius: 10px;
-                 padding: 3px 7px;
-             }
-
-             QLineEdit:focus {
-                 border: 2px solid rgb(90, 90, 90);
-            }</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="4">
+   <item row="4" column="5">
     <widget class="QLineEdit" name="priceLE">
      <property name="styleSheet">
       <string notr="true">QLineEdit {
@@ -122,7 +102,105 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="3" rowspan="2">
+   <item row="5" column="2">
+    <widget class="QLineEdit" name="surenameLE">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+                 background-color: white;
+                 color: black;
+                 border: 1px solid rgb(110, 110, 110);
+              border-radius: 10px;
+                 padding: 3px 7px;
+             }
+
+             QLineEdit:focus {
+                 border: 2px solid rgb(90, 90, 90);
+            }</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="surenameLb">
+     <property name="font">
+      <font>
+       <family>Candara</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Surename:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QLineEdit" name="nameLE">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+                 background-color: white;
+                 color: black;
+                 border: 1px solid rgb(110, 110, 110);
+              border-radius: 10px;
+                 padding: 3px 7px;
+             }
+
+             QLineEdit:focus {
+                 border: 2px solid rgb(90, 90, 90);
+            }</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="5">
+    <widget class="QLineEdit" name="doneWorkLE">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+                 background-color: white;
+                 color: black;
+                 border: 1px solid rgb(110, 110, 110);
+              border-radius: 10px;
+                 padding: 3px 7px;
+             }
+
+             QLineEdit:focus {
+                 border: 2px solid rgb(90, 90, 90);
+            }</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="nameLb">
+     <property name="font">
+      <font>
+       <family>Candara</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Name:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="2">
+    <widget class="QLineEdit" name="numberLE">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+                 background-color: white;
+                 color: black;
+                 border: 1px solid rgb(110, 110, 110);
+              border-radius: 10px;
+                 padding: 3px 7px;
+             }
+
+             QLineEdit:focus {
+                 border: 2px solid rgb(90, 90, 90);
+            }</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4" rowspan="2">
     <widget class="QLabel" name="doneWorkLb">
      <property name="font">
       <font>
@@ -137,15 +215,8 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="3" colspan="2">
-    <widget class="QPushButton" name="addPb">
-     <property name="text">
-      <string>ADD</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="3" rowspan="2">
-    <widget class="QLabel" name="priceLb">
+   <item row="7" column="0">
+    <widget class="QLabel" name="numberLb">
      <property name="font">
       <font>
        <family>Candara</family>
@@ -155,14 +226,11 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
       </font>
      </property>
      <property name="text">
-      <string>Starting price:</string>
+      <string>Number:</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QLineEdit" name="searchLE"/>
-   </item>
-   <item row="1" column="0" colspan="7">
+   <item row="2" column="0" colspan="8">
     <widget class="QTableView" name="mastersTv">
      <property name="styleSheet">
       <string notr="true">QTableView {
@@ -198,8 +266,8 @@ QTableView::item:selected {
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="nameLb">
+   <item row="3" column="4" rowspan="2">
+    <widget class="QLabel" name="priceLb">
      <property name="font">
       <font>
        <family>Candara</family>
@@ -209,93 +277,74 @@ QTableView::item:selected {
       </font>
      </property>
      <property name="text">
-      <string>Name:</string>
+      <string>Starting price:</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="surenameLb">
-     <property name="font">
-      <font>
-       <family>Candara</family>
-       <pointsize>12</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
+   <item row="7" column="5">
+    <widget class="QPushButton" name="addPb">
      <property name="text">
-      <string>Surename:</string>
+      <string>ADD</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="numberLb">
-     <property name="font">
-      <font>
-       <family>Candara</family>
-       <pointsize>12</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Number:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="nameLE">
-     <property name="styleSheet">
-      <string notr="true">QLineEdit {
-                 background-color: white;
-                 color: black;
-                 border: 1px solid rgb(110, 110, 110);
-              border-radius: 10px;
-                 padding: 3px 7px;
-             }
-
-             QLineEdit:focus {
-                 border: 2px solid rgb(90, 90, 90);
-            }</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="surenameLE">
-     <property name="styleSheet">
-      <string notr="true">QLineEdit {
-                 background-color: white;
-                 color: black;
-                 border: 1px solid rgb(110, 110, 110);
-              border-radius: 10px;
-                 padding: 3px 7px;
-             }
-
-             QLineEdit:focus {
-                 border: 2px solid rgb(90, 90, 90);
-            }</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="numberLE">
-     <property name="styleSheet">
-      <string notr="true">QLineEdit {
-                 background-color: white;
-                 color: black;
-                 border: 1px solid rgb(110, 110, 110);
-              border-radius: 10px;
-                 padding: 3px 7px;
-             }
-
-             QLineEdit:focus {
-                 border: 2px solid rgb(90, 90, 90);
-            }</string>
-     </property>
-    </widget>
+   <item row="0" column="2" colspan="4">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="searchLbl">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    border: 1px solid #000000; /* Задайте границю */
+    border-top-left-radius: 15px; /* Заокруглення тільки з одного боку */
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 0; /* Встановіть інші кути без заокруглення */
+    border-bottom-right-radius: 0;
+    background-color: rgb(255, 255, 255); /* Колір фону */
+    color: #000000; /* Колір тексту */
+    padding: 5px; /* Відступи */
+    width: 35px;
+    height: 30px;
+}
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="picture.qrc">:/photo/search.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="searchLE">
+       <property name="styleSheet">
+        <string notr="true"> border: 1px solid #000000; /* Задайте границю */
+    border-top-left-radius: 0px; /* Заокруглення тільки з одного боку */
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 15px; /* Встановіть інші кути без заокруглення */
+    border-bottom-right-radius:15px;
+    background-color: rgb(255, 255, 255); /* Колір фону */
+    color: #000000; /* Колір тексту */
+    padding: 5px; /* Відступи */
+    width: 665px;
+    height: 30px;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>nameLE</tabstop>
+  <tabstop>surenameLE</tabstop>
+  <tabstop>numberLE</tabstop>
+  <tabstop>priceLE</tabstop>
+  <tabstop>doneWorkLE</tabstop>
+  <tabstop>mastersTv</tabstop>
+ </tabstops>
+ <resources>
+  <include location="picture.qrc"/>
+ </resources>
  <connections/>
 </ui>

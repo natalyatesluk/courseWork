@@ -20,5 +20,7 @@
         <file>photo/avatarM.png</file>
         <file>photo/back.jpg</file>
         <file>photo/next.jpg</file>
+        <file>photo/search.png</file>
+        <file>../build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</file>
     </qresource>
 </RCC>
