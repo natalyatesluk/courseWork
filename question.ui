@@ -88,7 +88,7 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
    <item row="0" column="0">
     <widget class="QStackedWidget" name="questionSt">
      <property name="currentIndex">
-      <number>0</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="questionPg">
       <widget class="QWidget" name="questionWdg" native="true">
@@ -370,6 +370,109 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
           <string>Add</string>
          </property>
         </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="applicPage">
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1px 18px 10px 3px;
+    selection-background-color: lightgray;
+}
+
+QComboBox:editable {
+    background: white;
+}
+
+QComboBox:!editable,
+QComboBox::drop-down:editable {
+    background-color: rgb(255, 255, 255);
+}
+
+QComboBox:!editable:on,
+QComboBox::drop-down:editable:on {
+    background: rgb(255, 255, 255);
+}
+
+QComboBox:on {
+    background: #rgb(225, 225, 225);
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 25px;
+    background-color: rgb(3, 3, 3);
+    border-left-width: 2px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+}
+
+QComboBox::down-arrow {
+    image: url(:/photo/upArrow.png);
+    width: 10px;
+    height: 10px;
+    border-radius: 8px;
+    background-color: rgb(0, 0, 0);
+}
+
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+    background-color: rgb(9, 9, 9);
+}
+
+QComboBox QAbstractItemView {
+    border-radius: 10px; /* Закруглення країв для випадаючого списку */
+}
+</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="2" column="3">
+        <widget class="QLineEdit" name="numberAplLE">
+         <property name="placeholderText">
+          <string>Enter your number</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLineEdit" name="bodyAplLE">
+         <property name="placeholderText">
+          <string>Enter area body</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1" colspan="3">
+        <widget class="QPushButton" name="submitApliPb">
+         <property name="text">
+          <string>SUBMIT AN APLICATION</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="surenameAplLE">
+         <property name="placeholderText">
+          <string>Enter your surename</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QComboBox" name="masterCb"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="nameAplLE">
+         <property name="placeholderText">
+          <string>Enter your name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2">
+        <widget class="QComboBox" name="timeCb"/>
+       </item>
+       <item row="2" column="1" colspan="2">
+        <widget class="QComboBox" name="dateCb"/>
        </item>
       </layout>
      </widget>

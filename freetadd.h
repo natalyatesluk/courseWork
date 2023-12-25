@@ -33,7 +33,7 @@ private slots:
 
 public slots:
     void closeQstn();
-    void updateTable();
+
 private:
     Ui::FreeTAdd *ui;
     DBManager *db;

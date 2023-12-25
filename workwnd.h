@@ -28,7 +28,6 @@ private slots:
 
 public slots:
     void closeQstn();
-    void updateTable();
 
 private:
     Ui::WorkWnd *ui;

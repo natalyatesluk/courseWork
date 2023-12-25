@@ -14,13 +14,13 @@ public:
     Sketch(Sketch &sketch);
     ~Sketch(){}
 
-    QByteArray getImage() const { return image; }
-    void setImage(const QByteArray &newImage) { image = newImage; }
+    QByteArray getImage()  { return image; }
+    void setImage( QByteArray &newImage) { image = newImage; }
 
-    QString getName() const { return name; }
-    void setName(const QString &newName) { name = newName; }
+    QString getName()  { return name; }
+    void setName( QString &newName) { name = newName; }
 
-    float getPrice() const { return price; }
+    float getPrice()  { return price; }
     void setPrice(float newPrice) { price = newPrice; }
 
 

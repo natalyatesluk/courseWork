@@ -11,11 +11,19 @@ MastersWnd::MastersWnd(QWidget *parent) :
     ui(new Ui::MastersWnd)
 {
     ui->setupUi(this);
-    sqlDBM =  SqlDBManeger::getInstance();
-    sqlDBM->connectToDataBase();
-    qSqlModel = new QSqlTableModel(this, sqlDBM->getDB());
-    proxyModel = new QSortFilterProxyModel(this);
-    updateTable();
+    db =  SqlDBManeger::getInstance();
+
+    modelMaster = new QSqlTableModel(this, db->getDB());
+    proxyMasterModel = new QSortFilterProxyModel(this);
+    modelMaster->setTable(TABLE_MASTER);
+    proxyMasterModel->setSourceModel(modelMaster);
+    proxyMasterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    proxyMasterModel->setFilterKeyColumn(-1);
+    ui->mastersTv->setModel(proxyMasterModel);
+    ui->mastersTv->horizontalHeader()->setStretchLastSection(true);
+    ui->mastersTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    modelMaster->select();
+
     qus= new Question();
     connect(this, &MastersWnd::update, qus, &Question::updateMasters);
     connect(this, &MastersWnd::deleteMaster, qus, &Question::deleteItem);
@@ -39,8 +47,8 @@ void MastersWnd::on_addPb_clicked()
          &&!workDone.isEmpty())
      {
          master= new Master(name,surename,number,price.toFloat(), workDone.toInt());
-         sqlDBM->inserIntoTableMasters(*master);
-         updateTable();
+         db->inserIntoTableMasters(*master);
+         modelMaster->select();
          delete master;
          master=nullptr;
      }
@@ -52,20 +60,7 @@ void MastersWnd::on_addPb_clicked()
 void MastersWnd::closeQuestion()
 {
      qus->close();
-     updateTable();
-}
-
-void MastersWnd::updateTable()
-{
-     qSqlModel->setTable(TABLE_MASTER);
-     qSqlModel->select();
-     proxyModel->setSourceModel(qSqlModel);
-     proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-     proxyModel->setFilterKeyColumn(-1);
-     ui->mastersTv->setModel(proxyModel);
-     ui->mastersTv->horizontalHeader()->setStretchLastSection(true);
-     ui->mastersTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
+     modelMaster->select();
 }
 
 void MastersWnd::on_mastersTv_doubleClicked(const QModelIndex &index)
@@ -90,6 +85,6 @@ void MastersWnd::on_mastersTv_doubleClicked(const QModelIndex &index)
 
 void MastersWnd::on_searchLE_textChanged(const QString &arg1)
 {
-     proxyModel->setFilterFixedString(arg1);
+     proxyMasterModel->setFilterFixedString(arg1);
 }
 

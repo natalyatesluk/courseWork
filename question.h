@@ -4,8 +4,12 @@
 #include <QWidget>
 #include <QDialog>
 #include "master.h"
-#include "sqldbmaneger.h"
 #include "sketch.h"
+#include "customer.h"
+#include "worktime.h"
+#include <QSqlTableModel>
+#include <QSortFilterProxyModel>
+#include <QSqlRelationalTableModel>
 
 class DBManager;
 namespace Ui {
@@ -23,12 +27,20 @@ public:
 private:
     Ui::Question *ui;
     DBManager * db;
-    QString idQstn;
+    QString idQstn=0;
     QString table_name;
-    int page;
+    int page=0;
     Master *master;
     Customer *customer;
     QByteArray image;
+    QSqlRelationalTableModel *modelApp;
+    QSortFilterProxyModel *proxyAppModel;
+    int masterIndex=0, timeIndex=0;
+    QString namestk;
+    //QSqlTableModel * modelFree;
+    //QSortFilterProxyModel * proxyFree;
+    //QSqlTableModel *modelFree;
+
 public slots:
     void updateMasters(Master *master,QString id, int page);
     void deleteItem(QString id, QString table_name);
@@ -36,6 +48,7 @@ public slots:
     void updateCustomer(Customer *customer,QString id,int page);
     void updateTime(WorkTime *time,QString id,int page);
     void addScetch( QByteArray &image,int page);
+    void submitApp(int page,QString nameskt);
 private slots:
     void on_updatePb_clicked();
     void on_updatePb_2_clicked();
@@ -49,9 +62,22 @@ private slots:
 
     void on_addPb_clicked();
 
+    void on_submitApliPb_clicked();
+
+    void on_dateCb_currentTextChanged(const QString &arg1);
+
+    //void on_timeCb_currentIndexChanged(int index);
+
+//    void on_masterCb_currentTextChanged( QString &arg1);
+
+//    void on_masterCb_textActivated( QString &arg1);
+
+    void on_masterCb_currentTextChanged(const QString &arg1);
+
 signals:
     void closeWnd();
     void closeWndSketch(Sketch *sketch);
+    void closeWndStr(QString value);
 };
 
 #endif // QUESTION_H

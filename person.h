@@ -14,6 +14,8 @@ public:
     Person():name("/0"),surename("/0"), phoneNumber("/0"),price(0.0){}
     Person(QString name, QString surename,QString phoneNumber, float price ):
         name(name),surename(surename),phoneNumber(phoneNumber),price(price){}
+    Person (QString name, QString surename,QString phoneNumber)
+        :name(name),surename(surename),phoneNumber(phoneNumber),price(0.0){}
     ~Person(){}
     Person(Person& person);
 

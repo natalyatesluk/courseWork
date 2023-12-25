@@ -92,6 +92,7 @@ void HomeWnd::on_changeMenPb_clicked()
         ui->activeAvatarLb->setPixmap(*men);
      ui->avatarStckW->setCurrentIndex(0);
     delete men;
+     men= nullptr;
 }
 
 
@@ -102,6 +103,7 @@ void HomeWnd::on_changeWomenPb_clicked()
     ui->activeAvatarLb->setPixmap(*women);
     ui->avatarStckW->setCurrentIndex(0);
     delete women;
+    women = nullptr;
 }
 
 

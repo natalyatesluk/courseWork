@@ -9,9 +9,19 @@ FreeTAdd::FreeTAdd(QWidget *parent) :
     ui->setupUi(this);
     ui->freeTStckW->setCurrentIndex(0);
     db= SqlDBManeger::getInstance();
+
     modelFree = new QSqlRelationalTableModel(this, db->getDB());
     proxyFreeModel = new QSortFilterProxyModel(modelFree);
-    updateTable();
+    modelFree->setTable(TABLE_FREETIME);
+    modelFree->setRelation(modelFree->fieldIndex(TABLE_MASTERid),QSqlRelation(TABLE_MASTER, ID, TABLE_NAME));
+    proxyFreeModel->setSourceModel(modelFree);
+    proxyFreeModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    proxyFreeModel->setFilterKeyColumn(-1);
+    ui->frTimeTv->setModel(proxyFreeModel);
+    ui->frTimeTv->horizontalHeader()->setStretchLastSection(true);
+    ui->frTimeTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    modelFree->select();
+
     question = new QuesForTime();
     connect(this, &FreeTAdd::transfer, question, &QuesForTime::transferToWork);
     connect(this, &FreeTAdd::deleteTime, question, &QuesForTime::deleteTime);
@@ -47,7 +57,7 @@ void FreeTAdd::on_addPb_clicked()
     {
         timeObg= new FreeTime(selectedDate,selectedTime,masterId.toInt());
         db->inserIntoTableFree(*timeObg);
-        updateTable();
+         modelFree->select();
         QMessageBox::about(this,"Added","Greate added time!");
         delete timeObg;
         timeObg=nullptr;
@@ -75,21 +85,9 @@ void FreeTAdd::on_frTimeTv_doubleClicked(const QModelIndex &index)
 void FreeTAdd::closeQstn()
 {
      question->close();
-     updateTable();
+     modelFree->select();
 }
 
-void FreeTAdd::updateTable()
-{
-     modelFree->setTable(TABLE_FREETIME);
-     modelFree->setRelation(modelFree->fieldIndex(TABLE_MASTERid),QSqlRelation(TABLE_MASTER, ID, TABLE_NAME));
-     modelFree->select();
-     proxyFreeModel->setSourceModel(modelFree);
-     proxyFreeModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-     proxyFreeModel->setFilterKeyColumn(-1);
-     ui->frTimeTv->setModel(proxyFreeModel);
-     ui->frTimeTv->horizontalHeader()->setStretchLastSection(true);
-     ui->frTimeTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
-}
 
 void FreeTAdd::on_searchLE_textChanged(const QString &arg1)
 {

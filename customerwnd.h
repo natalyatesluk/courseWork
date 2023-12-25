@@ -33,7 +33,6 @@ private:
     QSortFilterProxyModel *proxyCustModel;
 public slots:
     void closeQuestion();
-    void updateTable();
 signals:
     void update(Customer *customer, QString id,int page);
     void deleteCustomer(QString id,QString table_anme);

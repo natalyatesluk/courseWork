@@ -3,14 +3,13 @@
 #include "regitration.h"
 #include <QMessageBox>
 #include <QCryptographicHash>
-#include "mainwindow.h"
+
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login)
 {
     ui->setupUi(this);
     sqlDBM = SqlDBManeger::getInstance();
-    sqlDBM->connectToDataBase();
     ui->stackedWidget->setCurrentIndex(0);
 }
 

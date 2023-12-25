@@ -6,7 +6,8 @@
 #include <QMessageBox>
 #include <QDate>
 #include <QDebug>
-
+#include<QMessageBox>
+#include <QApplication>
 
 SqlDBManeger* SqlDBManeger::instance = nullptr;
 
@@ -227,6 +228,32 @@ bool SqlDBManeger::createTableSketch()
     }
 }
 
+bool SqlDBManeger::createAppTable()
+{
+    QSqlQuery queryApp;
+    if (!queryApp.exec("CREATE TABLE " TABLE_APPLICATION "("
+                          ID                        " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                          DATE_ID                   " INTEGER,"
+                          TABLE_MASTERid            " INTEGER,"
+                          SKETCH_ID                  " INTEGER,"
+                          TABLE_NAME                 " VARCHAR(250) NOT NULL,"
+                          TABLE_SURENAME             " VARCHAR(250) NOT NULL,"
+                          TABLE_NUMBER               " VARCHAR(250) NOT NULL,"
+                         TABLE_BODY_AREA             " VARCHAR(255) NOT NULL, "
+                          "FOREIGN KEY(" DATE_ID ") REFERENCES " TABLE_FREETIME "(" ID "),"
+                          "FOREIGN KEY(" TABLE_MASTERid ") REFERENCES " TABLE_MASTER "(" ID "),"
+                          "FOREIGN KEY(" SKETCH_ID ") REFERENCES " TABLE_SKETCH "(" ID "))"))
+    {
+         qDebug() << "Error creating Sketch table: " << queryApp.lastError().text();
+         return false;
+    }
+    else
+    {
+         qDebug() << "Sketch table created successfully.";
+         return true;
+    }
+
+}
 
 bool SqlDBManeger::inserIntoTableReg(const QString name, QString password, QString number)
 {
@@ -332,6 +359,7 @@ bool SqlDBManeger::inserIntoTableBody(const QString area)
         qDebug() << queryBody.lastQuery();
         return false;
     } else
+
         return true;
 }
 
@@ -403,6 +431,37 @@ bool SqlDBManeger::inserIntoTableSketch(Sketch &data)
         qDebug() << "Insert into Sketch table successful.";
         return true;
     }
+}
+
+bool SqlDBManeger::inserIntoTableApp(QString date_id,  QString sketch_id, Customer &customer)
+{
+    QSqlQuery queryApp;
+    queryApp.prepare("INSERT INTO " TABLE_APPLICATION "("
+                        DATE_ID", "
+                        TABLE_MASTERid", "
+                        SKETCH_ID", "
+                        TABLE_NAME", "
+                        TABLE_SURENAME", "
+                        TABLE_NUMBER","
+                        TABLE_BODY_AREA")"
+                        "VALUES (:DateId, :MasterId, :SketchId, :Name, :Surename, :Number, :BodyArea)");
+
+    queryApp.bindValue(":DateId", date_id);
+    queryApp.bindValue(":MasterId", customer.getMaster());
+    queryApp.bindValue(":SketchId", sketch_id);
+    queryApp.bindValue(":Name", customer.getName());
+    queryApp.bindValue(":Surename", customer.getSurename());
+    queryApp.bindValue(":Number", customer.getPhoneNumber());
+    queryApp.bindValue(":BodyArea", customer.getStrBody());
+
+    if (!queryApp.exec()) {
+        qDebug() << "Error inserting data into " << TABLE_APPLICATION << ": " << queryApp.lastError().text();
+        return false;
+    } else {
+        qDebug() << "Data inserted into " << TABLE_APPLICATION << " successfully.";
+        return true;
+    }
+
 }
 
 
@@ -582,6 +641,90 @@ bool SqlDBManeger::deleteItem(QString id, QString table_name)
         return true;
     } else {
         qDebug() << "Error updating master: " << query.lastError().text();
+        return false;
+    }
+}
+
+QString SqlDBManeger::serchIdTime(QString &date, QString &time)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT id FROM free_time WHERE date = :date AND time = :time");
+    query.bindValue(":date", date);
+    query.bindValue(":time", time);
+
+    if (query.exec() && query.next()) {
+        QString id = query.value(0).toString();
+        //qDebug() << id;
+        return id;
+    } else {
+        if (!query.next()) {
+            qDebug() << "No record found for the given date and time.";
+        }
+        QString problem = query.lastError().text();
+        QMessageBox::critical(qApp->activeWindow(), "Problem", problem);
+    }
+    return QString();
+}
+
+int SqlDBManeger::searchMasterId(QString &master)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT id FROM " TABLE_MASTER " WHERE name = :master");
+    query.bindValue(":master", master);
+
+
+    if (query.exec() && query.next()) {
+        int id = query.value(0).toInt();
+        qDebug() << id;
+        return id;
+    } else {
+        if (!query.next()) {
+            qDebug() << "No record found for the given master.";
+        }
+        QString problem = query.lastError().text();
+        QMessageBox::critical(qApp->activeWindow(), "Problem", problem);
+    }
+    return -1;
+}
+
+QString SqlDBManeger::searchSketchId(QString name)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT id FROM " TABLE_SKETCH " WHERE name = :name");
+    query.bindValue(":name", name);
+
+
+    if (query.exec() && query.next()) {
+        QString id = query.value(0).toString();
+        qDebug() << id;
+        return id;
+    } else {
+        if (!query.next()) {
+            qDebug() << "No record found for the given sketch.";
+        }
+        QString problem = query.lastError().text();
+        QMessageBox::critical(qApp->activeWindow(), "Problem", problem);
+    }
+    return QString();
+}
+
+bool SqlDBManeger::updateStatusSketch(QString id)
+{
+    QSqlQuery querySketch;
+
+    querySketch.prepare("UPDATE " TABLE_SKETCH " SET " TABLE_STATUS" = :Status "
+                         " WHERE " ID" = :Id");
+    querySketch.bindValue(":Id", id);
+    querySketch.bindValue(":Status", "booked");
+
+
+    if (querySketch.exec()) {
+        return true;
+    } else {
+        qDebug() << "Error updating time: " << querySketch.lastError().text();
         return false;
     }
 }

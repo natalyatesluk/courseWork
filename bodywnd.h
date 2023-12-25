@@ -34,7 +34,7 @@ private:
     QSqlTableModel *bodyModel;
 public slots:
     void closeQuestion();
-    void updateTable();
+
 signals:
     void update(QString area, QString id,int page);
     void deleteBody(QString id,QString table_name);

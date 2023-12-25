@@ -6,6 +6,8 @@
 #include <sketch.h>
 #include <QSqlRelationalTableModel>
 #include <QSortFilterProxyModel>
+#include "question.h"
+#include <QVector>
 
 class DBManager;
 namespace Ui {
@@ -23,6 +25,7 @@ public slots:
     void username(QString name);
     void updateTableMasters();
     void updateTableTime();
+    void closeQst(QString sketchId);
 private slots:
     void on_mastersPb_clicked();
     void on_freePb_clicked();
@@ -49,6 +52,8 @@ private slots:
 
     void on_searchLEMaster_textChanged(const QString &arg1);
 
+    void on_selectPb_clicked();
+
 private:
     Ui::HomeCustomer *ui;
     DBManager *db;
@@ -57,10 +62,15 @@ private:
     QSqlTableModel *modelMaster;
     QSqlRelationalTableModel *modelFree;
     QSortFilterProxyModel *proxyFreeModel;
-    int currentIndexStckW;
+    int currentIndexImages;
     void loadImageFromByteArray(Sketch *sketch,QString statusSkt);
     void updateImage();
-
+    Question *qstn;
+    QVector<Sketch*> sketchesV;
+//    QVector<QString*> statusV;
+    QString sketchId;
+signals:
+    void submitApp(int page,QString namestk);
 };
 
 #endif // HOMECUSTOMER_H

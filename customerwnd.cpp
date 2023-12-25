@@ -10,13 +10,23 @@ CustomerWnd::CustomerWnd(QWidget *parent) :
     db=  SqlDBManeger::getInstance();
     qstn= new Question();
     body= new BodyWnd();
+
     modelCust = new QSqlRelationalTableModel(this, db->getDB());
     proxyCustModel = new QSortFilterProxyModel(modelCust);
-    updateTable();
+    modelCust->setTable(TABLE_CUSTOMER);
+    modelCust->setRelation(modelCust->fieldIndex(TABLE_MASTERid),QSqlRelation(TABLE_MASTER, ID, TABLE_NAME));
+    modelCust->setRelation(modelCust->fieldIndex(TABLE_CUSTOMER_BODY),QSqlRelation(TABLE_BODY, ID, TABLE_BODY_AREA));
+    proxyCustModel->setSourceModel(modelCust);
+    proxyCustModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    proxyCustModel->setFilterKeyColumn(-1);
+    ui->customerTv->setModel(proxyCustModel);
+    ui->customerTv->horizontalHeader()->setStretchLastSection(true);
+    ui->customerTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    modelCust->select();
+
     customer=nullptr;
     connect(this, &CustomerWnd::update, qstn, &Question::updateCustomer);
     connect(this, &CustomerWnd::deleteCustomer, qstn, &Question::deleteItem);
-
 }
 
 CustomerWnd::~CustomerWnd()
@@ -27,22 +37,9 @@ CustomerWnd::~CustomerWnd()
 void CustomerWnd::closeQuestion()
 {
     qstn->close();
-    updateTable();
+    modelCust->select();
 }
 
-void CustomerWnd::updateTable()
-{
-    modelCust->setTable(TABLE_CUSTOMER);
-    modelCust->setRelation(modelCust->fieldIndex(TABLE_MASTERid),QSqlRelation(TABLE_MASTER, ID, TABLE_NAME));
-    modelCust->setRelation(modelCust->fieldIndex(TABLE_CUSTOMER_BODY),QSqlRelation(TABLE_BODY, ID, TABLE_BODY_AREA));
-    modelCust->select();
-    proxyCustModel->setSourceModel(modelCust);
-    proxyCustModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-    proxyCustModel->setFilterKeyColumn(-1);
-    ui->customerTv->setModel(proxyCustModel);
-    ui->customerTv->horizontalHeader()->setStretchLastSection(true);
-    ui->customerTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
-}
 
 void CustomerWnd::on_bodyPb_clicked()
 {
@@ -64,7 +61,9 @@ void CustomerWnd::on_addPb_clicked()
     {
         customer= new Customer(name,surename,number,price.toFloat(), areaBody.toInt(), master.toInt());
         db->inserIntoTableCustomers(*customer);
-        updateTable();
+        modelCust->select();
+        delete customer;
+        customer=nullptr;
     }
     else
         QMessageBox::critical(this,"Problem","There are empty lines here");

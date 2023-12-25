@@ -35,6 +35,9 @@
 #define TABLE_SKETCH_PRICE "price"
 #define TABLE_STATUS "status"
 #define STATUS "active"
+#define DATE_ID "date_id"
+#define SKETCH_ID "sketch_id"
+#define TABLE_APPLICATION "application"
 class SqlDBManeger : public DBManager {
 
 public:
@@ -56,6 +59,7 @@ public:
     bool inserIntoTableFree( FreeTime &time ) override;
     bool inserIntoTableWork( WorkTime &time ) override;
     bool inserIntoTableSketch( Sketch &data ) override;
+    bool inserIntoTableApp(QString date_id,  QString sketch_id, Customer &customer) override;
     bool openDataBase();
     bool restoreDataBase();
     void closeDataBase();
@@ -68,7 +72,7 @@ public:
     bool createTableFreeTime();
     bool createTableWorkTime();
     bool createTableSketch();
-
+    bool createAppTable();
 
     bool nameCheck(QString name) override;
     bool nameCheckCustomer(QString name)override;
@@ -81,6 +85,10 @@ public:
     bool updateCustomer(Customer &customer, QString id)override;
     bool updateWork(WorkTime &work,QString id)override;
     bool deleteItem(QString id,QString table_name)override;
+    QString serchIdTime(QString &date, QString &time) override;
+    int searchMasterId(QString &master) override;
+    QString searchSketchId(QString name) override;
+    bool updateStatusSketch(QString id) override;
 
 private:
     QSqlDatabase db;
@@ -89,5 +97,7 @@ private:
     static SqlDBManeger* instance;
 
 };
+
+
 
 #endif // SQLDBMANEGER_H

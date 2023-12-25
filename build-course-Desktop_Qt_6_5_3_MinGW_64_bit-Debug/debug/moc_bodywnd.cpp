@@ -50,12 +50,11 @@ static constexpr auto qt_meta_stringdata_CLASSBodyWndENDCLASS = QtMocHelpers::st
     "on_bodyTv_doubleClicked",
     "QModelIndex",
     "index",
-    "closeQuestion",
-    "updateTable"
+    "closeQuestion"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSBodyWndENDCLASS_t {
-    uint offsetsAndSizes[28];
+    uint offsetsAndSizes[26];
     char stringdata0[8];
     char stringdata1[7];
     char stringdata2[1];
@@ -69,7 +68,6 @@ struct qt_meta_stringdata_CLASSBodyWndENDCLASS_t {
     char stringdata10[12];
     char stringdata11[6];
     char stringdata12[14];
-    char stringdata13[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSBodyWndENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -87,8 +85,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSBodyWndENDCLASS_t qt_meta_strin
         QT_MOC_LITERAL(68, 23),  // "on_bodyTv_doubleClicked"
         QT_MOC_LITERAL(92, 11),  // "QModelIndex"
         QT_MOC_LITERAL(104, 5),  // "index"
-        QT_MOC_LITERAL(110, 13),  // "closeQuestion"
-        QT_MOC_LITERAL(124, 11)   // "updateTable"
+        QT_MOC_LITERAL(110, 13)   // "closeQuestion"
     },
     "BodyWnd",
     "update",
@@ -102,8 +99,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSBodyWndENDCLASS_t qt_meta_strin
     "on_bodyTv_doubleClicked",
     "QModelIndex",
     "index",
-    "closeQuestion",
-    "updateTable"
+    "closeQuestion"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -115,7 +111,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSBodyWndENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -123,14 +119,13 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSBodyWndENDCLASS[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    3,   50,    2, 0x06,    1 /* Public */,
-       6,    2,   57,    2, 0x06,    5 /* Public */,
+       1,    3,   44,    2, 0x06,    1 /* Public */,
+       6,    2,   51,    2, 0x06,    5 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       8,    0,   62,    2, 0x08,    8 /* Private */,
-       9,    1,   63,    2, 0x08,    9 /* Private */,
-      12,    0,   66,    2, 0x0a,   11 /* Public */,
-      13,    0,   67,    2, 0x0a,   12 /* Public */,
+       8,    0,   56,    2, 0x08,    8 /* Private */,
+       9,    1,   57,    2, 0x08,    9 /* Private */,
+      12,    0,   60,    2, 0x0a,   11 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int,    3,    4,    5,
@@ -139,7 +134,6 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSBodyWndENDCLASS[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 10,   11,
-    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -169,8 +163,6 @@ Q_CONSTINIT const QMetaObject BodyWnd::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QModelIndex &, std::false_type>,
         // method 'closeQuestion'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'updateTable'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -187,7 +179,6 @@ void BodyWnd::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 2: _t->on_addPb_clicked(); break;
         case 3: _t->on_bodyTv_doubleClicked((*reinterpret_cast< std::add_pointer_t<QModelIndex>>(_a[1]))); break;
         case 4: _t->closeQuestion(); break;
-        case 5: _t->updateTable(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -228,13 +219,13 @@ int BodyWnd::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 5;
     }
     return _id;
 }

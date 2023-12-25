@@ -5,18 +5,21 @@ HomeCustomer::HomeCustomer(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::HomeCustomer),
     sketch(nullptr),
-    currentIndexStckW(0)
+    currentIndexImages(0)
 {
     ui->setupUi(this);
     ui->homeCusStckW->setCurrentIndex(0);
     ui->avatarStckW->setCurrentIndex(0);
     db=  SqlDBManeger::getInstance();
+    updateImage();
     modelMaster = new QSqlTableModel(this, db->getDB());
     proxyMasterModel = new QSortFilterProxyModel(modelMaster);
     updateTableMasters();
     modelFree = new QSqlRelationalTableModel(this, db->getDB());
     proxyFreeModel = new QSortFilterProxyModel(modelFree);
-    updateTableTime();
+    qstn = new Question();
+    connect(this, &HomeCustomer::submitApp, qstn, &Question::submitApp);
+    connect(qstn, &Question::closeWndStr, this, &HomeCustomer::closeQst);
 }
 
 HomeCustomer::~HomeCustomer()
@@ -90,7 +93,7 @@ void HomeCustomer::on_sketchPb_clicked()
 void HomeCustomer::loadImageFromByteArray(Sketch *sketch,QString statusSkt)
 {
       QLabel *imageLabel = new QLabel(ui->sketchStckW);
-      imageLabel->setFixedSize(300, 300);  // Фіксований розмір
+      imageLabel->setFixedSize(300, 300);
       imageLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
       QPixmap image;
@@ -104,7 +107,7 @@ void HomeCustomer::loadImageFromByteArray(Sketch *sketch,QString statusSkt)
       QLabel *nameLabel = new QLabel(sketch->getName());
       nameLabel->setAlignment(Qt::AlignCenter);
 
-      // Відображення прайсу
+
       QLabel *priceLabel = new QLabel(QString::number(sketch->getPrice()));
       priceLabel->setAlignment(Qt::AlignCenter);
 
@@ -130,38 +133,44 @@ void HomeCustomer::updateImage()
         QByteArray imageData = query.value("sketches.sketches").toByteArray();
         QString name = query.value("sketches.name").toString();
         float price = query.value("sketches.price").toFloat();
-        QString status = query.value("sketches.status").toString();
+        QString* status = new QString(query.value("sketches.status").toString());
         sketch =new Sketch(imageData,name,price);
-        loadImageFromByteArray(sketch,status);
+        sketchesV.push_back(sketch);
+//        statusV.push_back(status);
+        loadImageFromByteArray(sketch,*status);
+//        delete sketch;
+//        sketch = nullptr;
+//        delete status;
+//        status = nullptr;
       }
 }
 
 
 void HomeCustomer::on_nextPb_clicked()
 {
-      if (currentIndexStckW < ui->sketchStckW->count() - 1)
+      if (currentIndexImages < ui->sketchStckW->count() - 1)
       {
-        currentIndexStckW++;
-        ui->sketchStckW->setCurrentIndex(currentIndexStckW);
+        currentIndexImages++;
+        ui->sketchStckW->setCurrentIndex(currentIndexImages);
       }
       else
       {
-        currentIndexStckW=0;
-        ui->sketchStckW->setCurrentIndex(currentIndexStckW);
+        currentIndexImages=0;
+        ui->sketchStckW->setCurrentIndex(currentIndexImages);
       }
 }
 
 
 void HomeCustomer::on_backPb_clicked()
 {
-      if (currentIndexStckW > 0) {
-        currentIndexStckW--;
-        ui->sketchStckW->setCurrentIndex(currentIndexStckW);
+      if (currentIndexImages > 0) {
+        currentIndexImages--;
+        ui->sketchStckW->setCurrentIndex(currentIndexImages);
       }
       else
       {
-        currentIndexStckW= ui->sketchStckW->count() - 1;
-        ui->sketchStckW->setCurrentIndex(currentIndexStckW);
+        currentIndexImages= ui->sketchStckW->count() - 1;
+        ui->sketchStckW->setCurrentIndex(currentIndexImages);
       }
 }
 
@@ -196,6 +205,22 @@ void HomeCustomer::updateTableTime()
       ui->timeTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
+void HomeCustomer::closeQst(QString sketchId)
+{
+      this->sketchId= sketchId;
+      db->updateStatusSketch(sketchId);
+      while (ui->sketchStckW->count() > 0) {
+        QWidget* widgetToRemove = ui->sketchStckW->widget(0);
+        ui->sketchStckW->removeWidget(widgetToRemove);
+        delete widgetToRemove;
+      }
+      sketchesV.clear();
+      //statusV.clear();
+      updateImage();
+      qstn->close();
+
+}
+
 
 void HomeCustomer::on_searchLETime_textChanged(const QString &arg1)
 {
@@ -206,5 +231,19 @@ void HomeCustomer::on_searchLETime_textChanged(const QString &arg1)
 void HomeCustomer::on_searchLEMaster_textChanged(const QString &arg1)
 {
      proxyMasterModel->setFilterFixedString(arg1);
+}
+
+
+void HomeCustomer::on_selectPb_clicked()
+{
+     if (currentIndexImages >= 0 && currentIndexImages < sketchesV.size()) {
+        QString namestk = sketchesV[currentIndexImages]->getName();
+        emit submitApp(6, namestk);
+        qstn->show();
+     } else {
+        qDebug() << "Invalid currentIndexImages or sketchesV is empty.";
+     }
+
+
 }
 

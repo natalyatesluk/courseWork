@@ -53,12 +53,11 @@ static constexpr auto qt_meta_stringdata_CLASSMastersWndENDCLASS = QtMocHelpers:
     "index",
     "on_searchLE_textChanged",
     "arg1",
-    "closeQuestion",
-    "updateTable"
+    "closeQuestion"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMastersWndENDCLASS_t {
-    uint offsetsAndSizes[34];
+    uint offsetsAndSizes[32];
     char stringdata0[11];
     char stringdata1[7];
     char stringdata2[1];
@@ -75,7 +74,6 @@ struct qt_meta_stringdata_CLASSMastersWndENDCLASS_t {
     char stringdata13[24];
     char stringdata14[5];
     char stringdata15[14];
-    char stringdata16[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMastersWndENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -96,8 +94,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMastersWndENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(122, 5),  // "index"
         QT_MOC_LITERAL(128, 23),  // "on_searchLE_textChanged"
         QT_MOC_LITERAL(152, 4),  // "arg1"
-        QT_MOC_LITERAL(157, 13),  // "closeQuestion"
-        QT_MOC_LITERAL(171, 11)   // "updateTable"
+        QT_MOC_LITERAL(157, 13)   // "closeQuestion"
     },
     "MastersWnd",
     "update",
@@ -114,8 +111,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMastersWndENDCLASS_t qt_meta_st
     "index",
     "on_searchLE_textChanged",
     "arg1",
-    "closeQuestion",
-    "updateTable"
+    "closeQuestion"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -127,7 +123,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMastersWndENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -135,15 +131,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMastersWndENDCLASS[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    3,   56,    2, 0x06,    1 /* Public */,
-       7,    2,   63,    2, 0x06,    5 /* Public */,
+       1,    3,   50,    2, 0x06,    1 /* Public */,
+       7,    2,   57,    2, 0x06,    5 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       9,    0,   68,    2, 0x08,    8 /* Private */,
-      10,    1,   69,    2, 0x08,    9 /* Private */,
-      13,    1,   72,    2, 0x08,   11 /* Private */,
-      15,    0,   75,    2, 0x0a,   13 /* Public */,
-      16,    0,   76,    2, 0x0a,   14 /* Public */,
+       9,    0,   62,    2, 0x08,    8 /* Private */,
+      10,    1,   63,    2, 0x08,    9 /* Private */,
+      13,    1,   66,    2, 0x08,   11 /* Private */,
+      15,    0,   69,    2, 0x0a,   13 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, QMetaType::QString, QMetaType::Int,    4,    5,    6,
@@ -153,7 +148,6 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMastersWndENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 11,   12,
     QMetaType::Void, QMetaType::QString,   14,
-    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -186,8 +180,6 @@ Q_CONSTINIT const QMetaObject MastersWnd::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'closeQuestion'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'updateTable'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -205,7 +197,6 @@ void MastersWnd::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_mastersTv_doubleClicked((*reinterpret_cast< std::add_pointer_t<QModelIndex>>(_a[1]))); break;
         case 4: _t->on_searchLE_textChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 5: _t->closeQuestion(); break;
-        case 6: _t->updateTable(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -246,13 +237,13 @@ int MastersWnd::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 6)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 6;
     }
     return _id;
 }

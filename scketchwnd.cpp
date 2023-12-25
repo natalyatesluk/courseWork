@@ -68,7 +68,7 @@ void ScketchWnd::updateImage()
 void ScketchWnd::loadImageFromByteArray(Sketch *sketch,QString statusSkt)
 {
     QLabel *imageLabel = new QLabel(ui->sketchStckW);
-    imageLabel->setFixedSize(300, 300);  // Фіксований розмір
+    imageLabel->setFixedSize(300, 300);
     imageLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
     QPixmap image;
@@ -82,7 +82,7 @@ void ScketchWnd::loadImageFromByteArray(Sketch *sketch,QString statusSkt)
     QLabel *nameLabel = new QLabel(sketch->getName());
     nameLabel->setAlignment(Qt::AlignCenter);
 
-    // Відображення прайсу
+
     QLabel *priceLabel = new QLabel(QString::number(sketch->getPrice()));
     priceLabel->setAlignment(Qt::AlignCenter);
 

@@ -32,15 +32,15 @@ private slots:
 
 private:
     Ui::MastersWnd *ui;
-    DBManager *sqlDBM;
+    DBManager *db;
     Master *master;
     Question *qus;
-    QSortFilterProxyModel *proxyModel;
-    QSqlTableModel *qSqlModel;
+    QSortFilterProxyModel *proxyMasterModel;
+    QSqlTableModel *modelMaster;
 
 public slots:
     void closeQuestion();
-    void updateTable();
+
 signals:
     void update(Master *master, QString id, int page);
     void deleteMaster(QString id,QString table_name);
