@@ -87,8 +87,13 @@ public:
     bool deleteItem(QString id,QString table_name)override;
     QString serchIdTime(QString &date, QString &time) override;
     int searchMasterId(QString &master) override;
+    int searchCustomerId(QString &customer) override;
     QString searchSketchId(QString name) override;
+    float searchSketchPrice(QString name) override;
     bool updateStatusSketch(QString id) override;
+    int searchBodyId(QString area) override;
+    bool serchCustomer(QString name,QString surename) override;
+    QString searchStatusSketch(QString id) override;
 
 private:
     QSqlDatabase db;

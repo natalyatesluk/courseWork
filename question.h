@@ -11,6 +11,10 @@
 #include <QSortFilterProxyModel>
 #include <QSqlRelationalTableModel>
 
+class QWidget;
+class QDialog;
+class QSortFilterProxyModel;
+class QSqlRelationalTableModel;
 class DBManager;
 namespace Ui {
 class Question;

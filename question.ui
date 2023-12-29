@@ -18,7 +18,16 @@
     <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget
+   <string notr="true">QComboBox {
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Регулює заокруглення кутів */
+    padding: 1px 18px 1px 3px; /* Регулює відступи внутрішніх елементів */
+    min-width: 6em;
+	font: 9pt &quot;Candara&quot;;
+}
+
+
+QWidget
 {
 background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);
@@ -88,7 +97,7 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
    <item row="0" column="0">
     <widget class="QStackedWidget" name="questionSt">
      <property name="currentIndex">
-      <number>6</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="questionPg">
       <widget class="QWidget" name="questionWdg" native="true">
@@ -225,18 +234,12 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
        <item row="0" column="1">
         <widget class="QLineEdit" name="nameCusLE"/>
        </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="masterLE"/>
-       </item>
        <item row="1" column="0">
         <widget class="QLabel" name="surenameCusLb">
          <property name="text">
           <string>Surename:</string>
          </property>
         </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLineEdit" name="areaBodyLE"/>
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="areaBodyLb">
@@ -289,6 +292,12 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
          </property>
         </widget>
        </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="bodyCusCb"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="masterCusCb"/>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="updateTime">
@@ -313,26 +322,6 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
        <item row="1" column="1" colspan="2">
         <widget class="QLineEdit" name="timeLE"/>
        </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QLabel" name="masterTimLb">
-         <property name="text">
-          <string>Master:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QLineEdit" name="masterTimLE"/>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QLabel" name="customerLb">
-         <property name="text">
-          <string>Customer:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QLineEdit" name="customerLE"/>
-       </item>
        <item row="4" column="0" colspan="3">
         <widget class="QPushButton" name="updateTimePb">
          <property name="text">
@@ -340,14 +329,34 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
          </property>
         </widget>
        </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="masterTimLb">
+         <property name="text">
+          <string>Master:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="customerLb">
+         <property name="text">
+          <string>Customer:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="2">
+        <widget class="QComboBox" name="masterTimCb"/>
+       </item>
+       <item row="3" column="1" colspan="2">
+        <widget class="QComboBox" name="customerCb"/>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="addSketchPg">
       <layout class="QGridLayout" name="gridLayout_7">
        <item row="0" column="0">
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="nameSkLb">
          <property name="text">
-          <string>TextLabel</string>
+          <string>Name:</string>
          </property>
         </widget>
        </item>
@@ -355,9 +364,9 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
         <widget class="QLineEdit" name="nameSktLE"/>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="PriceSkLb">
          <property name="text">
-          <string>TextLabel</string>
+          <string>Price:</string>
          </property>
         </widget>
        </item>
@@ -376,57 +385,14 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
      <widget class="QWidget" name="applicPage">
       <property name="styleSheet">
        <string notr="true">QComboBox {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 1px 18px 10px 3px;
-    selection-background-color: lightgray;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Регулює заокруглення кутів */
+    padding: 1px 18px 1px 3px; /* Регулює відступи внутрішніх елементів */
+    min-width: 6em;
+	font: 9pt &quot;Candara&quot;;
 }
 
-QComboBox:editable {
-    background: white;
-}
 
-QComboBox:!editable,
-QComboBox::drop-down:editable {
-    background-color: rgb(255, 255, 255);
-}
-
-QComboBox:!editable:on,
-QComboBox::drop-down:editable:on {
-    background: rgb(255, 255, 255);
-}
-
-QComboBox:on {
-    background: #rgb(225, 225, 225);
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 25px;
-    background-color: rgb(3, 3, 3);
-    border-left-width: 2px;
-    border-left-color: darkgray;
-    border-left-style: solid;
-}
-
-QComboBox::down-arrow {
-    image: url(:/photo/upArrow.png);
-    width: 10px;
-    height: 10px;
-    border-radius: 8px;
-    background-color: rgb(0, 0, 0);
-}
-
-QComboBox::down-arrow:on {
-    top: 1px;
-    left: 1px;
-    background-color: rgb(9, 9, 9);
-}
-
-QComboBox QAbstractItemView {
-    border-radius: 10px; /* Закруглення країв для випадаючого списку */
-}
 </string>
       </property>
       <layout class="QGridLayout" name="gridLayout_8">
@@ -495,13 +461,9 @@ QComboBox QAbstractItemView {
   <tabstop>surenameCusLE</tabstop>
   <tabstop>numberCusLE</tabstop>
   <tabstop>priceCusLE</tabstop>
-  <tabstop>areaBodyLE</tabstop>
-  <tabstop>masterLE</tabstop>
   <tabstop>updateCusPb</tabstop>
   <tabstop>dateLE</tabstop>
   <tabstop>timeLE</tabstop>
-  <tabstop>masterTimLE</tabstop>
-  <tabstop>customerLE</tabstop>
   <tabstop>updateTimePb</tabstop>
   <tabstop>nameSktLE</tabstop>
   <tabstop>priceSktLE</tabstop>

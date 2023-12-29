@@ -1,6 +1,7 @@
 #include "homecustomer.h"
 #include "ui_homecustomer.h"
 #include <QSqlQuery>
+#include <QMessageBox>
 HomeCustomer::HomeCustomer(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::HomeCustomer),
@@ -108,7 +109,7 @@ void HomeCustomer::loadImageFromByteArray(Sketch *sketch,QString statusSkt)
       nameLabel->setAlignment(Qt::AlignCenter);
 
 
-      QLabel *priceLabel = new QLabel(QString::number(sketch->getPrice()));
+      QLabel *priceLabel = new QLabel(QString::number(sketch->getPrice())+"grn");
       priceLabel->setAlignment(Qt::AlignCenter);
 
       QLabel *status = new QLabel(statusSkt);
@@ -237,13 +238,29 @@ void HomeCustomer::on_searchLEMaster_textChanged(const QString &arg1)
 void HomeCustomer::on_selectPb_clicked()
 {
      if (currentIndexImages >= 0 && currentIndexImages < sketchesV.size()) {
-        QString namestk = sketchesV[currentIndexImages]->getName();
+        qDebug()<<currentIndexImages;
+        QString namestk = sketchesV[currentIndexImages+1]->getName();
+        QString id_sketch = db->searchSketchId(namestk);
+        qDebug() << "ID Sketch: " << id_sketch;
+        QString status = db->searchStatusSketch(id_sketch);
+        qDebug()<<status;
+        if(status =="booked")
+            QMessageBox::critical(this,"Problem","This sketch is booked");
+        else{
         emit submitApp(6, namestk);
-        qstn->show();
-     } else {
+        qstn->show(); }
+     }
+        else {
         qDebug() << "Invalid currentIndexImages or sketchesV is empty.";
      }
 
+}
 
+
+
+
+void HomeCustomer::on_exitPB_clicked()
+{
+     emit exittHome();
 }
 

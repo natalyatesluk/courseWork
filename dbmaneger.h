@@ -34,8 +34,13 @@ public:
    virtual bool deleteItem(QString id,QString table_name)=0;
    virtual QString serchIdTime(QString &date, QString &time)=0;
    virtual int searchMasterId(QString &master)=0;
+   virtual int searchCustomerId(QString &customer)=0;
    virtual QString searchSketchId(QString name)=0;
    virtual bool updateStatusSketch(QString id)=0;
+   virtual  int searchBodyId(QString area)=0;
+   virtual  float searchSketchPrice(QString name)=0;
+   virtual bool serchCustomer(QString name,QString surename)=0;
+   virtual  QString searchStatusSketch(QString id)=0;
 
 };
 

@@ -7,7 +7,8 @@
 #include <quesfortime.h>
 #include <QSqlRelationalTableModel>
 #include <QSortFilterProxyModel>
-class QSqlTableModel;
+class QSqlRelationalTableModel;
+class QWidget;
 class DBManager;
 namespace Ui {
 class FreeTAdd;
@@ -41,8 +42,9 @@ private:
     QuesForTime *question;
     QSqlRelationalTableModel *modelFree;
     QSortFilterProxyModel *proxyFreeModel;
+    int masterIndex;
 signals:
-    void transfer(FreeTime *time, QString id);
+    void transfer(FreeTime *time, QString id,int page);
     void deleteTime(QString id);
 };
 

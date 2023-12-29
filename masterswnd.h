@@ -8,7 +8,7 @@
 #include <sqldbmaneger.h>
 #include "question.h"
 #include <QSortFilterProxyModel>
-
+class QWidget;
 class QSqlTableModel;
 class DBManager;
 

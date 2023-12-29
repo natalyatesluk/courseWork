@@ -1,6 +1,7 @@
 #include "bodywnd.h"
 #include "ui_bodywnd.h"
 #include <QMessageBox>
+#include "acceptreques.h"
 BodyWnd::BodyWnd(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::BodyWnd)
@@ -20,6 +21,8 @@ BodyWnd::BodyWnd(QWidget *parent) :
     ui->bodyTv->setEditTriggers(QAbstractItemView::NoEditTriggers);
     bodyModel->select();
 
+    connect(this, &BodyWnd::update, ques, &Question::updateBody);
+    connect(this, &BodyWnd::deleteBody, ques, &Question::deleteItem);
 }
 
 BodyWnd::~BodyWnd()
@@ -35,6 +38,10 @@ void BodyWnd::on_addPb_clicked()
     {
         db->inserIntoTableBody(area);
         bodyModel->select();
+        proxyBodyModel->invalidate();
+        emit closeWnd();
+        this->close();
+        ui->bodyLe->clear();
     }
     else
         QMessageBox::critical(this,"Problem","There are empty lines here");
@@ -43,7 +50,11 @@ void BodyWnd::on_addPb_clicked()
 void BodyWnd::closeQuestion()
 {
     ques->close();
+     proxyBodyModel->invalidate();
     bodyModel->select();
+     delete ques;
+     ques= nullptr;
+     ques = new Question();
 }
 
 
@@ -61,5 +72,6 @@ void BodyWnd::on_bodyTv_doubleClicked(const QModelIndex &index)
     emit deleteBody(id,TABLE_BODY);
     ques->show();
     connect(ques, &Question::closeWnd, this, &BodyWnd::closeQuestion);
+    bodyModel->select();
 }
 

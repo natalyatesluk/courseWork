@@ -2,11 +2,12 @@
 #define WORKWND_H
 
 #include <QWidget>
-#include "sqldbmaneger.h"
 #include "question.h"
 #include <QSqlRelationalTableModel>
 #include <QSortFilterProxyModel>
+#include <quesfortime.h>
 
+class QWidget;
 class DBManager;
 namespace Ui {
 class WorkWnd;
@@ -28,6 +29,7 @@ private slots:
 
 public slots:
     void closeQstn();
+    void updateTable();
 
 private:
     Ui::WorkWnd *ui;
@@ -35,6 +37,8 @@ private:
     Question *qstn;
     QSqlRelationalTableModel *modelWork;
     QSortFilterProxyModel *proxyWorkModel;
+    int masterIndex, customerIndex;
+    //QuesForTime *questForTime;
 signals:
     void updateTime(WorkTime *time,QString id,int page);
     void deleteTime(QString id, QString table_name);

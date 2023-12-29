@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -34,14 +35,14 @@ public:
     QWidget *transferPage;
     QGridLayout *gridLayout_2;
     QLabel *masterLb;
-    QLineEdit *masterLE;
     QLabel *timeLb;
     QLineEdit *timeLE;
     QLineEdit *dateLE;
     QLabel *dateLb;
     QLabel *customerLb;
-    QLineEdit *customerLE;
     QPushButton *transferPb;
+    QComboBox *mastersCb;
+    QComboBox *customersCb;
 
     void setupUi(QWidget *QuesForTime)
     {
@@ -153,11 +154,6 @@ public:
 
         gridLayout_2->addWidget(masterLb, 3, 0, 1, 1);
 
-        masterLE = new QLineEdit(transferPage);
-        masterLE->setObjectName("masterLE");
-
-        gridLayout_2->addWidget(masterLE, 3, 1, 1, 1);
-
         timeLb = new QLabel(transferPage);
         timeLb->setObjectName("timeLb");
 
@@ -183,24 +179,27 @@ public:
 
         gridLayout_2->addWidget(customerLb, 4, 0, 1, 1);
 
-        customerLE = new QLineEdit(transferPage);
-        customerLE->setObjectName("customerLE");
-
-        gridLayout_2->addWidget(customerLE, 4, 1, 1, 1);
-
         transferPb = new QPushButton(transferPage);
         transferPb->setObjectName("transferPb");
 
         gridLayout_2->addWidget(transferPb, 5, 0, 1, 2);
+
+        mastersCb = new QComboBox(transferPage);
+        mastersCb->setObjectName("mastersCb");
+
+        gridLayout_2->addWidget(mastersCb, 3, 1, 1, 1);
+
+        customersCb = new QComboBox(transferPage);
+        customersCb->setObjectName("customersCb");
+
+        gridLayout_2->addWidget(customersCb, 4, 1, 1, 1);
 
         questionStckW->addWidget(transferPage);
 
         gridLayout->addWidget(questionStckW, 0, 0, 1, 1);
 
         QWidget::setTabOrder(dateLE, timeLE);
-        QWidget::setTabOrder(timeLE, masterLE);
-        QWidget::setTabOrder(masterLE, customerLE);
-        QWidget::setTabOrder(customerLE, transferPb);
+        QWidget::setTabOrder(timeLE, transferPb);
         QWidget::setTabOrder(transferPb, deletePb);
         QWidget::setTabOrder(deletePb, choisTransPb);
 
@@ -219,11 +218,9 @@ public:
         choisTransPb->setText(QCoreApplication::translate("QuesForTime", "TRANSFER", nullptr));
         deletePb->setText(QCoreApplication::translate("QuesForTime", "DELETE", nullptr));
         masterLb->setText(QCoreApplication::translate("QuesForTime", "Master:", nullptr));
-        masterLE->setPlaceholderText(QCoreApplication::translate("QuesForTime", "Enter master ID...", nullptr));
         timeLb->setText(QCoreApplication::translate("QuesForTime", "Time:", nullptr));
         dateLb->setText(QCoreApplication::translate("QuesForTime", "Date:", nullptr));
         customerLb->setText(QCoreApplication::translate("QuesForTime", "Customer:", nullptr));
-        customerLE->setPlaceholderText(QCoreApplication::translate("QuesForTime", "Enter customer ID...", nullptr));
         transferPb->setText(QCoreApplication::translate("QuesForTime", "TRANSFER", nullptr));
     } // retranslateUi
 

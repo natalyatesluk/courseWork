@@ -15,6 +15,7 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCalendarWidget>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -42,13 +43,13 @@ public:
     QPushButton *goAddPb;
     QWidget *addePage;
     QGridLayout *gridLayout_2;
-    QLabel *masterLb;
-    QLabel *timeLb;
     QPushButton *addPb;
-    QLineEdit *masteLE;
-    QTimeEdit *timeEdit;
     QCalendarWidget *dateClnd;
     QPushButton *showPb;
+    QLabel *timeLb;
+    QLabel *masterLb;
+    QTimeEdit *timeEdit;
+    QComboBox *mastersCb;
 
     void setupUi(QWidget *FreeTAdd)
     {
@@ -208,30 +209,10 @@ public:
         addePage->setObjectName("addePage");
         gridLayout_2 = new QGridLayout(addePage);
         gridLayout_2->setObjectName("gridLayout_2");
-        masterLb = new QLabel(addePage);
-        masterLb->setObjectName("masterLb");
-
-        gridLayout_2->addWidget(masterLb, 4, 1, 1, 1);
-
-        timeLb = new QLabel(addePage);
-        timeLb->setObjectName("timeLb");
-
-        gridLayout_2->addWidget(timeLb, 2, 1, 1, 1);
-
         addPb = new QPushButton(addePage);
         addPb->setObjectName("addPb");
 
         gridLayout_2->addWidget(addPb, 5, 2, 1, 1);
-
-        masteLE = new QLineEdit(addePage);
-        masteLE->setObjectName("masteLE");
-
-        gridLayout_2->addWidget(masteLE, 4, 2, 1, 1);
-
-        timeEdit = new QTimeEdit(addePage);
-        timeEdit->setObjectName("timeEdit");
-
-        gridLayout_2->addWidget(timeEdit, 2, 2, 1, 1);
 
         dateClnd = new QCalendarWidget(addePage);
         dateClnd->setObjectName("dateClnd");
@@ -305,20 +286,39 @@ public:
 
         gridLayout_2->addWidget(showPb, 5, 0, 1, 2);
 
+        timeLb = new QLabel(addePage);
+        timeLb->setObjectName("timeLb");
+
+        gridLayout_2->addWidget(timeLb, 2, 0, 1, 1);
+
+        masterLb = new QLabel(addePage);
+        masterLb->setObjectName("masterLb");
+
+        gridLayout_2->addWidget(masterLb, 4, 0, 1, 1);
+
+        timeEdit = new QTimeEdit(addePage);
+        timeEdit->setObjectName("timeEdit");
+
+        gridLayout_2->addWidget(timeEdit, 2, 1, 1, 2);
+
+        mastersCb = new QComboBox(addePage);
+        mastersCb->setObjectName("mastersCb");
+
+        gridLayout_2->addWidget(mastersCb, 4, 1, 1, 2);
+
         freeTStckW->addWidget(addePage);
 
-        gridLayout->addWidget(freeTStckW, 0, 0, 1, 1);
+        gridLayout->addWidget(freeTStckW, 1, 0, 1, 1);
 
         QWidget::setTabOrder(dateClnd, timeEdit);
-        QWidget::setTabOrder(timeEdit, masteLE);
-        QWidget::setTabOrder(masteLE, addPb);
+        QWidget::setTabOrder(timeEdit, addPb);
         QWidget::setTabOrder(addPb, showPb);
         QWidget::setTabOrder(showPb, goAddPb);
         QWidget::setTabOrder(goAddPb, frTimeTv);
 
         retranslateUi(FreeTAdd);
 
-        freeTStckW->setCurrentIndex(0);
+        freeTStckW->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(FreeTAdd);
@@ -329,12 +329,10 @@ public:
         FreeTAdd->setWindowTitle(QCoreApplication::translate("FreeTAdd", "Free time", nullptr));
         searchLbl->setText(QString());
         goAddPb->setText(QCoreApplication::translate("FreeTAdd", "GO TO ADD", nullptr));
-        masterLb->setText(QCoreApplication::translate("FreeTAdd", "Master:", nullptr));
-        timeLb->setText(QCoreApplication::translate("FreeTAdd", "Time:", nullptr));
         addPb->setText(QCoreApplication::translate("FreeTAdd", "ADD", nullptr));
-        masteLE->setText(QString());
-        masteLE->setPlaceholderText(QCoreApplication::translate("FreeTAdd", "Enter master ID...", nullptr));
         showPb->setText(QCoreApplication::translate("FreeTAdd", "SHOW", nullptr));
+        timeLb->setText(QCoreApplication::translate("FreeTAdd", "Time:", nullptr));
+        masterLb->setText(QCoreApplication::translate("FreeTAdd", "Master:", nullptr));
     } // retranslateUi
 
 };

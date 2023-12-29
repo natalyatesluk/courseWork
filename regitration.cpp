@@ -2,11 +2,13 @@
 #include "ui_regitration.h"
 #include <QMessageBox>
 #include <QCryptographicHash>
+
 Regitration::Regitration(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::Regitration)
 {
     ui->setupUi(this);
+    setModal(true);
     sqlDBM = SqlDBManeger::getInstance();
     sqlDBM->connectToDataBase();
     ui->registrationStWdg->setCurrentIndex(0);

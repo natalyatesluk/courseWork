@@ -49,12 +49,13 @@ static constexpr auto qt_meta_stringdata_CLASSHomeWndENDCLASS = QtMocHelpers::st
     "on_changeMenPb_clicked",
     "on_changeWomenPb_clicked",
     "on_sketchPb_clicked",
+    "on_appPb_clicked",
     "username",
     "name"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSHomeWndENDCLASS_t {
-    uint offsetsAndSizes[26];
+    uint offsetsAndSizes[28];
     char stringdata0[8];
     char stringdata1[21];
     char stringdata2[1];
@@ -66,8 +67,9 @@ struct qt_meta_stringdata_CLASSHomeWndENDCLASS_t {
     char stringdata8[23];
     char stringdata9[25];
     char stringdata10[20];
-    char stringdata11[9];
-    char stringdata12[5];
+    char stringdata11[17];
+    char stringdata12[9];
+    char stringdata13[5];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSHomeWndENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -84,8 +86,9 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSHomeWndENDCLASS_t qt_meta_strin
         QT_MOC_LITERAL(130, 22),  // "on_changeMenPb_clicked"
         QT_MOC_LITERAL(153, 24),  // "on_changeWomenPb_clicked"
         QT_MOC_LITERAL(178, 19),  // "on_sketchPb_clicked"
-        QT_MOC_LITERAL(198, 8),  // "username"
-        QT_MOC_LITERAL(207, 4)   // "name"
+        QT_MOC_LITERAL(198, 16),  // "on_appPb_clicked"
+        QT_MOC_LITERAL(215, 8),  // "username"
+        QT_MOC_LITERAL(224, 4)   // "name"
     },
     "HomeWnd",
     "on_mastersPb_clicked",
@@ -98,6 +101,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSHomeWndENDCLASS_t qt_meta_strin
     "on_changeMenPb_clicked",
     "on_changeWomenPb_clicked",
     "on_sketchPb_clicked",
+    "on_appPb_clicked",
     "username",
     "name"
 };
@@ -111,7 +115,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSHomeWndENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -119,16 +123,17 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSHomeWndENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   74,    2, 0x08,    1 /* Private */,
-       3,    0,   75,    2, 0x08,    2 /* Private */,
-       4,    0,   76,    2, 0x08,    3 /* Private */,
-       5,    0,   77,    2, 0x08,    4 /* Private */,
-       6,    0,   78,    2, 0x08,    5 /* Private */,
-       7,    0,   79,    2, 0x08,    6 /* Private */,
-       8,    0,   80,    2, 0x08,    7 /* Private */,
-       9,    0,   81,    2, 0x08,    8 /* Private */,
-      10,    0,   82,    2, 0x08,    9 /* Private */,
-      11,    1,   83,    2, 0x0a,   10 /* Public */,
+       1,    0,   80,    2, 0x08,    1 /* Private */,
+       3,    0,   81,    2, 0x08,    2 /* Private */,
+       4,    0,   82,    2, 0x08,    3 /* Private */,
+       5,    0,   83,    2, 0x08,    4 /* Private */,
+       6,    0,   84,    2, 0x08,    5 /* Private */,
+       7,    0,   85,    2, 0x08,    6 /* Private */,
+       8,    0,   86,    2, 0x08,    7 /* Private */,
+       9,    0,   87,    2, 0x08,    8 /* Private */,
+      10,    0,   88,    2, 0x08,    9 /* Private */,
+      11,    0,   89,    2, 0x08,   10 /* Private */,
+      12,    1,   90,    2, 0x0a,   11 /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -140,7 +145,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSHomeWndENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   12,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   13,
 
        0        // eod
 };
@@ -172,6 +178,8 @@ Q_CONSTINIT const QMetaObject HomeWnd::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_sketchPb_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_appPb_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'username'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>
@@ -194,7 +202,8 @@ void HomeWnd::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 6: _t->on_changeMenPb_clicked(); break;
         case 7: _t->on_changeWomenPb_clicked(); break;
         case 8: _t->on_sketchPb_clicked(); break;
-        case 9: _t->username((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 9: _t->on_appPb_clicked(); break;
+        case 10: _t->username((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -219,13 +228,13 @@ int HomeWnd::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }

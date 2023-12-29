@@ -55,9 +55,7 @@ public:
     QWidget *updateCustomer;
     QGridLayout *gridLayout_6;
     QLineEdit *nameCusLE;
-    QLineEdit *masterLE;
     QLabel *surenameCusLb;
-    QLineEdit *areaBodyLE;
     QLabel *areaBodyLb;
     QLineEdit *priceCusLE;
     QLineEdit *numberCusLE;
@@ -67,22 +65,24 @@ public:
     QLabel *masterLb;
     QLabel *priceCusLb;
     QPushButton *updateCusPb;
+    QComboBox *bodyCusCb;
+    QComboBox *masterCusCb;
     QWidget *updateTime;
     QGridLayout *gridLayout_5;
     QLabel *dateLb;
     QLineEdit *dateLE;
     QLabel *timeLb;
     QLineEdit *timeLE;
-    QLabel *masterTimLb;
-    QLineEdit *masterTimLE;
-    QLabel *customerLb;
-    QLineEdit *customerLE;
     QPushButton *updateTimePb;
+    QLabel *masterTimLb;
+    QLabel *customerLb;
+    QComboBox *masterTimCb;
+    QComboBox *customerCb;
     QWidget *addSketchPg;
     QGridLayout *gridLayout_7;
-    QLabel *label;
+    QLabel *nameSkLb;
     QLineEdit *nameSktLE;
-    QLabel *label_2;
+    QLabel *PriceSkLb;
     QLineEdit *priceSktLE;
     QPushButton *addPb;
     QWidget *applicPage;
@@ -104,7 +104,16 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico"), QSize(), QIcon::Normal, QIcon::Off);
         Question->setWindowIcon(icon);
-        Question->setStyleSheet(QString::fromUtf8("QWidget\n"
+        Question->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"    border: 1px solid #ccc;\n"
+"    border-radius: 10px; /* \320\240\320\265\320\263\321\203\320\273\321\216\321\224 \320\267\320\260\320\276\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\275\321\217 \320\272\321\203\321\202\321\226\320\262 */\n"
+"    padding: 1px 18px 1px 3px; /* \320\240\320\265\320\263\321\203\320\273\321\216\321\224 \320\262\321\226\320\264\321\201\321\202\321\203\320\277\320\270 \320\262\320\275\321\203\321\202\321\200\321\226\321\210\320\275\321\226\321\205 \320\265\320\273\320\265\320\274\320\265\320\275\321\202\321\226\320\262 */\n"
+"    min-width: 6em;\n"
+"	font: 9pt \"Candara\";\n"
+"}\n"
+"\n"
+"\n"
+"QWidget\n"
 "{\n"
 "background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);\n"
@@ -113,7 +122,8 @@ public:
 "	font: 9pt \"Century Gothic\";\n"
 "    border: 3px solid black;\n"
 "    border-radius: 10px;\n"
-"    background-color: #f0f0f0;  /* \320\244\320\276\320\275 \320\267\320\260\320\276\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\276\320\263\320\276 \320\262\321\226\320\264\320\266\320\265\321\202\320\260 */\n"
+"    background-color: #f0f0f0;  /* \320\244\320\276\320\275 \320\267\320\260\320\276\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\276\320\263\320"
+                        "\276 \320\262\321\226\320\264\320\266\320\265\321\202\320\260 */\n"
 "    selection-background-color: #a6a6a6;  /* \320\232\320\276\320\273\321\226\321\200 \320\262\320\270\320\264\321\226\320\273\320\265\320\275\320\275\321\217 */\n"
 "}\n"
 "/* \320\206\320\274\320\265\320\275\320\260 \321\201\321\202\320\276\320\262\320\261\321\206\321\226\320\262 */\n"
@@ -121,13 +131,13 @@ public:
 "    background-color: #404040;  /* \320\232\320\276\320\273\321\226\321\200 \321\204\320\276\320\275\321\203 */\n"
 "    color: white;  /* \320\232\320\276\320\273\321\226\321\200 \321\202\320\265\320\272\321\201\321\202\321\203 */\n"
 "    padding: 4px;\n"
-"    border: 1px sol"
-                        "id #303030;  /* \320\223\321\200\320\260\320\275\320\270\321\206\321\226 */\n"
+"    border: 1px solid #303030;  /* \320\223\321\200\320\260\320\275\320\270\321\206\321\226 */\n"
 "}\n"
 "\n"
 "/* \320\235\320\276\320\274\320\265\321\200\320\260\321\206\321\226\321\217 \321\200\321\217\320\264\320\272\321\226\320\262 */\n"
 "QTableView QTableCornerButton::section {\n"
-"    background-color: #404040;  /* \320\232\320\276\320\273\321\226\321\200 \321\204\320\276\320\275\321\203 */\n"
+"    background-color: #404040;  /* \320\232\320\276\320\273\321\226\321\200 \321\204\320\276\320\275"
+                        "\321\203 */\n"
 "    color: white;  /* \320\232\320\276\320\273\321\226\321\200 \321\202\320\265\320\272\321\201\321\202\321\203 */\n"
 "    border: 1px solid #303030;  /* \320\223\321\200\320\260\320\275\320\270\321\206\321\226 */\n"
 "}\n"
@@ -138,8 +148,7 @@ public:
 "}\n"
 "\n"
 "QTableView::item:selected {\n"
-"    border: 2px solid #303030;  /* \320\232\320\276\320\273\321\226\321\200 \320\263\321\200\320\260"
-                        "\320\275\320\270\321\206\321\226 \320\277\321\200\320\270 \320\262\320\270\320\264\321\226\320\273\320\265\320\275\320\275\321\226 */\n"
+"    border: 2px solid #303030;  /* \320\232\320\276\320\273\321\226\321\200 \320\263\321\200\320\260\320\275\320\270\321\206\321\226 \320\277\321\200\320\270 \320\262\320\270\320\264\321\226\320\273\320\265\320\275\320\275\321\226 */\n"
 "}\n"
 "QLineEdit {\n"
 "font: 12pt \"Candara\";\n"
@@ -147,7 +156,8 @@ public:
 "                 color: black;\n"
 "                 border: 1px solid rgb(110, 110, 110);\n"
 "              border-radius: 10px;\n"
-"                 padding: 3px 7px;\n"
+""
+                        "                 padding: 3px 7px;\n"
 "             }\n"
 "\n"
 "             QLineEdit:focus {\n"
@@ -170,8 +180,7 @@ public:
 "             background-color: rgb(255, 255, 255);\n"
 "	        color: rgb(0, 0, 0);\n"
 "            }\n"
-"QLabel{font: 12p"
-                        "t \"Candara\";}"));
+"QLabel{font: 12pt \"Candara\";}"));
         gridLayout_3 = new QGridLayout(Question);
         gridLayout_3->setObjectName("gridLayout_3");
         questionSt = new QStackedWidget(Question);
@@ -292,20 +301,10 @@ public:
 
         gridLayout_6->addWidget(nameCusLE, 0, 1, 1, 1);
 
-        masterLE = new QLineEdit(updateCustomer);
-        masterLE->setObjectName("masterLE");
-
-        gridLayout_6->addWidget(masterLE, 5, 1, 1, 1);
-
         surenameCusLb = new QLabel(updateCustomer);
         surenameCusLb->setObjectName("surenameCusLb");
 
         gridLayout_6->addWidget(surenameCusLb, 1, 0, 1, 1);
-
-        areaBodyLE = new QLineEdit(updateCustomer);
-        areaBodyLE->setObjectName("areaBodyLE");
-
-        gridLayout_6->addWidget(areaBodyLE, 4, 1, 1, 1);
 
         areaBodyLb = new QLabel(updateCustomer);
         areaBodyLb->setObjectName("areaBodyLb");
@@ -352,6 +351,16 @@ public:
 
         gridLayout_6->addWidget(updateCusPb, 6, 0, 1, 2);
 
+        bodyCusCb = new QComboBox(updateCustomer);
+        bodyCusCb->setObjectName("bodyCusCb");
+
+        gridLayout_6->addWidget(bodyCusCb, 4, 1, 1, 1);
+
+        masterCusCb = new QComboBox(updateCustomer);
+        masterCusCb->setObjectName("masterCusCb");
+
+        gridLayout_6->addWidget(masterCusCb, 5, 1, 1, 1);
+
         questionSt->addWidget(updateCustomer);
         updateTime = new QWidget();
         updateTime->setObjectName("updateTime");
@@ -377,50 +386,50 @@ public:
 
         gridLayout_5->addWidget(timeLE, 1, 1, 1, 2);
 
-        masterTimLb = new QLabel(updateTime);
-        masterTimLb->setObjectName("masterTimLb");
-
-        gridLayout_5->addWidget(masterTimLb, 2, 0, 1, 2);
-
-        masterTimLE = new QLineEdit(updateTime);
-        masterTimLE->setObjectName("masterTimLE");
-
-        gridLayout_5->addWidget(masterTimLE, 2, 2, 1, 1);
-
-        customerLb = new QLabel(updateTime);
-        customerLb->setObjectName("customerLb");
-
-        gridLayout_5->addWidget(customerLb, 3, 0, 1, 2);
-
-        customerLE = new QLineEdit(updateTime);
-        customerLE->setObjectName("customerLE");
-
-        gridLayout_5->addWidget(customerLE, 3, 2, 1, 1);
-
         updateTimePb = new QPushButton(updateTime);
         updateTimePb->setObjectName("updateTimePb");
 
         gridLayout_5->addWidget(updateTimePb, 4, 0, 1, 3);
+
+        masterTimLb = new QLabel(updateTime);
+        masterTimLb->setObjectName("masterTimLb");
+
+        gridLayout_5->addWidget(masterTimLb, 2, 0, 1, 1);
+
+        customerLb = new QLabel(updateTime);
+        customerLb->setObjectName("customerLb");
+
+        gridLayout_5->addWidget(customerLb, 3, 0, 1, 1);
+
+        masterTimCb = new QComboBox(updateTime);
+        masterTimCb->setObjectName("masterTimCb");
+
+        gridLayout_5->addWidget(masterTimCb, 2, 1, 1, 2);
+
+        customerCb = new QComboBox(updateTime);
+        customerCb->setObjectName("customerCb");
+
+        gridLayout_5->addWidget(customerCb, 3, 1, 1, 2);
 
         questionSt->addWidget(updateTime);
         addSketchPg = new QWidget();
         addSketchPg->setObjectName("addSketchPg");
         gridLayout_7 = new QGridLayout(addSketchPg);
         gridLayout_7->setObjectName("gridLayout_7");
-        label = new QLabel(addSketchPg);
-        label->setObjectName("label");
+        nameSkLb = new QLabel(addSketchPg);
+        nameSkLb->setObjectName("nameSkLb");
 
-        gridLayout_7->addWidget(label, 0, 0, 1, 1);
+        gridLayout_7->addWidget(nameSkLb, 0, 0, 1, 1);
 
         nameSktLE = new QLineEdit(addSketchPg);
         nameSktLE->setObjectName("nameSktLE");
 
         gridLayout_7->addWidget(nameSktLE, 0, 1, 1, 1);
 
-        label_2 = new QLabel(addSketchPg);
-        label_2->setObjectName("label_2");
+        PriceSkLb = new QLabel(addSketchPg);
+        PriceSkLb->setObjectName("PriceSkLb");
 
-        gridLayout_7->addWidget(label_2, 1, 0, 1, 1);
+        gridLayout_7->addWidget(PriceSkLb, 1, 0, 1, 1);
 
         priceSktLE = new QLineEdit(addSketchPg);
         priceSktLE->setObjectName("priceSktLE");
@@ -436,60 +445,15 @@ public:
         applicPage = new QWidget();
         applicPage->setObjectName("applicPage");
         applicPage->setStyleSheet(QString::fromUtf8("QComboBox {\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px; /* \320\227\320\260\320\276\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\275\321\217 \320\272\321\200\320\260\321\227\320\262 */\n"
-"    padding: 1px 18px 10px 3px; /* \320\237\321\226\320\264\320\263\320\276\320\275\320\272\320\260 \321\200\320\276\320\267\320\274\321\226\321\200\321\226\320\262, \321\211\320\276\320\261 \321\202\320\265\320\272\321\201\321\202 \320\275\320\265 \320\275\320\260\320\272\320\273\320\260\320\264\320\260\320\262\321\201\321\217 \320\275\320\260 \321\201\321\202\321\200\321\226\320\273\320\272\321\203 */\n"
-"    selection-background-color: lightgray; /* \320\232\320\276\320\273\321\226\321\200 \321\204\320\276\320\275\321\203 \320\262\320\270\320\261\321\200\320\260\320\275\320\276\320\263\320\276 \320\265\320\273\320\265\320\274\320\265\320\275\321\202\320\260 */\n"
+"    border: 1px solid #ccc;\n"
+"    border-radius: 10px; /* \320\240\320\265\320\263\321\203\320\273\321\216\321\224 \320\267\320\260\320\276\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\275\321\217 \320\272\321\203\321\202\321\226\320\262 */\n"
+"    padding: 1px 18px 1px 3px; /* \320\240\320\265\320\263\321\203\320\273\321\216\321\224 \320\262\321\226\320\264\321\201\321\202\321\203\320\277\320\270 \320\262\320\275\321\203\321\202\321\200\321\226\321\210\320\275\321\226\321\205 \320\265\320\273\320\265\320\274\320\265\320\275\321\202\321\226\320\262 */\n"
+"    min-width: 6em;\n"
+"	font: 9pt \"Candara\";\n"
 "}\n"
 "\n"
-"QComboBox:editable {\n"
-"    background: white;\n"
-"}\n"
 "\n"
-"QComboBox:!editable, QComboBox::drop-down:editable {\n"
-""
-                        "     /* \321\204\320\276\320\275 \320\264\320\273\321\217 \321\200\320\265\320\266\320\270\320\274\321\203 \"\320\275\320\265\321\200\320\265\320\264\320\260\320\263\320\276\320\262\320\260\320\275\320\276\" \321\202\320\260 \321\201\321\202\321\200\321\226\320\273\320\272\320\270 \321\203 \321\200\320\265\320\266\320\270\320\274\321\226 \"\321\200\320\265\320\264\320\260\320\263\320\276\320\262\320\260\320\275\320\276\" */\n"
-"    \n"
-"	bakckground-color: rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
-"    /* \321\204\320\276\320\275 \320\264\320\273\321\217 \321\201\321\202\321\200\321\226\320\273\320\272\320\270 \321\203 \321\200\320\265\320\266\320\270\320\274\321\226 \"\321\200\320\265\320\264\320\260\320\263\320\276\320\262\320\260\320\275\320\276\" */\n"
-"    background: rgb(2, 2, 2)\n"
-"}\n"
-"\n"
-"QComboBox:on { /* \320\272\320\276\320\273\321\226\321\200 \321\204\320\276\320\275\321\203, \320\272\320\276\320\273\320\270 \321\200\320\276\320\267\320\272"
-                        "\321\200\320\270\321\202\320\276 */\n"
-"    background: #E1E1E1;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: top right;\n"
-"    width: 25px;\n"
-"	background-color: rgb(3, 3, 3);\n"
-"    border-left-width: 2px;\n"
-"    border-left-color: darkgray;\n"
-"    border-left-style: solid; /* \321\201\321\202\321\200\321\226\320\273\320\272\320\260 \320\274\320\260\321\224 \320\262\320\270\320\263\320\273\321\217\320\264\320\260\321\202\320\270 \321\217\320\272 \321\200\320\276\320\267\320\264\321\226\320\273\321\214\320\275\320\270\320\272 \320\274\321\226\320\266 \321\200\320\276\320\267\320\272\321\200\320\270\320\262\320\260\321\216\321\207\320\270\320\274\321\201\321\217 \321\201\320\277\320\270\321\201\320\272\320\276\320\274 \321\202\320\260 \321\201\321\202\321\200\321\226\320\273\320\272\320\276\321\216*/\n"
-"\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow {\n"
-"     /* \320\262\320\260\321\210\320\260 \320\272\320\260\321\200\321\202\320\270\320\275\320\272\320\260"
-                        " \321\201\321\202\321\200\321\226\320\273\320\272\320\270 */\n"
-"	image: url(:/photo/upArrow.png);\n"
-"width: 10px; /* \320\235\320\276\320\262\320\260 \321\210\320\270\321\200\320\270\320\275\320\260 */\n"
-"    height: 10px; /* \320\235\320\276\320\262\320\260 \320\262\320\270\321\201\320\276\321\202\320\260 */\n"
-"  \n"
-"	background-color: rgb(0, 0, 0);\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow:on {\n"
-"    /* \320\272\320\276\320\273\321\226\321\200 \321\201\321\202\321\200\321\226\320\273\320\272\320\270, \320\272\320\276\320\273\320\270 \321\200\320\276\320\267\320\272\321\200\320\270\321\202\320\276 */\n"
-"    top: 1px;\n"
-"    left: 1px;\n"
-"    background-color: rgb(9, 9, 9);\n"
-"}"));
+""));
         gridLayout_8 = new QGridLayout(applicPage);
         gridLayout_8->setObjectName("gridLayout_8");
         numberAplLE = new QLineEdit(applicPage);
@@ -549,21 +513,17 @@ public:
         QWidget::setTabOrder(nameCusLE, surenameCusLE);
         QWidget::setTabOrder(surenameCusLE, numberCusLE);
         QWidget::setTabOrder(numberCusLE, priceCusLE);
-        QWidget::setTabOrder(priceCusLE, areaBodyLE);
-        QWidget::setTabOrder(areaBodyLE, masterLE);
-        QWidget::setTabOrder(masterLE, updateCusPb);
+        QWidget::setTabOrder(priceCusLE, updateCusPb);
         QWidget::setTabOrder(updateCusPb, dateLE);
         QWidget::setTabOrder(dateLE, timeLE);
-        QWidget::setTabOrder(timeLE, masterTimLE);
-        QWidget::setTabOrder(masterTimLE, customerLE);
-        QWidget::setTabOrder(customerLE, updateTimePb);
+        QWidget::setTabOrder(timeLE, updateTimePb);
         QWidget::setTabOrder(updateTimePb, nameSktLE);
         QWidget::setTabOrder(nameSktLE, priceSktLE);
         QWidget::setTabOrder(priceSktLE, addPb);
 
         retranslateUi(Question);
 
-        questionSt->setCurrentIndex(6);
+        questionSt->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Question);
@@ -592,11 +552,11 @@ public:
         updateCusPb->setText(QCoreApplication::translate("Question", "UPDATE", nullptr));
         dateLb->setText(QCoreApplication::translate("Question", "Date:", nullptr));
         timeLb->setText(QCoreApplication::translate("Question", "Time:", nullptr));
+        updateTimePb->setText(QCoreApplication::translate("Question", "UPDATE", nullptr));
         masterTimLb->setText(QCoreApplication::translate("Question", "Master:", nullptr));
         customerLb->setText(QCoreApplication::translate("Question", "Customer:", nullptr));
-        updateTimePb->setText(QCoreApplication::translate("Question", "UPDATE", nullptr));
-        label->setText(QCoreApplication::translate("Question", "TextLabel", nullptr));
-        label_2->setText(QCoreApplication::translate("Question", "TextLabel", nullptr));
+        nameSkLb->setText(QCoreApplication::translate("Question", "Name:", nullptr));
+        PriceSkLb->setText(QCoreApplication::translate("Question", "Price:", nullptr));
         addPb->setText(QCoreApplication::translate("Question", "Add", nullptr));
         numberAplLE->setPlaceholderText(QCoreApplication::translate("Question", "Enter your number", nullptr));
         bodyAplLE->setPlaceholderText(QCoreApplication::translate("Question", "Enter area body", nullptr));

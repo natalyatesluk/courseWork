@@ -9,9 +9,11 @@ private:
     QDate date;
     QTime time;
     int masterId;
+    QString masterStr;
 public:
-   FreeTime() : date(), time(), masterId(0) {}
-   FreeTime(QDate date, QTime time, int master):date(date), time(time), masterId(master){}
+    FreeTime() : date(), time(), masterId(0),masterStr(QString()) {}
+   FreeTime(QDate date, QTime time, int master):date(date), time(time), masterId(master),masterStr(QString()){}
+     FreeTime(QDate date, QTime time, QString master):date(date), time(time),masterId(0), masterStr(master){}
    ~FreeTime() {}
    FreeTime(FreeTime &free);
 
@@ -23,6 +25,9 @@ public:
 
    int getMaster(){return this->masterId;}
    void setMaster(int master){this->masterId=master;}
+
+   QString getMasterStr(){return this->masterStr;}
+   void setMasterStr(QString master){this->masterStr=master;}
 
 };
 

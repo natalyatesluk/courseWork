@@ -27,6 +27,7 @@ MastersWnd::MastersWnd(QWidget *parent) :
     qus= new Question();
     connect(this, &MastersWnd::update, qus, &Question::updateMasters);
     connect(this, &MastersWnd::deleteMaster, qus, &Question::deleteItem);
+    connect(qus, &Question::closeWnd, this, &MastersWnd::closeQuestion);
 
 }
 
@@ -51,6 +52,11 @@ void MastersWnd::on_addPb_clicked()
          modelMaster->select();
          delete master;
          master=nullptr;
+         ui->nameLE->clear();
+         ui->surenameLE->clear();
+         ui->numberLE->clear();
+         ui->priceLE->clear();
+        ui->doneWorkLE->clear();
      }
      else
          QMessageBox::critical(this,"Problem","There are empty lines here");
@@ -61,6 +67,9 @@ void MastersWnd::closeQuestion()
 {
      qus->close();
      modelMaster->select();
+     delete qus;
+     qus= nullptr;
+     qus = new Question();
 }
 
 void MastersWnd::on_mastersTv_doubleClicked(const QModelIndex &index)
@@ -80,7 +89,7 @@ void MastersWnd::on_mastersTv_doubleClicked(const QModelIndex &index)
      emit update(selectedMaster, id,page);
      emit deleteMaster(id,TABLE_MASTER);
      qus->show();
-     connect(qus, &Question::closeWnd, this, &MastersWnd::closeQuestion);
+
 }
 
 void MastersWnd::on_searchLE_textChanged(const QString &arg1)

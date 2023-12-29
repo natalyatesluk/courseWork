@@ -489,6 +489,8 @@ bool SqlDBManeger:: nameCheck(QString name)
 
 }
 
+
+
 bool SqlDBManeger::nameCheckCustomer(QString name)
 {
     QSqlQuery queryAccount;
@@ -635,12 +637,12 @@ bool SqlDBManeger::deleteItem(QString id, QString table_name)
 {
     QSqlQuery query;
 
-    query.prepare("DELETE FROM  " +table_name+ " WHERE " ID" = :Id");
+    query.prepare("DELETE FROM  " +table_name+ " WHERE " ID " = :Id");
     query.bindValue(":Id", id);
     if (query.exec()) {
         return true;
     } else {
-        qDebug() << "Error updating master: " << query.lastError().text();
+        qDebug() << "Error delete: " << query.lastError().text();
         return false;
     }
 }
@@ -689,6 +691,28 @@ int SqlDBManeger::searchMasterId(QString &master)
     return -1;
 }
 
+int SqlDBManeger::searchCustomerId(QString &customer)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT id FROM " TABLE_CUSTOMER " WHERE name = :customer");
+    query.bindValue(":customer", customer);
+
+
+    if (query.exec() && query.next()) {
+        int id = query.value(0).toInt();
+        qDebug() << id;
+        return id;
+    } else {
+        if (!query.next()) {
+            qDebug() << "No record found for the given customer.";
+        }
+        QString problem = query.lastError().text();
+        QMessageBox::critical(qApp->activeWindow(), "Problem", problem);
+    }
+    return -1;
+}
+
 QString SqlDBManeger::searchSketchId(QString name)
 {
     QSqlQuery query;
@@ -711,6 +735,28 @@ QString SqlDBManeger::searchSketchId(QString name)
     return QString();
 }
 
+float SqlDBManeger::searchSketchPrice(QString name)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT price FROM " TABLE_SKETCH " WHERE name = :name");
+    query.bindValue(":name", name);
+
+
+    if (query.exec() && query.next()) {
+        float price = query.value(0).toFloat();
+        qDebug() << price;
+        return price;
+    } else {
+        if (!query.next()) {
+            qDebug() << "No record found for the given sketch.";
+        }
+        QString problem = query.lastError().text();
+        QMessageBox::critical(qApp->activeWindow(), "Problem", problem);
+    }
+    return -1.1;
+}
+
 bool SqlDBManeger::updateStatusSketch(QString id)
 {
     QSqlQuery querySketch;
@@ -728,6 +774,67 @@ bool SqlDBManeger::updateStatusSketch(QString id)
         return false;
     }
 }
+
+int SqlDBManeger::searchBodyId(QString area)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT id FROM " TABLE_BODY " WHERE area = :area");
+    query.bindValue(":area", area);
+
+
+    if (query.exec() && query.next()) {
+        int id = query.value(0).toInt();
+        return id;
+    } else {
+        if (!query.next()) {
+            qDebug() << "No record found for the given sketch.";
+        }
+        QString problem = query.lastError().text();
+        QMessageBox::critical(qApp->activeWindow(), "Problem", problem);
+    }
+    return -1;
+}
+
+bool SqlDBManeger::serchCustomer(QString name, QString surename)
+{
+    QSqlQuery query;
+    query.prepare("SELECT * FROM " TABLE_CUSTOMER " WHERE " TABLE_SURENAME " = :Surename "
+                  "AND " TABLE_NAME "= :Name");
+    query.bindValue(":Name", name);
+    query.bindValue(":Surename", surename);
+    query.exec();
+    if (!query.exec()) {
+        qDebug() << "error insert into " << TABLE_CUSTOMER;
+        qDebug() << query.lastError().text();
+        qDebug() << query.lastQuery();
+    }
+    if(query.next()) { return true;}
+    else  {return false;}
+}
+
+QString SqlDBManeger::searchStatusSketch(QString id)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT status FROM " TABLE_SKETCH " WHERE id = :id");
+    query.bindValue(":id", id);
+
+
+    if (query.exec() && query.next()) {
+        QString status = query.value(0).toString();
+        qDebug() << status;
+        return status;
+    } else {
+        if (!query.next()) {
+            qDebug() << "No record found for the given sketch.";
+        }
+        QString problem = query.lastError().text();
+        QMessageBox::critical(qApp->activeWindow(), "Problem", problem);
+    }
+    return QString();
+}
+
 
 
 

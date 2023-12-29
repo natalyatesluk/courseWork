@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -27,24 +28,24 @@ class Ui_CustomerWnd
 {
 public:
     QGridLayout *gridLayout;
+    QLineEdit *nameLE;
+    QPushButton *addPb;
+    QPushButton *bodyPb;
+    QLabel *bodyLb;
+    QLabel *numberLb;
+    QTableView *customerTv;
+    QLineEdit *numberLE;
     QHBoxLayout *horizontalLayout;
     QLabel *searchLbl;
     QLineEdit *searchLE;
-    QLabel *nameLb;
-    QLineEdit *nameLE;
     QLabel *priceLb;
-    QLineEdit *priceLE;
-    QPushButton *bodyPb;
-    QLabel *surenameLb;
     QLineEdit *surenameLE;
-    QLabel *bodyLb;
-    QLineEdit *bodyLE;
-    QLabel *numberLb;
-    QLineEdit *numberLE;
+    QLabel *nameLb;
+    QLabel *surenameLb;
     QLabel *masterLb;
-    QLineEdit *masterLE;
-    QPushButton *addPb;
-    QTableView *customerTv;
+    QLineEdit *priceLE;
+    QComboBox *bodyCb;
+    QComboBox *mastersCb;
 
     void setupUi(QWidget *CustomerWnd)
     {
@@ -124,6 +125,41 @@ public:
                         "t \"Candara\";}"));
         gridLayout = new QGridLayout(CustomerWnd);
         gridLayout->setObjectName("gridLayout");
+        nameLE = new QLineEdit(CustomerWnd);
+        nameLE->setObjectName("nameLE");
+
+        gridLayout->addWidget(nameLE, 2, 1, 1, 1);
+
+        addPb = new QPushButton(CustomerWnd);
+        addPb->setObjectName("addPb");
+
+        gridLayout->addWidget(addPb, 4, 5, 1, 1);
+
+        bodyPb = new QPushButton(CustomerWnd);
+        bodyPb->setObjectName("bodyPb");
+
+        gridLayout->addWidget(bodyPb, 2, 5, 1, 1);
+
+        bodyLb = new QLabel(CustomerWnd);
+        bodyLb->setObjectName("bodyLb");
+
+        gridLayout->addWidget(bodyLb, 3, 2, 1, 1);
+
+        numberLb = new QLabel(CustomerWnd);
+        numberLb->setObjectName("numberLb");
+
+        gridLayout->addWidget(numberLb, 4, 0, 1, 1);
+
+        customerTv = new QTableView(CustomerWnd);
+        customerTv->setObjectName("customerTv");
+
+        gridLayout->addWidget(customerTv, 1, 0, 1, 6);
+
+        numberLE = new QLineEdit(CustomerWnd);
+        numberLE->setObjectName("numberLE");
+
+        gridLayout->addWidget(numberLE, 4, 1, 1, 1);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
         searchLbl = new QLabel(CustomerWnd);
@@ -163,89 +199,52 @@ public:
         horizontalLayout->addWidget(searchLE);
 
 
-        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 5);
-
-        nameLb = new QLabel(CustomerWnd);
-        nameLb->setObjectName("nameLb");
-
-        gridLayout->addWidget(nameLb, 2, 0, 1, 1);
-
-        nameLE = new QLineEdit(CustomerWnd);
-        nameLE->setObjectName("nameLE");
-
-        gridLayout->addWidget(nameLE, 2, 1, 1, 1);
+        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 6);
 
         priceLb = new QLabel(CustomerWnd);
         priceLb->setObjectName("priceLb");
 
         gridLayout->addWidget(priceLb, 2, 2, 1, 1);
 
-        priceLE = new QLineEdit(CustomerWnd);
-        priceLE->setObjectName("priceLE");
+        surenameLE = new QLineEdit(CustomerWnd);
+        surenameLE->setObjectName("surenameLE");
 
-        gridLayout->addWidget(priceLE, 2, 3, 1, 1);
+        gridLayout->addWidget(surenameLE, 3, 1, 1, 1);
 
-        bodyPb = new QPushButton(CustomerWnd);
-        bodyPb->setObjectName("bodyPb");
+        nameLb = new QLabel(CustomerWnd);
+        nameLb->setObjectName("nameLb");
 
-        gridLayout->addWidget(bodyPb, 2, 4, 1, 1);
+        gridLayout->addWidget(nameLb, 2, 0, 1, 1);
 
         surenameLb = new QLabel(CustomerWnd);
         surenameLb->setObjectName("surenameLb");
 
         gridLayout->addWidget(surenameLb, 3, 0, 1, 1);
 
-        surenameLE = new QLineEdit(CustomerWnd);
-        surenameLE->setObjectName("surenameLE");
-
-        gridLayout->addWidget(surenameLE, 3, 1, 1, 1);
-
-        bodyLb = new QLabel(CustomerWnd);
-        bodyLb->setObjectName("bodyLb");
-
-        gridLayout->addWidget(bodyLb, 3, 2, 1, 1);
-
-        bodyLE = new QLineEdit(CustomerWnd);
-        bodyLE->setObjectName("bodyLE");
-
-        gridLayout->addWidget(bodyLE, 3, 3, 1, 1);
-
-        numberLb = new QLabel(CustomerWnd);
-        numberLb->setObjectName("numberLb");
-
-        gridLayout->addWidget(numberLb, 4, 0, 1, 1);
-
-        numberLE = new QLineEdit(CustomerWnd);
-        numberLE->setObjectName("numberLE");
-
-        gridLayout->addWidget(numberLE, 4, 1, 1, 1);
-
         masterLb = new QLabel(CustomerWnd);
         masterLb->setObjectName("masterLb");
 
         gridLayout->addWidget(masterLb, 4, 2, 1, 1);
 
-        masterLE = new QLineEdit(CustomerWnd);
-        masterLE->setObjectName("masterLE");
+        priceLE = new QLineEdit(CustomerWnd);
+        priceLE->setObjectName("priceLE");
 
-        gridLayout->addWidget(masterLE, 4, 3, 1, 1);
+        gridLayout->addWidget(priceLE, 2, 4, 1, 1);
 
-        addPb = new QPushButton(CustomerWnd);
-        addPb->setObjectName("addPb");
+        bodyCb = new QComboBox(CustomerWnd);
+        bodyCb->setObjectName("bodyCb");
 
-        gridLayout->addWidget(addPb, 4, 4, 1, 1);
+        gridLayout->addWidget(bodyCb, 3, 4, 1, 1);
 
-        customerTv = new QTableView(CustomerWnd);
-        customerTv->setObjectName("customerTv");
+        mastersCb = new QComboBox(CustomerWnd);
+        mastersCb->setObjectName("mastersCb");
 
-        gridLayout->addWidget(customerTv, 1, 0, 1, 5);
+        gridLayout->addWidget(mastersCb, 4, 4, 1, 1);
 
         QWidget::setTabOrder(nameLE, surenameLE);
         QWidget::setTabOrder(surenameLE, numberLE);
         QWidget::setTabOrder(numberLE, priceLE);
-        QWidget::setTabOrder(priceLE, bodyLE);
-        QWidget::setTabOrder(bodyLE, masterLE);
-        QWidget::setTabOrder(masterLE, addPb);
+        QWidget::setTabOrder(priceLE, addPb);
         QWidget::setTabOrder(addPb, bodyPb);
         QWidget::setTabOrder(bodyPb, customerTv);
 
@@ -257,15 +256,15 @@ public:
     void retranslateUi(QWidget *CustomerWnd)
     {
         CustomerWnd->setWindowTitle(QCoreApplication::translate("CustomerWnd", "Customers", nullptr));
-        searchLbl->setText(QString());
-        nameLb->setText(QCoreApplication::translate("CustomerWnd", "Name:", nullptr));
-        priceLb->setText(QCoreApplication::translate("CustomerWnd", "Price:", nullptr));
+        addPb->setText(QCoreApplication::translate("CustomerWnd", "ADD", nullptr));
         bodyPb->setText(QCoreApplication::translate("CustomerWnd", "Body", nullptr));
-        surenameLb->setText(QCoreApplication::translate("CustomerWnd", "Surename:", nullptr));
         bodyLb->setText(QCoreApplication::translate("CustomerWnd", "Body:", nullptr));
         numberLb->setText(QCoreApplication::translate("CustomerWnd", "Number:", nullptr));
+        searchLbl->setText(QString());
+        priceLb->setText(QCoreApplication::translate("CustomerWnd", "Price:", nullptr));
+        nameLb->setText(QCoreApplication::translate("CustomerWnd", "Name:", nullptr));
+        surenameLb->setText(QCoreApplication::translate("CustomerWnd", "Surename:", nullptr));
         masterLb->setText(QCoreApplication::translate("CustomerWnd", "Master:", nullptr));
-        addPb->setText(QCoreApplication::translate("CustomerWnd", "ADD", nullptr));
     } // retranslateUi
 
 };

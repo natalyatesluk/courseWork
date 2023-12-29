@@ -11,6 +11,7 @@
 #include "sqldbmaneger.h"
 #include "sketch.h"
 
+class QWidget;
 class DBManager;
 class Question;
 class QVBoxLayout;
@@ -34,6 +35,8 @@ private slots:
 
     void on_backPb_clicked();
 
+    void on_deletePb_clicked();
+
 private:
     Ui::ScketchWnd *ui;
     QLabel *imageLabel;
@@ -41,6 +44,7 @@ private:
     Sketch *sketch;
     Question *qstn;
     QList<QLabel *> imageLabels;
+    QVector<Sketch*> sketchesV;
     int currentIndexStckW;
     void updateImage();
     void loadImageFromByteArray(Sketch *sketch,QString statusSkt);

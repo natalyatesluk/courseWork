@@ -25,14 +25,12 @@ class Ui_HomeWnd
 {
 public:
     QGridLayout *gridLayout_2;
-    QPushButton *homePb;
     QSpacerItem *spacerHomePb;
+    QPushButton *homePb;
     QStackedWidget *stackedWidget;
     QWidget *welcome;
     QGridLayout *gridLayout;
-    QPushButton *freePb;
-    QPushButton *mastersPb;
-    QPushButton *pushButton;
+    QSpacerItem *horizontalSpacer_2;
     QStackedWidget *avatarStckW;
     QWidget *avatar;
     QGridLayout *gridLayout_4;
@@ -46,18 +44,21 @@ public:
     QLabel *mAvatarlb;
     QPushButton *changeWomenPb;
     QPushButton *changeMenPb;
-    QPushButton *customerPb;
-    QLabel *pictureLb;
-    QSpacerItem *horizontalSpacer_2;
-    QLabel *welcoeLb;
+    QPushButton *freePb;
     QSpacerItem *horizontalSpacer;
+    QPushButton *mastersPb;
     QPushButton *sketchPb;
+    QLabel *pictureLb;
+    QPushButton *pushButton;
+    QPushButton *customerPb;
+    QLabel *welcoeLb;
+    QPushButton *appPb;
 
     void setupUi(QWidget *HomeWnd)
     {
         if (HomeWnd->objectName().isEmpty())
             HomeWnd->setObjectName("HomeWnd");
-        HomeWnd->resize(704, 586);
+        HomeWnd->resize(704, 636);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico"), QSize(), QIcon::Normal, QIcon::Off);
         HomeWnd->setWindowIcon(icon);
@@ -86,6 +87,10 @@ public:
 "            }"));
         gridLayout_2 = new QGridLayout(HomeWnd);
         gridLayout_2->setObjectName("gridLayout_2");
+        spacerHomePb = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(spacerHomePb, 3, 0, 1, 1);
+
         homePb = new QPushButton(HomeWnd);
         homePb->setObjectName("homePb");
         homePb->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -115,66 +120,15 @@ public:
 
         gridLayout_2->addWidget(homePb, 3, 1, 1, 1);
 
-        spacerHomePb = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_2->addItem(spacerHomePb, 3, 0, 1, 1);
-
         stackedWidget = new QStackedWidget(HomeWnd);
         stackedWidget->setObjectName("stackedWidget");
         welcome = new QWidget();
         welcome->setObjectName("welcome");
         gridLayout = new QGridLayout(welcome);
         gridLayout->setObjectName("gridLayout");
-        freePb = new QPushButton(welcome);
-        freePb->setObjectName("freePb");
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/photo/free.png"), QSize(), QIcon::Normal, QIcon::Off);
-        freePb->setIcon(icon2);
-        freePb->setIconSize(QSize(35, 35));
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addWidget(freePb, 5, 1, 1, 1);
-
-        mastersPb = new QPushButton(welcome);
-        mastersPb->setObjectName("mastersPb");
-        QFont font;
-        font.setFamilies({QString::fromUtf8("Candara")});
-        font.setPointSize(16);
-        font.setBold(false);
-        font.setItalic(false);
-        mastersPb->setFont(font);
-        mastersPb->setLayoutDirection(Qt::LeftToRight);
-        mastersPb->setStyleSheet(QString::fromUtf8("QPushButton\n"
-"{\n"
-"	background-color: rgb(255, 255, 255);\n"
-"	color: rgb(0, 0, 0);\n"
-"  border: 2px solid  rgb(0, 0, 0);\n"
-"border-radius: 20px;\n"
-"width: 50px;\n"
-"  height: 40px;\n"
-"}\n"
-"QPushButton:hover {\n"
-"               border: 4px solid  rgb(0, 0, 0);\n"
-"border-radius: 20px;\n"
-"            }\n"
-"QPushButton:pressed {\n"
-" border: 2px solid  rgb(0, 0, 0);\n"
-"border-radius: 20px;\n"
-"            }"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/photo/masters.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        mastersPb->setIcon(icon3);
-        mastersPb->setIconSize(QSize(35, 35));
-
-        gridLayout->addWidget(mastersPb, 2, 1, 1, 1);
-
-        pushButton = new QPushButton(welcome);
-        pushButton->setObjectName("pushButton");
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/photo/work.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton->setIcon(icon4);
-        pushButton->setIconSize(QSize(35, 35));
-
-        gridLayout->addWidget(pushButton, 6, 1, 1, 1);
+        gridLayout->addItem(horizontalSpacer_2, 2, 2, 1, 1);
 
         avatarStckW = new QStackedWidget(welcome);
         avatarStckW->setObjectName("avatarStckW");
@@ -292,6 +246,77 @@ public:
 
         gridLayout->addWidget(avatarStckW, 0, 2, 1, 1);
 
+        freePb = new QPushButton(welcome);
+        freePb->setObjectName("freePb");
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/photo/free.png"), QSize(), QIcon::Normal, QIcon::Off);
+        freePb->setIcon(icon2);
+        freePb->setIconSize(QSize(35, 35));
+
+        gridLayout->addWidget(freePb, 5, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 2, 0, 1, 1);
+
+        mastersPb = new QPushButton(welcome);
+        mastersPb->setObjectName("mastersPb");
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Candara")});
+        font.setPointSize(16);
+        font.setBold(false);
+        font.setItalic(false);
+        mastersPb->setFont(font);
+        mastersPb->setLayoutDirection(Qt::LeftToRight);
+        mastersPb->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0, 0, 0);\n"
+"  border: 2px solid  rgb(0, 0, 0);\n"
+"border-radius: 20px;\n"
+"width: 50px;\n"
+"  height: 40px;\n"
+"}\n"
+"QPushButton:hover {\n"
+"               border: 4px solid  rgb(0, 0, 0);\n"
+"border-radius: 20px;\n"
+"            }\n"
+"QPushButton:pressed {\n"
+" border: 2px solid  rgb(0, 0, 0);\n"
+"border-radius: 20px;\n"
+"            }"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/photo/masters.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        mastersPb->setIcon(icon3);
+        mastersPb->setIconSize(QSize(35, 35));
+
+        gridLayout->addWidget(mastersPb, 2, 1, 1, 1);
+
+        sketchPb = new QPushButton(welcome);
+        sketchPb->setObjectName("sketchPb");
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/photo/sketch.png"), QSize(), QIcon::Normal, QIcon::Off);
+        sketchPb->setIcon(icon4);
+        sketchPb->setIconSize(QSize(35, 35));
+
+        gridLayout->addWidget(sketchPb, 7, 1, 1, 1);
+
+        pictureLb = new QLabel(welcome);
+        pictureLb->setObjectName("pictureLb");
+        pictureLb->setPixmap(QPixmap(QString::fromUtf8(":/photo/moons.jpg")));
+        pictureLb->setAlignment(Qt::AlignCenter);
+
+        gridLayout->addWidget(pictureLb, 1, 1, 1, 1);
+
+        pushButton = new QPushButton(welcome);
+        pushButton->setObjectName("pushButton");
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/photo/work.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon5);
+        pushButton->setIconSize(QSize(35, 35));
+
+        gridLayout->addWidget(pushButton, 6, 1, 1, 1);
+
         customerPb = new QPushButton(welcome);
         customerPb->setObjectName("customerPb");
         customerPb->setFont(font);
@@ -312,23 +337,12 @@ public:
 " border: 2px solid  rgb(0, 0, 0);\n"
 "border-radius: 20px;\n"
 "            }"));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/photo/customer.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        customerPb->setIcon(icon5);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/photo/customer.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        customerPb->setIcon(icon6);
         customerPb->setIconSize(QSize(37, 37));
 
         gridLayout->addWidget(customerPb, 3, 1, 1, 1);
-
-        pictureLb = new QLabel(welcome);
-        pictureLb->setObjectName("pictureLb");
-        pictureLb->setPixmap(QPixmap(QString::fromUtf8(":/photo/moons.jpg")));
-        pictureLb->setAlignment(Qt::AlignCenter);
-
-        gridLayout->addWidget(pictureLb, 1, 1, 1, 1);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_2, 2, 2, 1, 1);
 
         welcoeLb = new QLabel(welcome);
         welcoeLb->setObjectName("welcoeLb");
@@ -340,14 +354,14 @@ public:
 
         gridLayout->addWidget(welcoeLb, 0, 1, 1, 1);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        appPb = new QPushButton(welcome);
+        appPb->setObjectName("appPb");
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/photo/submit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        appPb->setIcon(icon7);
+        appPb->setIconSize(QSize(35, 35));
 
-        gridLayout->addItem(horizontalSpacer, 2, 0, 1, 1);
-
-        sketchPb = new QPushButton(welcome);
-        sketchPb->setObjectName("sketchPb");
-
-        gridLayout->addWidget(sketchPb, 7, 1, 1, 1);
+        gridLayout->addWidget(appPb, 8, 1, 1, 1);
 
         stackedWidget->addWidget(welcome);
 
@@ -367,9 +381,6 @@ public:
     {
         HomeWnd->setWindowTitle(QCoreApplication::translate("HomeWnd", "Home", nullptr));
         homePb->setText(QString());
-        freePb->setText(QCoreApplication::translate("HomeWnd", "Free time", nullptr));
-        mastersPb->setText(QCoreApplication::translate("HomeWnd", "Masters", nullptr));
-        pushButton->setText(QCoreApplication::translate("HomeWnd", "Work time", nullptr));
         usernameLb->setText(QString());
         activeAvatarLb->setText(QString());
         statusLb->setText(QCoreApplication::translate("HomeWnd", "admin", nullptr));
@@ -378,10 +389,14 @@ public:
         mAvatarlb->setText(QString());
         changeWomenPb->setText(QCoreApplication::translate("HomeWnd", "change", nullptr));
         changeMenPb->setText(QCoreApplication::translate("HomeWnd", "change", nullptr));
-        customerPb->setText(QCoreApplication::translate("HomeWnd", "Customers", nullptr));
-        pictureLb->setText(QString());
-        welcoeLb->setText(QCoreApplication::translate("HomeWnd", "Welcome!", nullptr));
+        freePb->setText(QCoreApplication::translate("HomeWnd", "Free time", nullptr));
+        mastersPb->setText(QCoreApplication::translate("HomeWnd", "Masters", nullptr));
         sketchPb->setText(QCoreApplication::translate("HomeWnd", "Sketch", nullptr));
+        pictureLb->setText(QString());
+        pushButton->setText(QCoreApplication::translate("HomeWnd", "Work time", nullptr));
+        customerPb->setText(QCoreApplication::translate("HomeWnd", "Customers", nullptr));
+        welcoeLb->setText(QCoreApplication::translate("HomeWnd", "Welcome!", nullptr));
+        appPb->setText(QCoreApplication::translate("HomeWnd", "  Application", nullptr));
     } // retranslateUi
 
 };

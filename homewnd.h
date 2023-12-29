@@ -2,21 +2,25 @@
 #define HOMEWND_H
 
 #include <QWidget>
+
+class QWidget;
 class CustomerWnd;
 class MastersWnd;
 class FreeTAdd;
 class WorkWnd;
 class ScketchWnd;
+class Application;
+class MainWindow;
 namespace Ui {
 class HomeWnd;
 }
 
-class HomeWnd : public QWidget
+class HomeWnd :  public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit HomeWnd(QWidget *parent = nullptr);
+     explicit HomeWnd(QWidget *parent = nullptr);
     ~HomeWnd();
 
 private slots:
@@ -39,8 +43,16 @@ private slots:
 
     void on_sketchPb_clicked();
 
+
+    void on_appPb_clicked();
+
+
+
+    void on_exitePb_clicked();
+
 public slots:
     void username(QString name);
+
 
 private:
     Ui::HomeWnd *ui;
@@ -49,6 +61,9 @@ private:
     FreeTAdd *freeWnd;
     WorkWnd *workWnd;
     ScketchWnd *sketchWnd;
+    Application *appWnd;
+signals:
+    void exittHome();
 };
 
 #endif // HOMEWND_H

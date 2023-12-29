@@ -6,6 +6,7 @@
 #include "question.h"
 #include <QSortFilterProxyModel>
 #include <QSqlTableModel>
+class QWidget;
 class QSqlTableModel;
 class DBManager;
 
@@ -38,6 +39,7 @@ public slots:
 signals:
     void update(QString area, QString id,int page);
     void deleteBody(QString id,QString table_name);
+    void closeWnd();
 };
 
 #endif // BODYWND_H

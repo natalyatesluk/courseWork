@@ -9,6 +9,8 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    acceptreques.cpp \
+    application.cpp \
     bodywnd.cpp \
     customer.cpp \
     customerwnd.cpp \
@@ -32,6 +34,8 @@ SOURCES += \
     workwnd.cpp
 
 HEADERS += \
+    acceptreques.h \
+    application.h \
     bodywnd.h \
     customer.h \
     customerwnd.h \
@@ -55,6 +59,8 @@ HEADERS += \
     workwnd.h
 
 FORMS += \
+    acceptreques.ui \
+    application.ui \
     bodywnd.ui \
     customerwnd.ui \
     freetadd.ui \

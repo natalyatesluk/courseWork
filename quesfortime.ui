@@ -18,7 +18,13 @@
     <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget
+   <string notr="true">QComboBox {
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Регулює заокруглення кутів */
+    padding: 1px 18px 1px 3px; /* Регулює відступи внутрішніх елементів */
+    min-width: 6em;
+	font: 9pt &quot;Candara&quot;;
+}QWidget
 {
 background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);
@@ -127,13 +133,6 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="masterLE">
-         <property name="placeholderText">
-          <string>Enter master ID...</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
         <widget class="QLabel" name="timeLb">
          <property name="text">
@@ -161,19 +160,18 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
-        <widget class="QLineEdit" name="customerLE">
-         <property name="placeholderText">
-          <string>Enter customer ID...</string>
-         </property>
-        </widget>
-       </item>
        <item row="5" column="0" colspan="2">
         <widget class="QPushButton" name="transferPb">
          <property name="text">
           <string>TRANSFER</string>
          </property>
         </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="mastersCb"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="customersCb"/>
        </item>
       </layout>
      </widget>
@@ -184,8 +182,6 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
  <tabstops>
   <tabstop>dateLE</tabstop>
   <tabstop>timeLE</tabstop>
-  <tabstop>masterLE</tabstop>
-  <tabstop>customerLE</tabstop>
   <tabstop>transferPb</tabstop>
   <tabstop>deletePb</tabstop>
   <tabstop>choisTransPb</tabstop>

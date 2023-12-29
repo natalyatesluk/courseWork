@@ -18,7 +18,13 @@
     <normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</normaloff>:/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget
+   <string notr="true">QComboBox {
+    border: 1px solid rgb(6, 6, 6);
+    border-radius: 10px; /* Регулює заокруглення кутів */
+    padding: 1px 18px 1px 3px; /* Регулює відступи внутрішніх елементів */
+    min-width: 6em;
+	font: 12pt &quot;Candara&quot;;
+}QWidget
 {
 background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);
@@ -85,7 +91,44 @@ QPushButton:pressed {
 QLabel{font: 12pt &quot;Candara&quot;;}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="5">
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="nameLE"/>
+   </item>
+   <item row="4" column="5">
+    <widget class="QPushButton" name="addPb">
+     <property name="text">
+      <string>ADD</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="5">
+    <widget class="QPushButton" name="bodyPb">
+     <property name="text">
+      <string>Body</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QLabel" name="bodyLb">
+     <property name="text">
+      <string>Body:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="numberLb">
+     <property name="text">
+      <string>Number:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="6">
+    <widget class="QTableView" name="customerTv"/>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="numberLE"/>
+   </item>
+   <item row="0" column="0" colspan="6">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="searchLbl">
@@ -130,16 +173,6 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="nameLb">
-     <property name="text">
-      <string>Name:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="nameLE"/>
-   </item>
    <item row="2" column="2">
     <widget class="QLabel" name="priceLb">
      <property name="text">
@@ -147,13 +180,13 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="3">
-    <widget class="QLineEdit" name="priceLE"/>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="surenameLE"/>
    </item>
-   <item row="2" column="4">
-    <widget class="QPushButton" name="bodyPb">
+   <item row="2" column="0">
+    <widget class="QLabel" name="nameLb">
      <property name="text">
-      <string>Body</string>
+      <string>Name:</string>
      </property>
     </widget>
    </item>
@@ -164,29 +197,6 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="surenameLE"/>
-   </item>
-   <item row="3" column="2">
-    <widget class="QLabel" name="bodyLb">
-     <property name="text">
-      <string>Body:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3">
-    <widget class="QLineEdit" name="bodyLE"/>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="numberLb">
-     <property name="text">
-      <string>Number:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="numberLE"/>
-   </item>
    <item row="4" column="2">
     <widget class="QLabel" name="masterLb">
      <property name="text">
@@ -194,18 +204,14 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="3">
-    <widget class="QLineEdit" name="masterLE"/>
+   <item row="2" column="4">
+    <widget class="QLineEdit" name="priceLE"/>
+   </item>
+   <item row="3" column="4">
+    <widget class="QComboBox" name="bodyCb"/>
    </item>
    <item row="4" column="4">
-    <widget class="QPushButton" name="addPb">
-     <property name="text">
-      <string>ADD</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="5">
-    <widget class="QTableView" name="customerTv"/>
+    <widget class="QComboBox" name="mastersCb"/>
    </item>
   </layout>
  </widget>
@@ -214,8 +220,6 @@ QLabel{font: 12pt &quot;Candara&quot;;}</string>
   <tabstop>surenameLE</tabstop>
   <tabstop>numberLE</tabstop>
   <tabstop>priceLE</tabstop>
-  <tabstop>bodyLE</tabstop>
-  <tabstop>masterLE</tabstop>
   <tabstop>addPb</tabstop>
   <tabstop>bodyPb</tabstop>
   <tabstop>customerTv</tabstop>

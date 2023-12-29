@@ -6,6 +6,8 @@
 #include "login.h"
 #include "homewnd.h"
 #include "homecustomer.h"
+
+class QMainWindow;
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -32,7 +34,10 @@ public slots:
     void home(QString username);
     void homeCust(QString username);
     void mainWnd();
+    void exitHome();
+    void exitHomeCust();
 signals:
     void usernameSignsl(QString name);
+
 };
 #endif // MAINWINDOW_H

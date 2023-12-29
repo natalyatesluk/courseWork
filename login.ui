@@ -28,7 +28,7 @@ color: rgb(0, 0, 0);</string>
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="choise">
       <property name="styleSheet">

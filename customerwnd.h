@@ -9,7 +9,9 @@
 #include <QSqlRelationalTableModel>
 #include <QSortFilterProxyModel>
 
-class QSqlTableModel;
+class QWidget;
+class QSqlRelationalTableModel;
+class QSortFilterProxyModel;
 class DBManager;
 namespace Ui {
 class CustomerWnd;
@@ -31,8 +33,11 @@ private:
     Customer *customer;
     QSqlRelationalTableModel *modelCust;
     QSortFilterProxyModel *proxyCustModel;
+    int masterIndex;
+    int bodyIndex;
 public slots:
     void closeQuestion();
+    void closeBody();
 signals:
     void update(Customer *customer, QString id,int page);
     void deleteCustomer(QString id,QString table_anme);

@@ -9,6 +9,9 @@
 #include "question.h"
 #include <QVector>
 
+class QWidget;
+class QSqlRelationalTableModel;
+class QSortFilterProxyModel;
 class DBManager;
 namespace Ui {
 class HomeCustomer;
@@ -54,6 +57,8 @@ private slots:
 
     void on_selectPb_clicked();
 
+    void on_exitPB_clicked();
+
 private:
     Ui::HomeCustomer *ui;
     DBManager *db;
@@ -71,6 +76,7 @@ private:
     QString sketchId;
 signals:
     void submitApp(int page,QString namestk);
+    void exittHome();
 };
 
 #endif // HOMECUSTOMER_H

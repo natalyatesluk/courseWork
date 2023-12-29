@@ -1,17 +1,20 @@
 #ifndef REGITRATION_H
 #define REGITRATION_H
 #define SYSTEM_PASSWORD "catdog2021"
-#include <QWidget>
+
 #include <QSqlDatabase>
 #include <sqldbmaneger.h>
-class QSqlTableModel;
+#include <QWidget>
+#include <QDialog>
 
+class QWidget;
+class QDialog;
 class DBManager;
 namespace Ui {
 class Regitration;
 }
 
-class Regitration : public QWidget
+class Regitration : public QDialog
 {
     Q_OBJECT
 

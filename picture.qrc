@@ -24,5 +24,12 @@
         <file>../build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico</file>
         <file>photo/downArrow.png</file>
         <file>photo/upArrow.png</file>
+        <file>photo/accept.png</file>
+        <file>photo/noAccept.png</file>
+        <file>photo/refuse.jpg</file>
+        <file>photo/acceptJpg.jpg</file>
+        <file>photo/submit.png</file>
+        <file>photo/sketch.png</file>
+        <file>photo/door.png</file>
     </qresource>
 </RCC>

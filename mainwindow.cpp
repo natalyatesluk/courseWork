@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
 }
 
 MainWindow::~MainWindow()
@@ -38,6 +40,7 @@ void MainWindow::home(QString username)
     homeWnd->show();
     logWnd->close();
     this->close();
+    connect(homeWnd, &HomeWnd::exittHome, this, &MainWindow::exitHome);
 }
 
 void MainWindow::homeCust(QString username)
@@ -49,6 +52,7 @@ void MainWindow::homeCust(QString username)
     homeCustWnd->show();
     logWnd->close();
     this->close();
+    connect(homeCustWnd, &HomeCustomer::exittHome, this, &MainWindow::exitHomeCust);
 }
 
 void MainWindow::mainWnd()
@@ -57,3 +61,22 @@ void MainWindow::mainWnd()
     registerWnd->close();
 }
 
+void MainWindow::exitHome()
+{
+    if (homeWnd)
+        homeWnd->close();
+
+    this->show();
+    delete homeWnd;
+    homeWnd=nullptr;
+}
+
+void MainWindow::exitHomeCust()
+{
+    if (homeCustWnd)
+        homeCustWnd->close();
+
+    this->show();
+    delete homeCustWnd;
+    homeCustWnd=nullptr;
+}

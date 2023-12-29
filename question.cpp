@@ -6,11 +6,13 @@
 #include <QSqlError>
 #include <QSqlTableModel>
 #include <QDebug>
+
 Question::Question(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Question)
 {
     ui->setupUi(this);
+    setModal(true);
     db= SqlDBManeger::getInstance();
     ui->questionSt->setCurrentIndex(0);
 
@@ -74,8 +76,27 @@ void Question::updateCustomer(Customer *customer, QString id, int page)
     ui->surenameCusLE->setText(customer->getSurename());
     ui->numberCusLE->setText(customer->getPhoneNumber());
     ui->priceCusLE->setText(QString::number(customer->getPrice()));
-    ui->areaBodyLE->setText(QString::number(customer->getAreaBody()));
-    ui->masterLE->setText(QString::number(customer->getMaster()));
+//    ui->areaBodyLE->setText(QString::number(customer->getAreaBody()));
+//    ui->masterLE->setText(QString::number(customer->getMaster()));
+    QSqlRelationalTableModel* modelCust = new QSqlRelationalTableModel(this, db->getDB());
+    modelCust->setTable("customers");
+    int masterIx = modelCust->fieldIndex(TABLE_MASTERid);
+    int bodyIndex = modelCust->fieldIndex(TABLE_CUSTOMER_BODY);
+    modelCust->setRelation(modelCust->fieldIndex(TABLE_MASTERid), QSqlRelation(TABLE_MASTER, ID, TABLE_NAME));
+    modelCust->setRelation(modelCust->fieldIndex(TABLE_CUSTOMER_BODY), QSqlRelation(TABLE_BODY, ID, TABLE_BODY_AREA));
+    modelCust->select();
+
+    if (modelCust) {
+        ui->masterCusCb->setModel(modelCust->relationModel(masterIx));
+        ui->masterCusCb->setModelColumn(modelCust->relationModel(masterIx)->fieldIndex(TABLE_NAME));
+
+        ui->bodyCusCb->setModel(modelCust->relationModel(bodyIndex));
+        ui->bodyCusCb->setModelColumn(modelCust->relationModel(bodyIndex)->fieldIndex(TABLE_BODY_AREA));
+    } else {
+        qDebug() << "Error: modelCust is null.";
+    }
+    ui->masterCusCb->setCurrentText(customer->getStrMaster());
+    ui->bodyCusCb->setCurrentText(customer->getStrBody());
 }
 
 void Question::updateTime(WorkTime *time, QString id, int page)
@@ -84,9 +105,27 @@ void Question::updateTime(WorkTime *time, QString id, int page)
     idQstn =id;
     ui->dateLE->setText(time->getDate().toString("yyyy-MM-dd"));
     ui->timeLE->setText(time->getTime().toString("hh:mm"));
-    ui->masterTimLE->setText(QString::number(time->getMaster()));
-    ui->customerLE->setText(QString::number(time->getCustomr()));
+//    ui->masterTimLE->setText(QString::number(time->getMaster()));
+//    ui->customerLE->setText(QString::number(time->getCustomr()));
+    QSqlRelationalTableModel *modelWork = new QSqlRelationalTableModel(this, db->getDB());
 
+    modelWork->setTable(TABLE_WORKTIME);
+    int masterIndex = modelWork->fieldIndex(TABLE_MASTERid);
+    int customerIndex = modelWork->fieldIndex(TABLE_CUSTOMERid);
+
+    modelWork->setRelation(masterIndex,QSqlRelation(TABLE_MASTER, ID, TABLE_NAME));
+    modelWork->setRelation(customerIndex,QSqlRelation(TABLE_CUSTOMER, ID, TABLE_NAME));
+    if (modelWork) {
+        ui->masterTimCb->setModel(modelWork->relationModel(masterIndex));
+        ui->masterTimCb->setModelColumn(modelWork->relationModel(masterIndex)->fieldIndex(TABLE_NAME));
+
+        ui->customerCb->setModel(modelWork->relationModel(customerIndex));
+        ui->customerCb->setModelColumn(modelWork->relationModel(customerIndex)->fieldIndex(TABLE_NAME));
+    } else {
+        qDebug() << "Error: modelFree is null.";
+    }
+    ui->masterTimCb->setCurrentText(time->getMasterStr());
+    ui->customerCb->setCurrentText(time->getCustomrStr());
 }
 
 void Question::addScetch(QByteArray &image, int page)
@@ -151,17 +190,28 @@ void Question::on_updateBodyPb_clicked()
 
 void Question::on_updateCusPb_clicked()
 {
+
      QString name = ui->nameCusLE->text();
      QString surename = ui->surenameCusLE->text();
      QString number = ui->numberCusLE->text();
      QString price = ui->priceCusLE->text();
-     QString areaBody = ui->areaBodyLE->text();
-     QString master = ui->masterLE->text();
+     QString master = ui->masterCusCb->currentText();
+     qDebug() << "Selected Master: " << master;
+
+     int id_master = db->searchMasterId(master);
+     qDebug() << "ID Master: " << id_master;
+
+     QString areaBody= ui->bodyCusCb->currentText();
+     qDebug() << "Selected Body: " << areaBody;
+
+     int id_body = db->searchBodyId(areaBody);
+     qDebug() << "ID Body: " << id_body;
+
 
      if(!name.isEmpty()&&!surename.isEmpty()&&!number.isEmpty()&&!price.isEmpty()
          &&!areaBody.isEmpty()&&!master.isEmpty())
      {
-        customer= new Customer(name,surename,number,price.toFloat(), areaBody.toInt(), master.toInt());
+        customer= new Customer(name,surename,number,price.toFloat(), id_master,id_body);
         db->updateCustomer(*customer,idQstn);
         emit closeWnd();
      }
@@ -174,12 +224,25 @@ void Question::on_updateTimePb_clicked()
 {
      QString date= ui->dateLE->text();
      QString time= ui->timeLE->text();
-     QString master= ui->masterTimLE->text();
-     QString customer= ui->customerLE->text();
-     if(!master.isEmpty()&&!time.isEmpty()&&!date.isEmpty()&&!customer.isEmpty())
+
+     QString masterId = ui->masterTimCb->currentText();
+     qDebug() << "Selected Master: " << masterId;
+
+     int id_master = db->searchMasterId(masterId);
+     qDebug() << "ID Master: " << id_master;
+     QString customerId = ui->customerCb->currentText();
+     qDebug() << "Selected Customer: " << customerId;
+
+     int id_customer = db->searchCustomerId(customerId);
+     qDebug() << "ID Customer: " << id_customer;
+
+//     QString master= ui->masterTimLE->text();
+//     QString customer= ui->customerLE->text();
+
+     if(!masterId.isEmpty()&&!time.isEmpty()&&!date.isEmpty()&&!customerId.isEmpty())
      {
         WorkTime *work= new WorkTime(QDate::fromString(date,"yyyy-MM-dd"),QTime::fromString(time,"hh:mm"),
-                                      master.toInt(),customer.toInt());
+                                      id_master,id_customer);
         db->updateWork(*work,idQstn);
         emit closeWnd();
         delete work;
@@ -233,6 +296,7 @@ void Question::on_submitApliPb_clicked()
      if(!name.isEmpty()&&!surename.isEmpty()&&!number.isEmpty()
          &&!areaBody.isEmpty())
      {
+
      Customer * customer = new Customer(name,surename,number,id_master,areaBody);
      db->inserIntoTableApp(id_time,id_sketch,*customer);
      QMessageBox::about(this,"Graete!","Your application was sent.");

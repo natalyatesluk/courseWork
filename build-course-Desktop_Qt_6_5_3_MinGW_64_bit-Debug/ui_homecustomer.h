@@ -78,7 +78,7 @@ public:
     {
         if (HomeCustomer->objectName().isEmpty())
             HomeCustomer->setObjectName("HomeCustomer");
-        HomeCustomer->resize(756, 470);
+        HomeCustomer->resize(763, 470);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/build-course-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/icons/iconka.ico"), QSize(), QIcon::Normal, QIcon::Off);
         HomeCustomer->setWindowIcon(icon);
@@ -167,14 +167,18 @@ public:
 
         sketchPb = new QPushButton(welcomePage);
         sketchPb->setObjectName("sketchPb");
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/photo/sketch.png"), QSize(), QIcon::Normal, QIcon::Off);
+        sketchPb->setIcon(icon1);
+        sketchPb->setIconSize(QSize(35, 35));
 
         gridLayout->addWidget(sketchPb, 6, 1, 1, 1);
 
         freePb = new QPushButton(welcomePage);
         freePb->setObjectName("freePb");
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/photo/free.png"), QSize(), QIcon::Normal, QIcon::Off);
-        freePb->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/photo/free.png"), QSize(), QIcon::Normal, QIcon::Off);
+        freePb->setIcon(icon2);
         freePb->setIconSize(QSize(35, 35));
 
         gridLayout->addWidget(freePb, 5, 1, 1, 1);
@@ -209,9 +213,9 @@ public:
 " border: 2px solid  rgb(0, 0, 0);\n"
 "border-radius: 20px;\n"
 "            }"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/photo/masters.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        mastersPb->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/photo/masters.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        mastersPb->setIcon(icon3);
         mastersPb->setIconSize(QSize(35, 35));
 
         gridLayout->addWidget(mastersPb, 4, 1, 1, 1);
@@ -364,9 +368,9 @@ public:
 "	color: rgb(0, 0, 0);\n"
 "border-radius: 20px;\n"
 "            }"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/photo/homeicon.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        homePb->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/photo/homeicon.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        homePb->setIcon(icon4);
         homePb->setIconSize(QSize(35, 35));
 
         gridLayout_3->addWidget(homePb, 2, 0, 1, 1);
@@ -485,7 +489,7 @@ public:
 "	color: rgb(0, 0, 0);\n"
 "border-radius: 20px;\n"
 "            }"));
-        homeTPb->setIcon(icon3);
+        homeTPb->setIcon(icon4);
         homeTPb->setIconSize(QSize(35, 35));
 
         gridLayout_2->addWidget(homeTPb, 2, 0, 1, 2);
@@ -521,9 +525,9 @@ public:
         gridLayout_4->setObjectName("gridLayout_4");
         backPb = new QPushButton(page);
         backPb->setObjectName("backPb");
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/photo/back.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        backPb->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/photo/back.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        backPb->setIcon(icon5);
         backPb->setIconSize(QSize(35, 28));
 
         gridLayout_4->addWidget(backPb, 0, 0, 1, 1);
@@ -535,9 +539,9 @@ public:
 
         nextPb = new QPushButton(page);
         nextPb->setObjectName("nextPb");
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/photo/next.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        nextPb->setIcon(icon5);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/photo/next.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        nextPb->setIcon(icon6);
         nextPb->setIconSize(QSize(35, 28));
 
         gridLayout_4->addWidget(nextPb, 0, 2, 1, 1);
@@ -569,7 +573,7 @@ public:
 "	color: rgb(0, 0, 0);\n"
 "border-radius: 20px;\n"
 "            }"));
-        homeSPb->setIcon(icon3);
+        homeSPb->setIcon(icon4);
         homeSPb->setIconSize(QSize(35, 35));
 
         gridLayout_4->addWidget(homeSPb, 4, 0, 1, 1);
